@@ -12,13 +12,24 @@ let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
     var body: some View {
-        HStack {
+        HStack(spacing:24) {
             VideoView()
                 .frame(width: 7 * unitSize, height: 5 * unitSize)
                 .cornerRadius(cornerSize)
-                .padding(.top)
+                .padding(.top, 15)
                 .padding(.leading, 20)
-            Spacer()
+            VStack(alignment: .leading,spacing: 0) {
+                Text("제목이들어갑니다람")
+                    .font(.title)
+                    .bold()
+                    .border(.pink)
+                    .padding(.top, 32)
+                Text("본문이 들어갑니다 여러 줄의 본문이 들어갈 예정입니다 어떻게 들어갈지 궁금하시죠? 안궁금하다고요? 그럼 지금부터 궁금해하세요")
+                    .font(.title2)
+                    .padding(.top, 14)
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
@@ -31,11 +42,7 @@ struct VideoView: View {
 
 struct StageLayout75View_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            StageLayout75View()
-                .previewInterfaceOrientation(.landscapeRight)
-            StageLayout75View()
-                .previewInterfaceOrientation(.landscapeLeft)
-        }
+        StageLayout75View()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
