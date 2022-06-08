@@ -18,11 +18,12 @@ struct SelectRecipeView: View {
             VStack(spacing: 34) {
                 VStack(alignment: .leading) {
                     Text("어떤 용도로\n\(selectedFish)를 손질하시나요?")
-                        .font(.title)
                         .fontWeight(.bold)
+                        .font(.title)
                         .multilineTextAlignment(.leading)
-                        .frame(alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .frame(alignment: .leading)
                 
                 ZStack {
                     Image("Dish")
@@ -34,20 +35,21 @@ struct SelectRecipeView: View {
                 
                 VStack(spacing: 22) {
                     ForEach(Recipe.allCases, id: \.rawValue) { recipe in
-                        Button(recipe.rawValue) {
+                        Button {
                             selectedValue = "\(recipe.rawValue)"
-                        }
-                        .foregroundColor(.black)
-                        .frame(height: 64)
-                        .frame(maxWidth: .infinity)
-                        .background {
+                        } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                                     .fill((selectedValue == recipe.rawValue) ? "#AACBFD".toColor(alpha: 1) : .clear)
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                                     .stroke("#AACBFD".toColor(alpha: 1), lineWidth: 2)
+                                Text(recipe.rawValue)
                             }
                         }
+                        .frame(height: 64)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.black)
+                        
                     }
                 }
                 Button {
@@ -84,7 +86,7 @@ struct SelectRecipeView: View {
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.opacity.animation(.linear))
-        .animation(.linear(duration: 1), value: UUID())
+        .animation(.linear(duration: 1), value: 0)
     }
 }
 
