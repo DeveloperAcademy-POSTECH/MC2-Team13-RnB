@@ -12,7 +12,7 @@ struct SelectRecipeView: View {
     @Binding var viewChangeValue: (Bool, Bool)
     
     @State private var selectedValue: String = "임시 텍스트"
-
+    
     var body: some View {
         ZStack {
             VStack(spacing: 34) {
@@ -23,7 +23,7 @@ struct SelectRecipeView: View {
                         .multilineTextAlignment(.leading)
                         .frame(alignment: .leading)
                 }
-
+                
                 ZStack {
                     Image("Dish")
                         .resizable()
@@ -35,27 +35,50 @@ struct SelectRecipeView: View {
                 VStack(spacing: 22) {
                     ForEach(Recipe.allCases, id: \.rawValue) { recipe in
                         Button(recipe.rawValue) {
-                            selectedValue = selectedFish + "_\(recipe.rawValue)"
+                            selectedValue = "\(recipe.rawValue)"
                         }
                         .foregroundColor(.black)
                         .frame(height: 64)
                         .frame(maxWidth: .infinity)
                         .background {
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .stroke("AACBFD".toColor(alpha: 1), lineWidth: 2)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill((selectedValue == recipe.rawValue) ? "#AACBFD".toColor(alpha: 1) : .clear)
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .stroke("#AACBFD".toColor(alpha: 1), lineWidth: 2)
+                            }
                         }
                     }
                 }
+                Button {
+                    
+                } label: {
+                    Image(systemName: "arrow.forward.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor("#0344A5".toColor(alpha: 1))
+                }
                 
-                Button("뒤로가기") {
+                .frame(width: 44, height: 44, alignment: .center)
+                
+                
+                Spacer()
+                
+                Button {
                     viewChangeValue.1.toggle()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
                             viewChangeValue.0.toggle()
                         }
                     }
+                } label: {
+                    Image(systemName: "chevron.up")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor("#3C3C43".toColor(alpha: 1))
                 }
-                Spacer()
+                .frame(width: 30, height: 20, alignment: .center)
+                .padding(.bottom, 22)
             }
             .padding(.horizontal, 36)
         }
@@ -68,7 +91,7 @@ struct SelectRecipeView: View {
 struct SelectRecipeViewPreviewsContainer: View {
     @State var selectedFish: String = ""
     @State var viewChangeValue: (Bool, Bool) = (true, false)
-
+    
     var body: some View {
         SelectRecipeView(selectedFish: $selectedFish, viewChangeValue: $viewChangeValue)
     }
