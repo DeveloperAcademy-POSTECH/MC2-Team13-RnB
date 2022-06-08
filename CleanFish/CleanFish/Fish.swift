@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Fish: CaseIterable {
-    case 광어
-    case 고등어
-    case 갈치
+enum Fish: String, CaseIterable {
+    case flatfish = "광어"
+    case mackerel = "고등어"
+    case cutlassfish = "갈치"
 }
