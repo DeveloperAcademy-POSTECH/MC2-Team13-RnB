@@ -15,6 +15,9 @@
 		C72AD6E7284E147400B68995 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72AD6E6284E147400B68995 /* Fish.swift */; };
 		C79478A328507F6000AB4124 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C79478A228507F6000AB4124 /* Lottie */; };
 		C79478A528507F6B00AB4124 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A428507F6B00AB4124 /* LottieView.swift */; };
+		C79478A72850828900AB4124 /* SelectFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A62850828900AB4124 /* SelectFishView.swift */; };
+		C79478A92850909700AB4124 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A82850909700AB4124 /* MainView.swift */; };
+		C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478AA285091DC00AB4124 /* SelectRecipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		C710ADC42850395500DA181C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		C72AD6E6284E147400B68995 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		C79478A428507F6B00AB4124 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		C79478A62850828900AB4124 /* SelectFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFishView.swift; sourceTree = "<group>"; };
+		C79478A82850909700AB4124 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C79478AA285091DC00AB4124 /* SelectRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 				C7083598284DD0DE0061F707 /* CleanFishApp.swift */,
 				C708359A284DD0DE0061F707 /* ContentView.swift */,
 				C72AD6E6284E147400B68995 /* Fish.swift */,
+				C79478A62850828900AB4124 /* SelectFishView.swift */,
+				C79478A82850909700AB4124 /* MainView.swift */,
+				C79478AA285091DC00AB4124 /* SelectRecipeView.swift */,
 				C710ADC42850395500DA181C /* Recipe.swift */,
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
 				C708359C284DD0DF0061F707 /* Assets.xcassets */,
@@ -176,7 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C708359B284DD0DE0061F707 /* ContentView.swift in Sources */,
+				C79478A92850909700AB4124 /* MainView.swift in Sources */,
 				C72AD6E7284E147400B68995 /* Fish.swift in Sources */,
+				C79478A72850828900AB4124 /* SelectFishView.swift in Sources */,
+				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
 				C79478A528507F6B00AB4124 /* LottieView.swift in Sources */,
 				C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */,
 				C710ADC52850395500DA181C /* Recipe.swift in Sources */,
@@ -236,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -290,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
