@@ -12,13 +12,13 @@ let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
     var body: some View {
-        HStack(spacing:24) {
+        HStack(spacing: 24) {
             VideoView()
                 .frame(width: 7 * unitSize, height: 5 * unitSize)
                 .cornerRadius(cornerSize)
                 .padding(.top, 15)
                 .padding(.leading, 20)
-            VStack(alignment: .leading,spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text("제목이들어갑니다람")
                     .font(.title)
                     .bold()
@@ -28,8 +28,14 @@ struct StageLayout75View: View {
                     .font(.title2)
                     .padding(.top, 14)
                 Spacer()
+                HStack {
+                    Spacer()
+                    Image(systemName: "house.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.homeBlue)
+                }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
