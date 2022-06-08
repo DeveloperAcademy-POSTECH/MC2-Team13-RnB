@@ -17,7 +17,7 @@ struct SelectFishView: View {
             Color.gray
             // Fish
             VStack {
-                ForEach(Fish.allCases, id: \.hashValue) {fish in
+                ForEach(Fish.allCases, id: \.rawValue) {fish in
                     // 버튼의 위치는 실제 생선 이미지가 만들어졌을 때, 재배치
                     HStack {
                         Button {
