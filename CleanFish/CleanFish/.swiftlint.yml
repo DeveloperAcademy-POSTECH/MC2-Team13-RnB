@@ -1,1 +1,13 @@
+excluded:
+#  - Pods
+# - Carthage
+  - .build
 
+disabled_rules:
+  - colon
+  - comma
+  - control_statement
+  - switch_case_alignment
+  - vertical_whitespace
+  - trailing_whitespace
+  - trailing_newline
