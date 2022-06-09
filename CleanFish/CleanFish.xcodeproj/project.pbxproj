@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66BBD3642850348900FD3026 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBD3632850348900FD3026 /* TutorialView.swift */; };
 		C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7083598284DD0DE0061F707 /* CleanFishApp.swift */; };
 		C708359B284DD0DE0061F707 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708359A284DD0DE0061F707 /* ContentView.swift */; };
 		C708359D284DD0DF0061F707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359C284DD0DF0061F707 /* Assets.xcassets */; };
@@ -14,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66BBD3632850348900FD3026 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		66BBD3652850950100FD3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C7083595284DD0DE0061F707 /* CleanFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7083598284DD0DE0061F707 /* CleanFishApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanFishApp.swift; sourceTree = "<group>"; };
 		C708359A284DD0DE0061F707 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +54,8 @@
 		C7083597284DD0DE0061F707 /* CleanFish */ = {
 			isa = PBXGroup;
 			children = (
+				66BBD3652850950100FD3026 /* Info.plist */,
+				66BBD3632850348900FD3026 /* TutorialView.swift */,
 				C7083598284DD0DE0061F707 /* CleanFishApp.swift */,
 				C708359A284DD0DE0061F707 /* ContentView.swift */,
 				C708359C284DD0DF0061F707 /* Assets.xcassets */,
@@ -77,6 +82,7 @@
 				C7083591284DD0DE0061F707 /* Sources */,
 				C7083592284DD0DE0061F707 /* Frameworks */,
 				C7083593284DD0DE0061F707 /* Resources */,
+				665D0A422850274A00C78366 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,6 +138,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		665D0A422850274A00C78366 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C7083591284DD0DE0061F707 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -139,6 +165,7 @@
 			files = (
 				C708359B284DD0DE0061F707 /* ContentView.swift in Sources */,
 				C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */,
+				66BBD3642850348900FD3026 /* TutorialView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,9 +297,13 @@
 				DEVELOPMENT_TEAM = Z629PZ4XVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanFish/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone Usage";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speexh Recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -299,9 +330,13 @@
 				DEVELOPMENT_TEAM = Z629PZ4XVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanFish/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone Usage";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speexh Recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
