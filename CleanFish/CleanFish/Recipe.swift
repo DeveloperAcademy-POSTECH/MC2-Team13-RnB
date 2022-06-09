@@ -9,6 +9,6 @@ import Foundation
 
 enum Recipe: String, CaseIterable {
     case stewed = "조림"
-    case Grilled = "구이"
+    case grilled = "구이"
     case sashimi = "회"
 }
