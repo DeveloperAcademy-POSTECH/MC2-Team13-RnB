@@ -100,6 +100,7 @@
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
 				C79478AC28509DF800AB4124 /* String+Extension.swift */,
 				C708359C284DD0DF0061F707 /* Assets.xcassets */,
+				F6F8B26828518696005F3925 /* GoogleService-Info.plist */,
 				9EB362732850F729001E9BEE /* Colors.xcassets */,
 				F6F8B26828518696005F3925 /* GoogleService-Info.plist */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
