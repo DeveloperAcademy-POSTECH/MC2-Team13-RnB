@@ -1,0 +1,9 @@
+excluded:
+#  - Pods
+# - Carthage
+  - .build
+
+disabled_rules:
+  - vertical_whitespace
+  - trailing_whitespace
+  - trailing_newline
