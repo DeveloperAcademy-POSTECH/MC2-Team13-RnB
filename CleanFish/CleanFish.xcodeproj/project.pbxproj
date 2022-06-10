@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00163D284E143F0068E4D0 /* StageLayout75View.swift */; };
+		9EB362742850F729001E9BEE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB362732850F729001E9BEE /* Colors.xcassets */; };
+		9EB362762850F830001E9BEE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB362752850F830001E9BEE /* ColorExtension.swift */; };
 		9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E001639284DF8970068E4D0 /* StagePagingView.swift */; };
 		9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00163D284E143F0068E4D0 /* StageLayout75View.swift */; };
 		C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7083598284DD0DE0061F707 /* CleanFishApp.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E00163D284E143F0068E4D0 /* StageLayout75View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageLayout75View.swift; sourceTree = "<group>"; };
+		9EB362732850F729001E9BEE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		9EB362752850F830001E9BEE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		9E001639284DF8970068E4D0 /* StagePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePagingView.swift; sourceTree = "<group>"; };
 		9E00163D284E143F0068E4D0 /* StageLayout75View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageLayout75View.swift; sourceTree = "<group>"; };
 		C7083595284DD0DE0061F707 /* CleanFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +90,7 @@
 				C7083598284DD0DE0061F707 /* CleanFishApp.swift */,
 				C708359A284DD0DE0061F707 /* ContentView.swift */,
 				9E00163D284E143F0068E4D0 /* StageLayout75View.swift */,
+				9EB362752850F830001E9BEE /* ColorExtension.swift */,
 				9E001639284DF8970068E4D0 /* StagePagingView.swift */,
 				C72AD6E6284E147400B68995 /* Fish.swift */,
 				C79478A62850828900AB4124 /* SelectFishView.swift */,
@@ -94,6 +101,7 @@
 				C79478AC28509DF800AB4124 /* String+Extension.swift */,
 				C708359C284DD0DF0061F707 /* Assets.xcassets */,
 				F6F8B26828518696005F3925 /* GoogleService-Info.plist */,
+				9EB362732850F729001E9BEE /* Colors.xcassets */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
 			);
 			path = CleanFish;
@@ -117,7 +125,7 @@
 				C7083591284DD0DE0061F707 /* Sources */,
 				C7083592284DD0DE0061F707 /* Frameworks */,
 				C7083593284DD0DE0061F707 /* Resources */,
-				C79662042850233B00B0B720 /* ShellScript */,
+				9E6F7A9C28507D5B00D323C9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -177,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB362742850F729001E9BEE /* Colors.xcassets in Resources */,
 				C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */,
 				F6F8B26928518696005F3925 /* GoogleService-Info.plist in Resources */,
 				C708359D284DD0DF0061F707 /* Assets.xcassets in Resources */,
@@ -186,7 +195,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C79662042850233B00B0B720 /* ShellScript */ = {
+		9E6F7A9C28507D5B00D323C9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,6 +229,7 @@
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
 				C79478A528507F6B00AB4124 /* LottieView.swift in Sources */,
 				C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */,
+				9EB362762850F830001E9BEE /* ColorExtension.swift in Sources */,
 				C710ADC52850395500DA181C /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
