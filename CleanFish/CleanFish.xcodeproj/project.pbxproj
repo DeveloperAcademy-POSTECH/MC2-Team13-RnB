@@ -20,12 +20,13 @@
 		C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FA9512853A1240056F935 /* NetworkManager.swift */; };
 		C78D00C72854A61B00476032 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = C78D00C62854A61B00476032 /* wave.json */; };
 		C78D00CA2854A69600476032 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C78D00C92854A69600476032 /* Lottie */; };
-		C78D00D02854BEB900476032 /* NetworkVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78D00CF2854BEB900476032 /* NetworkVO.swift */; };
+		C78D00D02854BEB900476032 /* RecipeVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78D00CF2854BEB900476032 /* RecipeVO.swift */; };
 		C79478A528507F6B00AB4124 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A428507F6B00AB4124 /* LottieView.swift */; };
 		C79478A72850828900AB4124 /* SelectFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A62850828900AB4124 /* SelectFishView.swift */; };
 		C79478A92850909700AB4124 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A82850909700AB4124 /* MainView.swift */; };
 		C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478AA285091DC00AB4124 /* SelectRecipeView.swift */; };
 		C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478AC28509DF800AB4124 /* String+Extension.swift */; };
+		C7B1DC462854D69D00B875EF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1DC452854D69C00B875EF /* Step.swift */; };
 		F6F8B26928518696005F3925 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6F8B26828518696005F3925 /* GoogleService-Info.plist */; };
 		F6F8B26C28518CCE005F3925 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6F8B26B28518CCD005F3925 /* FirebaseAuth */; };
 		F6F8B26E28518CCE005F3925 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F6F8B26D28518CCE005F3925 /* FirebaseFirestore */; };
@@ -51,12 +52,13 @@
 		C76FA9512853A1240056F935 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C76FA9532853B51D0056F935 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C78D00C62854A61B00476032 /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
-		C78D00CF2854BEB900476032 /* NetworkVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVO.swift; sourceTree = "<group>"; };
+		C78D00CF2854BEB900476032 /* RecipeVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVO.swift; sourceTree = "<group>"; };
 		C79478A428507F6B00AB4124 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C79478A62850828900AB4124 /* SelectFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFishView.swift; sourceTree = "<group>"; };
 		C79478A82850909700AB4124 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C79478AA285091DC00AB4124 /* SelectRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipeView.swift; sourceTree = "<group>"; };
 		C79478AC28509DF800AB4124 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		C7B1DC452854D69C00B875EF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		F6F8B26828518696005F3925 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6F8B27C285347CD005F3925 /* VideoShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoShowView.swift; sourceTree = "<group>"; };
 		F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoShowViewUikit.swift; sourceTree = "<group>"; };
@@ -159,7 +161,8 @@
 			children = (
 				C72AD6E6284E147400B68995 /* Fish.swift */,
 				C710ADC42850395500DA181C /* Recipe.swift */,
-				C78D00CF2854BEB900476032 /* NetworkVO.swift */,
+				C78D00CF2854BEB900476032 /* RecipeVO.swift */,
+				C7B1DC452854D69C00B875EF /* Step.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */,
 				9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */,
+				C7B1DC462854D69D00B875EF /* Step.swift in Sources */,
 				C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */,
 				C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */,
 				C79478A92850909700AB4124 /* MainView.swift in Sources */,
@@ -278,7 +282,7 @@
 				F6F8B28028535D36005F3925 /* VideoShowViewUikit.swift in Sources */,
 				C79478A72850828900AB4124 /* SelectFishView.swift in Sources */,
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
-				C78D00D02854BEB900476032 /* NetworkVO.swift in Sources */,
+				C78D00D02854BEB900476032 /* RecipeVO.swift in Sources */,
 				C79478A528507F6B00AB4124 /* LottieView.swift in Sources */,
 				C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */,
 				66BBD3642850348900FD3026 /* TutorialView.swift in Sources */,

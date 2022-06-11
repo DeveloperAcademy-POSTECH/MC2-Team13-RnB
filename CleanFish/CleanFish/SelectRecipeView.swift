@@ -60,7 +60,11 @@ struct SelectRecipeView: View {
                             Button {
                                 selectedRecipe = recipe
                                 NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(recipe.rawValue)") { courseInfo in
-                                    print(courseInfo?.totalStep ?? 0)
+                                    if let courseInfo = courseInfo {
+                                        NetworkManager.shared.getStepInfo(course: courseInfo, stepNumber: 2) { stepInfo in
+                                            print(stepInfo)
+                                        }
+                                    }
                                 }
                             } label: {
                                 ZStack {

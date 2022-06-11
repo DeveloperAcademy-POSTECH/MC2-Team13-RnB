@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NetworkVO: Codable {
+struct RecipeVO: Codable {
     var id: UUID
     var courseName: String
     var totalStep: Int
