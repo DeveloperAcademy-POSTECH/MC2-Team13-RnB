@@ -8,7 +8,18 @@
 import Foundation
 
 enum Fish: String, CaseIterable {
-    case flatfish = "광어"
-    case mackerel = "고등어"
-    case cutlassfish = "갈치"
+    case flatfish
+    case mackerel
+    case cutlassfish
+    
+    var value: String {
+        switch self {
+        case .flatfish:
+            return "광어"
+        case .mackerel:
+            return "고등어"
+        case .cutlassfish:
+            return "갈치"
+        }
+    }
 }

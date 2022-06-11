@@ -19,6 +19,7 @@
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
 		C710ADC52850395500DA181C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710ADC42850395500DA181C /* Recipe.swift */; };
 		C72AD6E7284E147400B68995 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72AD6E6284E147400B68995 /* Fish.swift */; };
+		C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FA9512853A1240056F935 /* NetworkManager.swift */; };
 		C79478A528507F6B00AB4124 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A428507F6B00AB4124 /* LottieView.swift */; };
 		C79478A72850828900AB4124 /* SelectFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A62850828900AB4124 /* SelectFishView.swift */; };
 		C79478A92850909700AB4124 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A82850909700AB4124 /* MainView.swift */; };
@@ -48,6 +49,8 @@
 		C710ADC42850395500DA181C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		C72AD6E6284E147400B68995 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		C75233A2285189B8005E49D7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C76FA9512853A1240056F935 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C76FA9532853B51D0056F935 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C79478A428507F6B00AB4124 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C79478A62850828900AB4124 /* SelectFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFishView.swift; sourceTree = "<group>"; };
 		C79478A82850909700AB4124 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -95,7 +98,7 @@
 		C7083597284DD0DE0061F707 /* CleanFish */ = {
 			isa = PBXGroup;
 			children = (
-				F6F8B27E2853595E005F3925 /* Info.plist */,
+				C76FA9532853B51D0056F935 /* Info.plist */,
 				66BBD3632850348900FD3026 /* TutorialView.swift */,
 				C7083598284DD0DE0061F707 /* CleanFishApp.swift */,
 				C708359A284DD0DE0061F707 /* ContentView.swift */,
@@ -105,6 +108,7 @@
 				9E001639284DF8970068E4D0 /* StagePagingView.swift */,
 				C72AD6E6284E147400B68995 /* Fish.swift */,
 				C79478A62850828900AB4124 /* SelectFishView.swift */,
+				C76FA9512853A1240056F935 /* NetworkManager.swift */,
 				C79478A82850909700AB4124 /* MainView.swift */,
 				C79478AA285091DC00AB4124 /* SelectRecipeView.swift */,
 				C710ADC42850395500DA181C /* Recipe.swift */,
@@ -236,6 +240,7 @@
 				C708359B284DD0DE0061F707 /* ContentView.swift in Sources */,
 				9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */,
 				9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */,
+				C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */,
 				C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */,
 				C79478A92850909700AB4124 /* MainView.swift in Sources */,
 				C72AD6E7284E147400B68995 /* Fish.swift in Sources */,
@@ -397,7 +402,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -430,7 +435,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
