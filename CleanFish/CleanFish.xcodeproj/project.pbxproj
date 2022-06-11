@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		668D57672851A36A00CED7BC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 668D57662851A36A00CED7BC /* Lottie */; };
+		66BBD3642850348900FD3026 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBD3632850348900FD3026 /* TutorialView.swift */; };
 		9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E001639284DF8970068E4D0 /* StagePagingView.swift */; };
 		9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00163D284E143F0068E4D0 /* StageLayout75View.swift */; };
 		9EB362742850F729001E9BEE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB362732850F729001E9BEE /* Colors.xcassets */; };
@@ -17,7 +19,6 @@
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
 		C710ADC52850395500DA181C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710ADC42850395500DA181C /* Recipe.swift */; };
 		C72AD6E7284E147400B68995 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72AD6E6284E147400B68995 /* Fish.swift */; };
-		C79478A328507F6000AB4124 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C79478A228507F6000AB4124 /* Lottie */; };
 		C79478A528507F6B00AB4124 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A428507F6B00AB4124 /* LottieView.swift */; };
 		C79478A72850828900AB4124 /* SelectFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A62850828900AB4124 /* SelectFishView.swift */; };
 		C79478A92850909700AB4124 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A82850909700AB4124 /* MainView.swift */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66BBD3632850348900FD3026 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		66BBD3652850950100FD3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9E001639284DF8970068E4D0 /* StagePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePagingView.swift; sourceTree = "<group>"; };
 		9E00163D284E143F0068E4D0 /* StageLayout75View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageLayout75View.swift; sourceTree = "<group>"; };
 		9EB362732850F729001E9BEE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -62,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C79478A328507F6000AB4124 /* Lottie in Frameworks */,
+				668D57672851A36A00CED7BC /* Lottie in Frameworks */,
 				F6F8B26C28518CCE005F3925 /* FirebaseAuth in Frameworks */,
 				F6F8B26E28518CCE005F3925 /* FirebaseFirestore in Frameworks */,
 				F6F8B27228518CCE005F3925 /* FirebaseStorage in Frameworks */,
@@ -93,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				F6F8B27E2853595E005F3925 /* Info.plist */,
+				66BBD3632850348900FD3026 /* TutorialView.swift */,
 				C7083598284DD0DE0061F707 /* CleanFishApp.swift */,
 				C708359A284DD0DE0061F707 /* ContentView.swift */,
 				9E00163D284E143F0068E4D0 /* StageLayout75View.swift */,
@@ -135,7 +139,7 @@
 				C7083591284DD0DE0061F707 /* Sources */,
 				C7083592284DD0DE0061F707 /* Frameworks */,
 				C7083593284DD0DE0061F707 /* Resources */,
-				9E6F7A9C28507D5B00D323C9 /* ShellScript */,
+				665D0A422850274A00C78366 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -143,7 +147,7 @@
 			);
 			name = CleanFish;
 			packageProductDependencies = (
-				C79478A228507F6000AB4124 /* Lottie */,
+				668D57662851A36A00CED7BC /* Lottie */,
 				F6F8B26B28518CCD005F3925 /* FirebaseAuth */,
 				F6F8B26D28518CCE005F3925 /* FirebaseFirestore */,
 				F6F8B26F28518CCE005F3925 /* FirebaseFirestoreSwift */,
@@ -178,7 +182,7 @@
 			);
 			mainGroup = C708358C284DD0DE0061F707;
 			packageReferences = (
-				C79478A128507F6000AB4124 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				668D57652851A36A00CED7BC /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F6F8B26A28518CCD005F3925 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C7083596284DD0DE0061F707 /* Products */;
@@ -205,7 +209,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9E6F7A9C28507D5B00D323C9 /* ShellScript */ = {
+		665D0A422850274A00C78366 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -240,6 +244,7 @@
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
 				C79478A528507F6B00AB4124 /* LottieView.swift in Sources */,
 				C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */,
+				66BBD3642850348900FD3026 /* TutorialView.swift in Sources */,
 				9EB362762850F830001E9BEE /* ColorExtension.swift in Sources */,
 				C710ADC52850395500DA181C /* Recipe.swift in Sources */,
 				F6F8B27D285347CD005F3925 /* VideoShowView.swift in Sources */,
@@ -375,9 +380,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone Usage";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speexh Recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,9 +413,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone Usage";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speexh Recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -447,7 +458,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C79478A128507F6000AB4124 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		668D57652851A36A00CED7BC /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -466,9 +477,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C79478A228507F6000AB4124 /* Lottie */ = {
+		668D57662851A36A00CED7BC /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C79478A128507F6000AB4124 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 668D57652851A36A00CED7BC /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 		F6F8B26B28518CCD005F3925 /* FirebaseAuth */ = {
