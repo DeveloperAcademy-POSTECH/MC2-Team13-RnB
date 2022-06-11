@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectRecipeView: View {
-    @Binding var selectedFish: String
+    @Binding var selectedFish: Fish
     @Binding var viewChangeValue: (Bool, Bool)
     
     @State private var selectedValue: String = "임시 텍스트"
@@ -17,7 +17,7 @@ struct SelectRecipeView: View {
         ZStack {
             VStack(spacing: 34) {
                 VStack(alignment: .leading) {
-                    Text("어떤 용도로\n\(selectedFish)를 손질하시나요?")
+                    Text("어떤 용도로\n\(selectedFish.value)를 손질하시나요?")
                         .fontWeight(.bold)
                         .font(.title)
                         .multilineTextAlignment(.leading)
@@ -36,14 +36,18 @@ struct SelectRecipeView: View {
                 VStack(spacing: 22) {
                     ForEach(Recipe.allCases, id: \.rawValue) { recipe in
                         Button {
-                            selectedValue = "\(recipe.rawValue)"
+                            selectedValue = "\(recipe.value)"
+                            NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(recipe.rawValue)") { courseInfo in
+                                print(courseInfo)
+                                print(courseInfo?.totalStep ?? 0)
+                            }
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .fill((selectedValue == recipe.rawValue) ? "#AACBFD".toColor(alpha: 1) : .clear)
+                                    .fill((selectedValue == recipe.value) ? "#AACBFD".toColor(alpha: 1) : .clear)
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                                     .stroke("#AACBFD".toColor(alpha: 1), lineWidth: 2)
-                                Text(recipe.rawValue)
+                                Text(recipe.value)
                             }
                         }
                         .frame(height: 64)
@@ -91,7 +95,7 @@ struct SelectRecipeView: View {
 }
 
 struct SelectRecipeViewPreviewsContainer: View {
-    @State var selectedFish: String = ""
+    @State var selectedFish: Fish = .flatfish
     @State var viewChangeValue: (Bool, Bool) = (true, false)
     
     var body: some View {

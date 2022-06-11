@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State var viewChangeValue: (Bool, Bool) = (true, false)// 0: Fish, 1: Recipe
-    @State var selectedFish: String = ""
+    @State var selectedFish: Fish = .flatfish
     
     var body: some View {
         NavigationView {

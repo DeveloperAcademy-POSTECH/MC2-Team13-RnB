@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectFishView: View {
-    @Binding var selectedFish: String
+    @Binding var selectedFish: Fish
     @Binding var viewChangeValue: (Bool, Bool)
     
     var body: some View {
@@ -21,14 +21,14 @@ struct SelectFishView: View {
                     // 버튼의 위치는 실제 생선 이미지가 만들어졌을 때, 재배치
                     HStack {
                         Button {
-                            selectedFish = fish.rawValue
+                            selectedFish = fish
                             viewChangeValue.0.toggle()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                 viewChangeValue.1.toggle()
                             }
                         } label: {
                             // Fish Image Code
-                            Text(fish.rawValue)
+                            Text(fish.value)
                         }
                     }
                 }
@@ -42,7 +42,7 @@ struct SelectFishView: View {
 }
 
 struct SelectFishViewPreviewsContainer: View {
-    @State var selectedFish: String = ""
+    @State var selectedFish: Fish = .flatfish
     @State var viewChangeValue: (Bool, Bool) = (true, false)
 
     var body: some View {
