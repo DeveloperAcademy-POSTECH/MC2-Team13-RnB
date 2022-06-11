@@ -25,22 +25,22 @@ class PlayerUIView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //동영상 불러오기
+        // 동영상 불러오기
         let playerItem = AVPlayerItem(url: URL(string: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!)
         
-        //동영상 플레이어 셋팅하기
+        // 동영상 플레이어 셋팅하기
         let player = AVQueuePlayer(playerItem: playerItem)
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer)
         
-        //동영상 반복하기
+        // 동영상 반복하기
 //        player.actionAtItemEnd = .none
 //        NotificationCenter.default.addObserver(self, selector:  #selector(rewindVideo(notification:)), name:
 //                .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
         playerLooper = AVPlayerLooper(player: player, templateItem:  playerItem)
         
-        //동영상 재생하기
+        // 동영상 재생하기
         player.play()
     }
     

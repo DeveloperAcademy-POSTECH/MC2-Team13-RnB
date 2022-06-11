@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct NetworkDTO: Codable {
-    var id: UUID
-    var courseName: String
-    var totalStep: Int
-}
-
 class NetworkManager {
     static let shared: NetworkManager = NetworkManager()
     let baseURLString: String = "http://ec2-3-85-213-190.compute-1.amazonaws.com/"
@@ -24,7 +18,7 @@ class NetworkManager {
         return url
     }
     
-    func getTotalStep(courseName: String, completeHandler: @escaping (NetworkDTO?) -> Void) {
+    func getTotalStep(courseName: String, completeHandler: @escaping (NetworkVO?) -> Void) {
         guard let url = URL(string: baseURLString + "/course/" + courseName) else {
             return
         }
@@ -32,13 +26,12 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: request) { data, response, _ in
-            
+        URLSession.shared.dataTask(with: request) { data, _, _ in
             guard let data = data else {
                 return
             }
-            print(response)
-            let courseInfo = try? JSONDecoder().decode(NetworkDTO.self, from: data)
+            
+            let courseInfo = try? JSONDecoder().decode(NetworkVO.self, from: data)
             completeHandler(courseInfo)
         }.resume()
     }
