@@ -36,7 +36,7 @@ struct StageLayout75View: View {
                         .foregroundColor(.homeBlue)
                 }
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 
