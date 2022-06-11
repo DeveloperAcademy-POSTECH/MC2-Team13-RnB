@@ -29,6 +29,8 @@
 		F6F8B26E28518CCE005F3925 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F6F8B26D28518CCE005F3925 /* FirebaseFirestore */; };
 		F6F8B27028518CCE005F3925 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F6F8B26F28518CCE005F3925 /* FirebaseFirestoreSwift */; };
 		F6F8B27228518CCE005F3925 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F6F8B27128518CCE005F3925 /* FirebaseStorage */; };
+		F6F8B27D285347CD005F3925 /* VideoShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8B27C285347CD005F3925 /* VideoShowView.swift */; };
+		F6F8B28028535D36005F3925 /* VideoShowViewUikit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,10 @@
 		C79478AA285091DC00AB4124 /* SelectRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipeView.swift; sourceTree = "<group>"; };
 		C79478AC28509DF800AB4124 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F6F8B26828518696005F3925 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6F8B27C285347CD005F3925 /* VideoShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoShowView.swift; sourceTree = "<group>"; };
+		F6F8B27E2853595E005F3925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoShowViewUikit.swift; sourceTree = "<group>"; };
+		F6F8B281285363A9005F3925 /* flatfish_sashimi#1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "flatfish_sashimi#1.mp4"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +95,7 @@
 		C7083597284DD0DE0061F707 /* CleanFish */ = {
 			isa = PBXGroup;
 			children = (
-				66BBD3652850950100FD3026 /* Info.plist */,
+				F6F8B27E2853595E005F3925 /* Info.plist */,
 				66BBD3632850348900FD3026 /* TutorialView.swift */,
 				C7083598284DD0DE0061F707 /* CleanFishApp.swift */,
 				C708359A284DD0DE0061F707 /* ContentView.swift */,
@@ -104,8 +110,10 @@
 				C710ADC42850395500DA181C /* Recipe.swift */,
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
 				C79478AC28509DF800AB4124 /* String+Extension.swift */,
+				F6F8B27C285347CD005F3925 /* VideoShowView.swift */,
+				F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */,
+				F6F8B281285363A9005F3925 /* flatfish_sashimi#1.mp4 */,
 				C708359C284DD0DF0061F707 /* Assets.xcassets */,
-				F6F8B26828518696005F3925 /* GoogleService-Info.plist */,
 				9EB362732850F729001E9BEE /* Colors.xcassets */,
 				F6F8B26828518696005F3925 /* GoogleService-Info.plist */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
@@ -231,6 +239,7 @@
 				C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */,
 				C79478A92850909700AB4124 /* MainView.swift in Sources */,
 				C72AD6E7284E147400B68995 /* Fish.swift in Sources */,
+				F6F8B28028535D36005F3925 /* VideoShowViewUikit.swift in Sources */,
 				C79478A72850828900AB4124 /* SelectFishView.swift in Sources */,
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
 				C79478A528507F6B00AB4124 /* LottieView.swift in Sources */,
@@ -238,6 +247,7 @@
 				66BBD3642850348900FD3026 /* TutorialView.swift in Sources */,
 				9EB362762850F830001E9BEE /* ColorExtension.swift in Sources */,
 				C710ADC52850395500DA181C /* Recipe.swift in Sources */,
+				F6F8B27D285347CD005F3925 /* VideoShowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
