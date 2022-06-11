@@ -27,6 +27,7 @@ struct MainView: View {
                     }
                 }
             }
+            .ignoresSafeArea(.all, edges: [.top, .bottom])
             .padding(.top)
             .navigationTitle("")
             .navigationBarHidden(true)

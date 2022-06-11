@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct SelectRecipeView: View {
-    @Binding var selectedFish: Fish
-    @Binding var viewChangeValue: (Bool, Bool)
-    
+    // MARK: - State Property
     @State private var isShowOrientation: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
     @State private var goToNextPage: Bool = false
-//    @State private var selectedValue: String = "임시 텍스트"
     
+    // MARK: - Binding Property
+    @Binding var selectedFish: Fish
+    @Binding var viewChangeValue: (Bool, Bool)
+    
+    // MARK: - Body
     var body: some View {
         ZStack {
             VStack(spacing: 15) {
@@ -114,11 +116,6 @@ struct SelectRecipeView: View {
                 .padding(.horizontal, 36)
             }
         }
-//        .onAppear {
-//            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
-//                                      forKey: "orientation")
-//        }
-        .ignoresSafeArea(.all, edges: [.top, .bottom])
         .transition(.opacity.animation(.linear))
         .animation(.linear(duration: 1), value: 0)
         .navigationBarHidden(true)
