@@ -2,7 +2,7 @@
 name: Bug Issue
 about: 버그 발생 시에 사용합니다.
 title: "[bug] : 버그 타이틀"
-labels: bug
+labels: bug, documentation
 assignees: ''
 
 ---
