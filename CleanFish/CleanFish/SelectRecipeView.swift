@@ -9,10 +9,11 @@ import SwiftUI
 
 struct SelectRecipeView: View {
     // MARK: - State Property
-    @State private var isShowOrientation: Bool = false
+    @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
     @State private var goToNextPage: Bool = false
-    
+    @State private var isLinkActivated: Bool = false
+  
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
     @Binding var viewChangeValue: (Bool, Bool)
@@ -80,9 +81,8 @@ struct SelectRecipeView: View {
                             .foregroundColor(.black)
                         }
                     }
-                    
                     Button {
-                        isShowOrientation.toggle()
+                        isShowOrientationAlert.toggle()
                     } label: {
                         Image(systemName: "arrow.forward.circle.fill")
                             .resizable()
@@ -90,7 +90,7 @@ struct SelectRecipeView: View {
                             .foregroundColor("#4986E6".toColor(alpha: 1))
                     }
                     .frame(width: 64, height: 64, alignment: .center)
-                    .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientation) {
+                    .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
                         VStack {
                             Button("취소", role: .cancel) {
                                 

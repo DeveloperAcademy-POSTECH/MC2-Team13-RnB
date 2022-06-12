@@ -11,6 +11,9 @@ let unitSize: CGFloat = 72
 let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
+    @Binding var isLinkActivated: Bool
+    @Binding var viewChangeValue: (Bool, Bool)
+    
     var body: some View {
         HStack(spacing: 24) {
             VideoView()
@@ -33,6 +36,9 @@ struct StageLayout75View: View {
                     Button(action: {
                         if UIDevice.current.orientation.isLandscape {
                             changeOrientation(to: .portrait)
+                            self.isLinkActivated.toggle()
+                            self.viewChangeValue.0.toggle()
+                            self.viewChangeValue.1.toggle()
                         }
                     }, label: {
                         Image(systemName: "house.circle.fill")
@@ -46,6 +52,8 @@ struct StageLayout75View: View {
     }
 }
 
+.navigationBarTitle("") + .navigationBarBackButtonHidden(true) == navigationBarHidden(true)
+
 func changeOrientation(to orientation: UIInterfaceOrientation) {
     UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
 }
@@ -56,9 +64,18 @@ struct VideoView: View {
     }
 }
 
-struct StageLayout75View_Previews: PreviewProvider {
-    static var previews: some View {
-        StageLayout75View()
-            .previewInterfaceOrientation(.landscapeRight)
+struct StageLayout75ViewPreviewContainer: View {
+    @State var isLinkActivated: Bool = true
+    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    
+    var body: some View {
+        StageLayout75View(isLinkActivated: $isLinkActivated, viewChangeValue: $viewChangeValue)
     }
 }
+
+struct StageLayout75View_Previews: PreviewProvider {
+    static var previews: some View {
+        StageLayout75ViewPreviewContainer()
+    }
+}
+
