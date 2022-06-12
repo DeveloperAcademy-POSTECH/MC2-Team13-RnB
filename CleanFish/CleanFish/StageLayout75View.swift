@@ -11,6 +11,13 @@ let unitSize: CGFloat = 72
 let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
+    @Binding var goToTutorialPage: Bool
+    @Binding var viewChangeValue: (Bool, Bool)
+    
+    func changeOrientation(to orientation: UIInterfaceOrientation) {
+        UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
+    }
+    
     var body: some View {
         HStack(spacing: 24) {
             VideoView()
@@ -30,10 +37,19 @@ struct StageLayout75View: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Image(systemName: "house.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.homeBlue)
+                    Button(action: {
+                        if UIDevice.current.orientation.isLandscape {
+                            changeOrientation(to: .portrait)
+                            self.goToTutorialPage.toggle()
+                            self.viewChangeValue.0.toggle()
+                            self.viewChangeValue.1.toggle()
+                        }
+                    }, label: {
+                        Image(systemName: "house.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.homeBlue)
+                    })
                 }
             }
         }.navigationBarHidden(true)
@@ -46,9 +62,18 @@ struct VideoView: View {
     }
 }
 
-struct StageLayout75View_Previews: PreviewProvider {
-    static var previews: some View {
-        StageLayout75View()
-            .previewInterfaceOrientation(.landscapeRight)
+struct StageLayout75ViewPreviewContainer: View {
+    @State var goToTutorialPage: Bool = true
+    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    
+    var body: some View {
+        StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
     }
 }
+
+struct StageLayout75View_Previews: PreviewProvider {
+    static var previews: some View {
+        StageLayout75ViewPreviewContainer()
+    }
+}
+

@@ -14,30 +14,37 @@ struct TutorialView: View {
     @State var isboolyes = false
     @State var micPermission = false
     @State var speechRecognitionPermission = false
+    
+    @Binding var goToTutorialPage: Bool
+    @Binding var viewChangeValue: (Bool, Bool)
+    
     func requestMicrophonePermission() {
-         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
-             if granted {
-                 micPermission = true
-             } else {
-                 micPermission = false
-             }
-         })
-     }
-
+        AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
+            if granted {
+                micPermission = true
+            } else {
+                micPermission = false
+            }
+        })
+    }
+    
     func speechRecognition() {
         SFSpeechRecognizer.requestAuthorization{authStatus  in
             if authStatus == .authorized{
-               speechRecognitionPermission = true
-            } else{
+                speechRecognitionPermission = true
+            } else {
                 speechRecognitionPermission = false
+            }
         }
     }
+    
+    func request2() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { didallow, error in print(didallow) } )
     }
-
- //https://lucidmaj7.tistory.com/23
+    
+    //https://lucidmaj7.tistory.com/23
     var body: some View {
-// 생선손질 튜토리얼 뷰
-        NavigationView {
+        // 생선손질 튜토리얼 뷰
         VStack {
             Text("손질 중 불편하게 터치하지 마세요!")
                 .font(.system(size: 28))
@@ -69,35 +76,45 @@ struct TutorialView: View {
                     .padding(.bottom, 10)
             }
             .padding(.bottom, 12)
-    // 시작하기 버튼
-            ZStack{
-            NavigationLink(destination: StageLayout75View(), isActive: $isboolyes) {
-           EmptyView()
+            // 시작하기 버튼
+            NavigationLink(destination: StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue), isActive: $isboolyes) {
+                EmptyView()
             }
-                Button {
-                    requestMicrophonePermission()
-                    speechRecognition()
-                    isboolyes = true
-                } label: {
-                    Text("시작하기")
-                        .fontWeight(.medium)
-                        .font(.system(size: 22))
-                        .frame(width: 377, height: 52, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(Color("StartButton"))
-                        .cornerRadius(10)
-                }
-
-                
+            Button {
+                requestMicrophonePermission()
+                speechRecognition()
+                isboolyes = true
+            } label: {
+                Text("시작하기")
+                    .fontWeight(.medium)
+                    .font(.system(size: 22))
+                    .frame(width: 377, height: 52, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color("StartButton"))
+                    .cornerRadius(10)
             }
-        }    .navigationBarTitle("", displayMode: .inline)
-                .navigationBarHidden(true)
         }
+        .onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                      forKey: "orientation")
+        }
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
     }
 }
+
+struct TutorialViewPreviewContainer: View {
+    @State var goToTutorialPage: Bool = true
+    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    
+    var body: some View {
+        TutorialView(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
+    }
+}
+
 struct TutorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialView()
+        TutorialViewPreviewContainer()
             .previewInterfaceOrientation(.landscapeRight)
     }
 }

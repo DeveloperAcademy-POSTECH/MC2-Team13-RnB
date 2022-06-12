@@ -19,7 +19,6 @@ struct LottieView: UIViewRepresentable {
     }
 
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIViewType {
-
         let view: UIView = UIView(frame: .zero)
         let animationView: AnimationView = AnimationView()
         animationView.animation = Animation.named(filename)
@@ -34,11 +33,12 @@ struct LottieView: UIViewRepresentable {
             animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
             animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-
+        
         return view
     }
+    
     func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<LottieView>) {
-        // Update Code
+
     }
 
 }
