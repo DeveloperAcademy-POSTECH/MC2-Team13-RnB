@@ -12,6 +12,7 @@ struct SelectRecipeView: View {
     @Binding var viewChangeValue: (Bool, Bool)
     
     @State private var selectedValue: String = "임시 텍스트"
+    @State private var isLinkActivated: Bool = false
     
     var body: some View {
         ZStack {
@@ -52,17 +53,17 @@ struct SelectRecipeView: View {
                         
                     }
                 }
-                Button {
-                    
-                } label: {
+                NavigationLink(isActive: $isLinkActivated, destination: {
+                    StageLayout75View(isLinkActivated: $isLinkActivated, viewChangeValue: $viewChangeValue)
+                        .navigationBarTitle("")
+                        .navigationBarBackButtonHidden(true)
+                }, label: {
                     Image(systemName: "arrow.forward.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor("#0344A5".toColor(alpha: 1))
-                }
-                
+                })
                 .frame(width: 44, height: 44, alignment: .center)
-                
                 
                 Spacer()
                 
