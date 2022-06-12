@@ -8,23 +8,30 @@
 import SwiftUI
 import AVFoundation
 import UserNotifications
+import Speech
 
 struct TutorialView: View {
     @State var isboolyes = false
+    @State var micPermission = false
+    @State var speechRecognitionPermission = false
     func requestMicrophonePermission() {
          AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
              if granted {
-                 print("Mic: 권한 허용")
-                 request2()
+                 micPermission = true
              } else {
-                 print("Mic: 권한 거부")
-                 request2()
+                 micPermission = false
              }
          })
      }
 
-    func request2() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: {didallow, error in print(didallow)})
+    func speechRecognition() {
+        SFSpeechRecognizer.requestAuthorization{authStatus  in
+            if authStatus == .authorized{
+               speechRecognitionPermission = true
+            } else{
+                speechRecognitionPermission = false
+        }
+    }
     }
 
  //https://lucidmaj7.tistory.com/23
@@ -63,39 +70,26 @@ struct TutorialView: View {
             }
             .padding(.bottom, 12)
     // 시작하기 버튼
+            ZStack{
             NavigationLink(destination: StageLayout75View(), isActive: $isboolyes) {
-                Text("시작하기")
-                    .fontWeight(.medium)
-                    .font(.system(size: 22))
-                    .frame(width: 377, height: 52, alignment: .center)
-                    .foregroundColor(.white)
-                    .background(Color("StartButton"))
-                    .cornerRadius(10)
+           EmptyView()
             }
-//            NavigationLink{ StageLayout75View()
-//                    .navigationBarBackButtonHidden(true)
-//            } label: {
-//                Text("시작하기")
-//                    .fontWeight(.medium)
-//                    .font(.system(size: 22))
-//                    .frame(width: 377, height: 52, alignment: .center)
-//                    .foregroundColor(.white)
-//                    .background(Color("StartButton"))
-//                    .cornerRadius(10)
-//                    .navigationBarTitle("",displayMode: .inline)
-//                    .navigationBarHidden(true)
-//            }
-//            Button {
-//                requestMicrophonePermission()
-//                StageLayout75View()
-//            } label: {
-//                Text("시작하기")
-//                    .fontWeight(.medium)
-//                    .font(.system(size: 22))
-//                    .frame(width: 377, height: 52, alignment: .center)
-//                    .foregroundColor(.white)
-//                    .background(Color("StartButton"))
-//                    .cornerRadius(10)
+                Button {
+                    requestMicrophonePermission()
+                    speechRecognition()
+                    isboolyes = true
+                } label: {
+                    Text("시작하기")
+                        .fontWeight(.medium)
+                        .font(.system(size: 22))
+                        .frame(width: 377, height: 52, alignment: .center)
+                        .foregroundColor(.white)
+                        .background(Color("StartButton"))
+                        .cornerRadius(10)
+                }
+
+                
+            }
         }    .navigationBarTitle("", displayMode: .inline)
                 .navigationBarHidden(true)
         }

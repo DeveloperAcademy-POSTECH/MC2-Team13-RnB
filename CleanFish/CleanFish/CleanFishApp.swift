@@ -11,7 +11,7 @@ import SwiftUI
 struct CleanFishApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            TutorialView()
         }
     }
 }
