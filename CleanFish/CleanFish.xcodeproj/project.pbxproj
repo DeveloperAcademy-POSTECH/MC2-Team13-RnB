@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66BBD3642850348900FD3026 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBD3632850348900FD3026 /* TutorialView.swift */; };
+		6665072F285614DB002D547B /* VoiceGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6665072E285614DB002D547B /* VoiceGuideView.swift */; };
+		66BBD3642850348900FD3026 /* SwipeGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBD3632850348900FD3026 /* SwipeGuideView.swift */; };
 		9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E001639284DF8970068E4D0 /* StagePagingView.swift */; };
 		9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00163D284E143F0068E4D0 /* StageLayout75View.swift */; };
 		9EB362742850F729001E9BEE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB362732850F729001E9BEE /* Colors.xcassets */; };
@@ -15,6 +16,7 @@
 		9ED47F56285588D500203073 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED47F55285588D500203073 /* Images.xcassets */; };
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
 		C710ADC52850395500DA181C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710ADC42850395500DA181C /* Recipe.swift */; };
+		C769D6E328562EB800BC60E8 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769D6E228562EB800BC60E8 /* PermissionManager.swift */; };
 		C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FA9512853A1240056F935 /* NetworkManager.swift */; };
 		C78D00C72854A61B00476032 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = C78D00C62854A61B00476032 /* wave.json */; };
 		C78D00D02854BEB900476032 /* RecipeVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78D00CF2854BEB900476032 /* RecipeVO.swift */; };
@@ -36,7 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		66BBD3632850348900FD3026 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		6665072E285614DB002D547B /* VoiceGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceGuideView.swift; sourceTree = "<group>"; };
+		66BBD3632850348900FD3026 /* SwipeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGuideView.swift; sourceTree = "<group>"; };
 		9E001639284DF8970068E4D0 /* StagePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePagingView.swift; sourceTree = "<group>"; };
 		9E00163D284E143F0068E4D0 /* StageLayout75View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageLayout75View.swift; sourceTree = "<group>"; };
 		9EB362732850F729001E9BEE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ../Colors.xcassets; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		C708359F284DD0DF0061F707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C710ADC42850395500DA181C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		C75233A2285189B8005E49D7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C769D6E228562EB800BC60E8 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		C76FA9512853A1240056F935 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C78D00C62854A61B00476032 /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
 		C78D00CF2854BEB900476032 /* RecipeVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVO.swift; sourceTree = "<group>"; };
@@ -100,19 +104,20 @@
 			children = (
 				C78D00CB2854BE4D00476032 /* App */,
 				C78D00CC2854BE5D00476032 /* Assets */,
+				C769D6E4285634DA00BC60E8 /* Manager */,
 				C78D00CE2854BE9200476032 /* Model */,
 				C78D00CD2854BE8800476032 /* Extension */,
 				C75233A2285189B8005E49D7 /* .swiftlint.yml */,
 				C79478A82850909700AB4124 /* MainView.swift */,
 				C79478A62850828900AB4124 /* SelectFishView.swift */,
 				C79478AA285091DC00AB4124 /* SelectRecipeView.swift */,
-				66BBD3632850348900FD3026 /* TutorialView.swift */,
+				6665072E285614DB002D547B /* VoiceGuideView.swift */,
+				66BBD3632850348900FD3026 /* SwipeGuideView.swift */,
 				9E001639284DF8970068E4D0 /* StagePagingView.swift */,
 				9E00163D284E143F0068E4D0 /* StageLayout75View.swift */,
 				9EB362752850F830001E9BEE /* Color+Extension.swift */,
 				F6F8B27C285347CD005F3925 /* VideoShowView.swift */,
 				F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */,
-				C76FA9512853A1240056F935 /* NetworkManager.swift */,
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
 			);
@@ -125,6 +130,15 @@
 				C708359F284DD0DF0061F707 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C769D6E4285634DA00BC60E8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C769D6E228562EB800BC60E8 /* PermissionManager.swift */,
+				C76FA9512853A1240056F935 /* NetworkManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		C78D00CB2854BE4D00476032 /* App */ = {
@@ -285,6 +299,7 @@
 				C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */,
 				C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */,
 				C79478A92850909700AB4124 /* MainView.swift in Sources */,
+				6665072F285614DB002D547B /* VoiceGuideView.swift in Sources */,
 				F6F8B28028535D36005F3925 /* VideoShowViewUikit.swift in Sources */,
 				C79478A72850828900AB4124 /* SelectFishView.swift in Sources */,
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
@@ -292,9 +307,10 @@
 				C79478A528507F6B00AB4124 /* LottieView.swift in Sources */,
 				C7E31F852855B37300CD0188 /* Fish.swift in Sources */,
 				9EB362762850F830001E9BEE /* Color+Extension.swift in Sources */,
-				66BBD3642850348900FD3026 /* TutorialView.swift in Sources */,
+				66BBD3642850348900FD3026 /* SwipeGuideView.swift in Sources */,
 				C710ADC52850395500DA181C /* Recipe.swift in Sources */,
 				F6F8B27D285347CD005F3925 /* VideoShowView.swift in Sources */,
+				C769D6E328562EB800BC60E8 /* PermissionManager.swift in Sources */,
 				C7E31F812855B35C00CD0188 /* CleanFishApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

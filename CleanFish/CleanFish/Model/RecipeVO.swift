@@ -7,8 +7,15 @@
 
 import Foundation
 
+// Recipe Value Object
 struct RecipeVO: Codable {
     var id: UUID
     var courseName: String
     var totalStep: Int
+    
+    init(id: UUID = UUID(), courseName: String = "", totalStep: Int = 0) {
+        self.id = id
+        self.courseName = courseName
+        self.totalStep = totalStep
+    }
 }

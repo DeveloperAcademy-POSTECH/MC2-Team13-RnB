@@ -12,7 +12,7 @@ struct SelectRecipeView: View {
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
     @State private var goToTutorialPage: Bool = false
-//    @State private var isLinkActivated: Bool = false
+    @State private var courseInfo: RecipeVO?
   
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
@@ -63,13 +63,6 @@ struct SelectRecipeView: View {
                         ForEach(Recipe.allCases, id: \.rawValue) { recipe in
                             Button {
                                 selectedRecipe = recipe
-//                                NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(recipe.rawValue)") { courseInfo in
-//                                    if let courseInfo = courseInfo {
-//                                        NetworkManager.shared.getStepInfo(course: courseInfo, stepNumber: 2) { stepInfo in
-//                                            print(stepInfo)
-//                                        }
-//                                    }
-//                                }
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -84,41 +77,47 @@ struct SelectRecipeView: View {
                             .foregroundColor(.black)
                         }
                     }
-                    Button {
-                        isShowOrientationAlert.toggle()
-                    } label: {
-                        Image(systemName: "arrow.forward.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor("#4986E6".toColor(alpha: 1))
-                    }
-                    .frame(width: 64, height: 64, alignment: .center)
-                    .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
-                        VStack {
-                            Button("취소", role: .cancel) {
-                                
-                            }
-                            Button("확인", role: .none) {
-                                DispatchQueue.main.async {
-                                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                              forKey: "orientation")
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    goToTutorialPage.toggle()
-                                }
-                            }
+                    
+                    ZStack {
+                        NavigationLink("", isActive: $goToTutorialPage) {
+                            VoiceGuideView(courseInfo: self.courseInfo ?? RecipeVO())
                         }
-                    } message: {
-                        Text("이대로 진행하시겠습니까?\n시작 시, 화면이 가로로 돌아갑니다.")
+                        .hidden()
+                        
+                        Button {
+                            isShowOrientationAlert.toggle()
+                        } label: {
+                            Image(systemName: "arrow.forward.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor("#4986E6".toColor(alpha: 1))
+                        }
+                        .frame(width: 64, height: 64, alignment: .center)
+                        .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
+                            VStack {
+                                Button("취소", role: .cancel) {
+                                    
+                                }
+                                Button("확인", role: .none) {
+                                    DispatchQueue.main.async {
+                                        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                                  forKey: "orientation")
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)") { courseInfo in
+                                            if let courseInfo = courseInfo {
+                                                self.courseInfo = courseInfo
+                                                goToTutorialPage.toggle()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } message: {
+                            Text("이대로 진행하시겠습니까?\n시작 시, 화면이 가로로 돌아갑니다.")
+                        }
                     }
-                    
-                    NavigationLink("", isActive: $goToTutorialPage) {
-                        TutorialView(goToTutorialPage: $goToTutorialPage, showView: $showView)
-                    }
-                    .hidden()
-                    
                     Spacer()
-                    
                 }
                 .padding(.horizontal, 36)
             }

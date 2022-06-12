@@ -9,6 +9,7 @@ import Foundation
 
 class NetworkManager {
     static let shared: NetworkManager = NetworkManager()
+    
     let baseURLString: String = "http://ec2-3-85-213-190.compute-1.amazonaws.com/"
     
     func getVideoURL(courseName: String, step: Int) -> URL {
