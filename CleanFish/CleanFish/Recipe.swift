@@ -8,7 +8,18 @@
 import Foundation
 
 enum Recipe: String, CaseIterable {
-    case stewed = "조림"
-    case grilled = "구이"
-    case sashimi = "회"
+    case stewed
+    case grilled
+    case sashimi
+    
+    var value: String {
+        switch self {
+        case .stewed:
+            return "조림"
+        case .grilled:
+            return "구이"
+        case .sashimi:
+            return "회"
+        }
+    }
 }

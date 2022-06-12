@@ -30,14 +30,24 @@ struct StageLayout75View: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Image(systemName: "house.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.homeBlue)
+                    Button(action: {
+                        if UIDevice.current.orientation.isLandscape {
+                            changeOrientation(to: .portrait)
+                        }
+                    }, label: {
+                        Image(systemName: "house.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.homeBlue)
+                    })
                 }
             }
-        }
+        }.navigationBarHidden(true)
     }
+}
+
+func changeOrientation(to orientation: UIInterfaceOrientation) {
+    UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
 }
 
 struct VideoView: View {
