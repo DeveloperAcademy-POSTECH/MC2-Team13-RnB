@@ -30,7 +30,7 @@ struct TutorialView: View {
     
     func speechRecognition() {
         SFSpeechRecognizer.requestAuthorization{authStatus  in
-            if authStatus == .authorized{
+            if authStatus == .authorized {
                 speechRecognitionPermission = true
             } else {
                 speechRecognitionPermission = false
@@ -38,11 +38,6 @@ struct TutorialView: View {
         }
     }
     
-    func request2() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { didallow, error in print(didallow) } )
-    }
-    
-    //https://lucidmaj7.tistory.com/23
     var body: some View {
         // 생선손질 튜토리얼 뷰
         VStack {
@@ -77,7 +72,9 @@ struct TutorialView: View {
             }
             .padding(.bottom, 12)
             // 시작하기 버튼
-            NavigationLink(destination: StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue), isActive: $isboolyes) {
+            NavigationLink(destination: StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue,
+                                                          
+                                                          speechRecognitionPermission: $speechRecognitionPermission, micPermission: $micPermission), isActive: $isboolyes) {
                 EmptyView()
             }
             Button {

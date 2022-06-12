@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6665072F285614DB002D547B /* TutorialView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6665072E285614DB002D547B /* TutorialView1.swift */; };
 		66BBD3642850348900FD3026 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBD3632850348900FD3026 /* TutorialView.swift */; };
 		9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E001639284DF8970068E4D0 /* StagePagingView.swift */; };
 		9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00163D284E143F0068E4D0 /* StageLayout75View.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6665072E285614DB002D547B /* TutorialView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView1.swift; sourceTree = "<group>"; };
 		66BBD3632850348900FD3026 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		9E001639284DF8970068E4D0 /* StagePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePagingView.swift; sourceTree = "<group>"; };
 		9E00163D284E143F0068E4D0 /* StageLayout75View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageLayout75View.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				C79478A62850828900AB4124 /* SelectFishView.swift */,
 				C79478AA285091DC00AB4124 /* SelectRecipeView.swift */,
 				66BBD3632850348900FD3026 /* TutorialView.swift */,
+				6665072E285614DB002D547B /* TutorialView1.swift */,
 				9E001639284DF8970068E4D0 /* StagePagingView.swift */,
 				9E00163D284E143F0068E4D0 /* StageLayout75View.swift */,
 				9EB362752850F830001E9BEE /* Color+Extension.swift */,
@@ -277,6 +280,7 @@
 				C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */,
 				C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */,
 				C79478A92850909700AB4124 /* MainView.swift in Sources */,
+				6665072F285614DB002D547B /* TutorialView1.swift in Sources */,
 				F6F8B28028535D36005F3925 /* VideoShowViewUikit.swift in Sources */,
 				C79478A72850828900AB4124 /* SelectFishView.swift in Sources */,
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
