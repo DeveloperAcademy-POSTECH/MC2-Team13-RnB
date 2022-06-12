@@ -24,6 +24,7 @@ struct LottieView: UIViewRepresentable {
         animationView.animation = Animation.named(filename)
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
+        animationView.backgroundBehavior = .pauseAndRestore
         animationView.animationSpeed = animationSpeed
         animationView.play()
 
@@ -38,7 +39,12 @@ struct LottieView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<LottieView>) {
-
+//        guard let animationView = uiView.subviews.first as? AnimationView else {
+//            print("animationView")
+//            return
+//        }
+//        print(animationView)
+//        animationView.play()
     }
 
 }

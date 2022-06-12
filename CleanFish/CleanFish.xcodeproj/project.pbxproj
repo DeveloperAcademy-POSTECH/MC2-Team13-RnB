@@ -24,6 +24,8 @@
 		C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478AA285091DC00AB4124 /* SelectRecipeView.swift */; };
 		C79478AD28509DF800AB4124 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478AC28509DF800AB4124 /* String+Extension.swift */; };
 		C7B1DC462854D69D00B875EF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1DC452854D69C00B875EF /* Step.swift */; };
+		C7DF2DC52855D475009CA4DB /* mackerel.json in Resources */ = {isa = PBXBuildFile; fileRef = C7DF2DC42855D475009CA4DB /* mackerel.json */; };
+		C7DF2DC72855D479009CA4DB /* flatfish.json in Resources */ = {isa = PBXBuildFile; fileRef = C7DF2DC62855D479009CA4DB /* flatfish.json */; };
 		C7E31F812855B35C00CD0188 /* CleanFishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E31F7E2855B35C00CD0188 /* CleanFishApp.swift */; };
 		C7E31F852855B37300CD0188 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E31F842855B37300CD0188 /* Fish.swift */; };
 		C7E31F872855B3D300CD0188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7E31F862855B3D300CD0188 /* Assets.xcassets */; };
@@ -53,10 +55,12 @@
 		C79478AA285091DC00AB4124 /* SelectRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipeView.swift; sourceTree = "<group>"; };
 		C79478AC28509DF800AB4124 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C7B1DC452854D69C00B875EF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		C7DF2DC42855D475009CA4DB /* mackerel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mackerel.json; sourceTree = "<group>"; };
+		C7DF2DC62855D479009CA4DB /* flatfish.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = flatfish.json; sourceTree = "<group>"; };
 		C7E31F7E2855B35C00CD0188 /* CleanFishApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanFishApp.swift; sourceTree = "<group>"; };
 		C7E31F7F2855B35C00CD0188 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C7E31F802855B35C00CD0188 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7E31F842855B37300CD0188 /* Fish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fish.swift; path = Model/Fish.swift; sourceTree = "<group>"; };
+		C7E31F842855B37300CD0188 /* Fish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		C7E31F862855B3D300CD0188 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6F8B27C285347CD005F3925 /* VideoShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoShowView.swift; sourceTree = "<group>"; };
 		F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoShowViewUikit.swift; sourceTree = "<group>"; };
@@ -100,7 +104,6 @@
 				C78D00CD2854BE8800476032 /* Extension */,
 				C75233A2285189B8005E49D7 /* .swiftlint.yml */,
 				C79478A82850909700AB4124 /* MainView.swift */,
-				C7E31F842855B37300CD0188 /* Fish.swift */,
 				C79478A62850828900AB4124 /* SelectFishView.swift */,
 				C79478AA285091DC00AB4124 /* SelectRecipeView.swift */,
 				66BBD3632850348900FD3026 /* TutorialView.swift */,
@@ -140,6 +143,8 @@
 				9ED47F55285588D500203073 /* Images.xcassets */,
 				9EB362732850F729001E9BEE /* Colors.xcassets */,
 				C7E31F862855B3D300CD0188 /* Assets.xcassets */,
+				C7DF2DC62855D479009CA4DB /* flatfish.json */,
+				C7DF2DC42855D475009CA4DB /* mackerel.json */,
 				C78D00C62854A61B00476032 /* wave.json */,
 			);
 			path = Assets;
@@ -158,6 +163,7 @@
 			children = (
 				C710ADC42850395500DA181C /* Recipe.swift */,
 				C78D00CF2854BEB900476032 /* RecipeVO.swift */,
+				C7E31F842855B37300CD0188 /* Fish.swift */,
 				C7B1DC452854D69C00B875EF /* Step.swift */,
 			);
 			path = Model;
@@ -236,10 +242,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E31F892855B42E00CD0188 /* GoogleService-Info.plist in Resources */,
+				C7DF2DC52855D475009CA4DB /* mackerel.json in Resources */,
 				9EB362742850F729001E9BEE /* Colors.xcassets in Resources */,
 				9ED47F56285588D500203073 /* Images.xcassets in Resources */,
 				C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */,
 				C7E31F872855B3D300CD0188 /* Assets.xcassets in Resources */,
+				C7DF2DC72855D479009CA4DB /* flatfish.json in Resources */,
 				C78D00C72854A61B00476032 /* wave.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +436,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +471,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

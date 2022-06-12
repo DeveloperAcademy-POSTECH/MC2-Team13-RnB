@@ -16,7 +16,7 @@ struct TutorialView: View {
     @State var speechRecognitionPermission = false
     
     @Binding var goToTutorialPage: Bool
-    @Binding var viewChangeValue: (Bool, Bool)
+    @Binding var showView: ShowView
     
     func requestMicrophonePermission() {
         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
@@ -77,7 +77,7 @@ struct TutorialView: View {
             }
             .padding(.bottom, 12)
             // 시작하기 버튼
-            NavigationLink(destination: StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue), isActive: $isboolyes) {
+            NavigationLink(destination: StageLayout75View(goToTutorialPage: $goToTutorialPage, showView: $showView), isActive: $isboolyes) {
                 EmptyView()
             }
             Button {
@@ -105,10 +105,10 @@ struct TutorialView: View {
 
 struct TutorialViewPreviewContainer: View {
     @State var goToTutorialPage: Bool = true
-    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    @State var showView: ShowView = (false, true)
     
     var body: some View {
-        TutorialView(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
+        TutorialView(goToTutorialPage: $goToTutorialPage, showView: $showView)
     }
 }
 

@@ -16,7 +16,7 @@ struct SelectRecipeView: View {
   
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
-    @Binding var viewChangeValue: (Bool, Bool)
+    @Binding var showView: ShowView
     
     // MARK: - Body
     var body: some View {
@@ -24,15 +24,15 @@ struct SelectRecipeView: View {
             VStack(spacing: 15) {
                 VStack(alignment: .leading) {
                     Button {
-                        viewChangeValue.1.toggle()
+                        showView.recipeView.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             withAnimation {
-                                viewChangeValue.0.toggle()
+                                showView.fishView.toggle()
                             }
                         }
                     } label: {
                         Text("이전")
-                            .font(.title2)
+                            .font(.title3)
                             .foregroundColor("#4986E6".toColor(alpha: 1))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
@@ -52,7 +52,10 @@ struct SelectRecipeView: View {
                         Image("Dish")
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
-                        Text("일러스트 자리")
+                        Image("\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(25)
                     }
                     .padding(.horizontal, 31)
                     
@@ -60,13 +63,13 @@ struct SelectRecipeView: View {
                         ForEach(Recipe.allCases, id: \.rawValue) { recipe in
                             Button {
                                 selectedRecipe = recipe
-                                NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(recipe.rawValue)") { courseInfo in
-                                    if let courseInfo = courseInfo {
-                                        NetworkManager.shared.getStepInfo(course: courseInfo, stepNumber: 2) { stepInfo in
-                                            print(stepInfo)
-                                        }
-                                    }
-                                }
+//                                NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(recipe.rawValue)") { courseInfo in
+//                                    if let courseInfo = courseInfo {
+//                                        NetworkManager.shared.getStepInfo(course: courseInfo, stepNumber: 2) { stepInfo in
+//                                            print(stepInfo)
+//                                        }
+//                                    }
+//                                }
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -110,7 +113,7 @@ struct SelectRecipeView: View {
                     }
                     
                     NavigationLink("", isActive: $goToTutorialPage) {
-                        TutorialView(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
+                        TutorialView(goToTutorialPage: $goToTutorialPage, showView: $showView)
                     }
                     .hidden()
                     
@@ -128,10 +131,10 @@ struct SelectRecipeView: View {
 
 struct SelectRecipeViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var viewChangeValue: (Bool, Bool) = (true, false)
+    @State var showView: ShowView = (true, false)
     
     var body: some View {
-        SelectRecipeView(selectedFish: $selectedFish, viewChangeValue: $viewChangeValue)
+        SelectRecipeView(selectedFish: $selectedFish, showView: $showView)
     }
 }
 

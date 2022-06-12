@@ -7,25 +7,35 @@
 
 import SwiftUI
 
+typealias ShowView = (fishView: Bool, recipeView: Bool)
+
 struct MainView: View {
-    @State var viewChangeValue: (Bool, Bool) = (true, false)// 0: Fish, 1: Recipe
+    @State var showView: ShowView = (true, false)// 0: Fish, 1: Recipe
     @State var selectedFish: Fish = .flatfish
+    @State var backgroudPosition = 0.0
     
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
+                    LottieView(filename: "wave", animationSpeed: 1)
+                        .animation(.linear(duration: 0.3), value: UUID())
+                        .offset(x: 0, y: showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
                     ZStack {
-                        if self.viewChangeValue.0 {
-                            SelectFishView(selectedFish: $selectedFish, viewChangeValue: $viewChangeValue)
+                        if self.showView.fishView {
+                            SelectFishView(selectedFish: $selectedFish, showView: $showView)
                         }
                     }
                     ZStack {
-                        if self.viewChangeValue.1 {
-                            SelectRecipeView(selectedFish: $selectedFish, viewChangeValue: $viewChangeValue)
+                        if self.showView.recipeView {
+                            SelectRecipeView(selectedFish: $selectedFish, showView: $showView)
                         }
                     }
                 }
+            }
+            .onAppear {
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
+                                          forKey: "orientation")
             }
             .ignoresSafeArea(.all, edges: [.top, .bottom])
             .padding(.top)

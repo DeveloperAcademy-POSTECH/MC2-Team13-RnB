@@ -12,7 +12,7 @@ let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
     @Binding var goToTutorialPage: Bool
-    @Binding var viewChangeValue: (Bool, Bool)
+    @Binding var showView: ShowView
     
     func changeOrientation(to orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
@@ -41,8 +41,8 @@ struct StageLayout75View: View {
                         if UIDevice.current.orientation.isLandscape {
                             changeOrientation(to: .portrait)
                             self.goToTutorialPage.toggle()
-                            self.viewChangeValue.0.toggle()
-                            self.viewChangeValue.1.toggle()
+                            self.showView.fishView.toggle()
+                            self.showView.recipeView.toggle()
                         }
                     }, label: {
                         Image(systemName: "house.circle.fill")
@@ -52,7 +52,8 @@ struct StageLayout75View: View {
                     })
                 }
             }
-        }.navigationBarHidden(true)
+        }
+        .navigationBarHidden(true)
     }
 }
 
@@ -64,10 +65,10 @@ struct VideoView: View {
 
 struct StageLayout75ViewPreviewContainer: View {
     @State var goToTutorialPage: Bool = true
-    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    @State var showView: ShowView = (false, true)
     
     var body: some View {
-        StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
+        StageLayout75View(goToTutorialPage: $goToTutorialPage, showView: $showView)
     }
 }
 
