@@ -26,7 +26,7 @@ struct SelectRecipeView: View {
                 .frame(alignment: .leading)
                 
                 ZStack {
-                    Image("Dish")
+                    Image("dish")
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
                     Text(selectedValue)
