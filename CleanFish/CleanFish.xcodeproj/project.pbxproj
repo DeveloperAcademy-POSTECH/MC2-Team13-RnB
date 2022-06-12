@@ -28,7 +28,7 @@
 		C7E31F852855B37300CD0188 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E31F842855B37300CD0188 /* Fish.swift */; };
 		C7E31F872855B3D300CD0188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7E31F862855B3D300CD0188 /* Assets.xcassets */; };
 		C7E31F892855B42E00CD0188 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7E31F7F2855B35C00CD0188 /* GoogleService-Info.plist */; };
-		C7E31F8E2855B5A200CD0188 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C7E31F8D2855B5A200CD0188 /* Lottie */; };
+		C7E31F972855BF5600CD0188 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C7E31F962855BF5600CD0188 /* Lottie */; };
 		F6F8B27D285347CD005F3925 /* VideoShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8B27C285347CD005F3925 /* VideoShowView.swift */; };
 		F6F8B28028535D36005F3925 /* VideoShowViewUikit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E31F8E2855B5A200CD0188 /* Lottie in Frameworks */,
+				C7E31F972855BF5600CD0188 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +188,7 @@
 			);
 			name = CleanFish;
 			packageProductDependencies = (
-				C7E31F8D2855B5A200CD0188 /* Lottie */,
+				C7E31F962855BF5600CD0188 /* Lottie */,
 			);
 			productName = CleanFish;
 			productReference = C7083595284DD0DE0061F707 /* CleanFish.app */;
@@ -219,7 +219,7 @@
 			);
 			mainGroup = C708358C284DD0DE0061F707;
 			packageReferences = (
-				C7E31F8C2855B5A200CD0188 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				C7E31F952855BF5600CD0188 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = C7083596284DD0DE0061F707 /* Products */;
 			projectDirPath = "";
@@ -416,7 +416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanFish/Preview Content\"";
-				DEVELOPMENT_TEAM = Z629PZ4XVL;
+				DEVELOPMENT_TEAM = 5MR2HPL46H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/App/Info.plist;
@@ -450,7 +450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanFish/Preview Content\"";
-				DEVELOPMENT_TEAM = Z629PZ4XVL;
+				DEVELOPMENT_TEAM = 5MR2HPL46H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/App/Info.plist;
@@ -500,7 +500,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C7E31F8C2855B5A200CD0188 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		C7E31F952855BF5600CD0188 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -511,9 +511,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C7E31F8D2855B5A200CD0188 /* Lottie */ = {
+		C7E31F962855BF5600CD0188 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C7E31F8C2855B5A200CD0188 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = C7E31F952855BF5600CD0188 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

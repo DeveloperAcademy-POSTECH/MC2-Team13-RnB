@@ -11,8 +11,8 @@ struct SelectRecipeView: View {
     // MARK: - State Property
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
-    @State private var goToNextPage: Bool = false
-    @State private var isLinkActivated: Bool = false
+    @State private var goToTutorialPage: Bool = false
+//    @State private var isLinkActivated: Bool = false
   
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
@@ -101,7 +101,7 @@ struct SelectRecipeView: View {
                                                               forKey: "orientation")
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    goToNextPage.toggle()
+                                    goToTutorialPage.toggle()
                                 }
                             }
                         }
@@ -109,8 +109,8 @@ struct SelectRecipeView: View {
                         Text("이대로 진행하시겠습니까?\n시작 시, 화면이 가로로 돌아갑니다.")
                     }
                     
-                    NavigationLink("", isActive: $goToNextPage) {
-                        TutorialView()
+                    NavigationLink("", isActive: $goToTutorialPage) {
+                        TutorialView(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
                     }
                     .hidden()
                     

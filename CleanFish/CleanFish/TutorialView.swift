@@ -8,19 +8,34 @@
 import SwiftUI
 import AVFoundation
 import UserNotifications
+import Speech
 
 struct TutorialView: View {
     @State var isboolyes = false
+    @State var micPermission = false
+    @State var speechRecognitionPermission = false
+    
+    @Binding var goToTutorialPage: Bool
+    @Binding var viewChangeValue: (Bool, Bool)
+    
     func requestMicrophonePermission() {
         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
             if granted {
-                print("Mic: 권한 허용")
-                request2()
+                micPermission = true
             } else {
-                print("Mic: 권한 거부")
-                request2()
+                micPermission = false
             }
         })
+    }
+    
+    func speechRecognition() {
+        SFSpeechRecognizer.requestAuthorization{authStatus  in
+            if authStatus == .authorized{
+                speechRecognitionPermission = true
+            } else {
+                speechRecognitionPermission = false
+            }
+        }
     }
     
     func request2() {
@@ -62,7 +77,14 @@ struct TutorialView: View {
             }
             .padding(.bottom, 12)
             // 시작하기 버튼
-            NavigationLink(destination: StageLayout75View(), isActive: $isboolyes) {
+            NavigationLink(destination: StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue), isActive: $isboolyes) {
+                EmptyView()
+            }
+            Button {
+                requestMicrophonePermission()
+                speechRecognition()
+                isboolyes = true
+            } label: {
                 Text("시작하기")
                     .fontWeight(.medium)
                     .font(.system(size: 22))
@@ -80,9 +102,19 @@ struct TutorialView: View {
         .navigationBarHidden(true)
     }
 }
+
+struct TutorialViewPreviewContainer: View {
+    @State var goToTutorialPage: Bool = true
+    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    
+    var body: some View {
+        TutorialView(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
+    }
+}
+
 struct TutorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialView()
+        TutorialViewPreviewContainer()
             .previewInterfaceOrientation(.landscapeRight)
     }
 }
