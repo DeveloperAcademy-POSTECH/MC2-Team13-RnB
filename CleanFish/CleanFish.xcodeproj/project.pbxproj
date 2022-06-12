@@ -13,6 +13,7 @@
 		9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E001639284DF8970068E4D0 /* StagePagingView.swift */; };
 		9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00163D284E143F0068E4D0 /* StageLayout75View.swift */; };
 		9EB362742850F729001E9BEE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB362732850F729001E9BEE /* Colors.xcassets */; };
+		9ED47F56285588D500203073 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED47F55285588D500203073 /* Images.xcassets */; };
 		C7083599284DD0DE0061F707 /* CleanFishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7083598284DD0DE0061F707 /* CleanFishApp.swift */; };
 		C708359D284DD0DF0061F707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359C284DD0DF0061F707 /* Assets.xcassets */; };
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		9E001639284DF8970068E4D0 /* StagePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePagingView.swift; sourceTree = "<group>"; };
 		9E00163D284E143F0068E4D0 /* StageLayout75View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageLayout75View.swift; sourceTree = "<group>"; };
 		9EB362732850F729001E9BEE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		9ED47F55285588D500203073 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C7083595284DD0DE0061F707 /* CleanFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7083598284DD0DE0061F707 /* CleanFishApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanFishApp.swift; sourceTree = "<group>"; };
 		C708359C284DD0DF0061F707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +129,11 @@
 				F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */,
 				C76FA9512853A1240056F935 /* NetworkManager.swift */,
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
+				F6F8B281285363A9005F3925 /* flatfish_sashimi#1.mp4 */,
+				C708359C284DD0DF0061F707 /* Assets.xcassets */,
+				9EB362732850F729001E9BEE /* Colors.xcassets */,
+				9ED47F55285588D500203073 /* Images.xcassets */,
+				F6F8B26828518696005F3925 /* GoogleService-Info.plist */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
 			);
 			path = CleanFish;
@@ -250,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EB362742850F729001E9BEE /* Colors.xcassets in Resources */,
+				9ED47F56285588D500203073 /* Images.xcassets in Resources */,
 				C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */,
 				C78D00C72854A61B00476032 /* wave.json in Resources */,
 				F6F8B26928518696005F3925 /* GoogleService-Info.plist in Resources */,
