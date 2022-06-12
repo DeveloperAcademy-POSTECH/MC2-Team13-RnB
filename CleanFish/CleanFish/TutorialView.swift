@@ -12,25 +12,24 @@ import UserNotifications
 struct TutorialView: View {
     @State var isboolyes = false
     func requestMicrophonePermission() {
-         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
-             if granted {
-                 print("Mic: 권한 허용")
-                 request2()
-             } else {
-                 print("Mic: 권한 거부")
-                 request2()
-             }
-         })
-     }
-
-    func request2() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: {didallow, error in print(didallow)})
+        AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
+            if granted {
+                print("Mic: 권한 허용")
+                request2()
+            } else {
+                print("Mic: 권한 거부")
+                request2()
+            }
+        })
     }
-
- //https://lucidmaj7.tistory.com/23
+    
+    func request2() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { didallow, error in print(didallow) } )
+    }
+    
+    //https://lucidmaj7.tistory.com/23
     var body: some View {
-// 생선손질 튜토리얼 뷰
-        NavigationView {
+        // 생선손질 튜토리얼 뷰
         VStack {
             Text("손질 중 불편하게 터치하지 마세요!")
                 .font(.system(size: 28))
@@ -62,7 +61,7 @@ struct TutorialView: View {
                     .padding(.bottom, 10)
             }
             .padding(.bottom, 12)
-    // 시작하기 버튼
+            // 시작하기 버튼
             NavigationLink(destination: StageLayout75View(), isActive: $isboolyes) {
                 Text("시작하기")
                     .fontWeight(.medium)
@@ -72,33 +71,13 @@ struct TutorialView: View {
                     .background(Color("StartButton"))
                     .cornerRadius(10)
             }
-//            NavigationLink{ StageLayout75View()
-//                    .navigationBarBackButtonHidden(true)
-//            } label: {
-//                Text("시작하기")
-//                    .fontWeight(.medium)
-//                    .font(.system(size: 22))
-//                    .frame(width: 377, height: 52, alignment: .center)
-//                    .foregroundColor(.white)
-//                    .background(Color("StartButton"))
-//                    .cornerRadius(10)
-//                    .navigationBarTitle("",displayMode: .inline)
-//                    .navigationBarHidden(true)
-//            }
-//            Button {
-//                requestMicrophonePermission()
-//                StageLayout75View()
-//            } label: {
-//                Text("시작하기")
-//                    .fontWeight(.medium)
-//                    .font(.system(size: 22))
-//                    .frame(width: 377, height: 52, alignment: .center)
-//                    .foregroundColor(.white)
-//                    .background(Color("StartButton"))
-//                    .cornerRadius(10)
-        }    .navigationBarTitle("", displayMode: .inline)
-                .navigationBarHidden(true)
         }
+        .onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                      forKey: "orientation")
+        }
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
     }
 }
 struct TutorialView_Previews: PreviewProvider {

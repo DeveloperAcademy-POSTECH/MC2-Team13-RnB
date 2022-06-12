@@ -13,10 +13,8 @@ struct SelectFishView: View {
     
     var body: some View {
         ZStack {
-            // Lottie View Code
-            Color.gray
-            // Fish
-            VStack {
+            LottieView(filename: "wave", animationSpeed: 1)
+            VStack(spacing: 20) {
                 ForEach(Fish.allCases, id: \.rawValue) {fish in
                     // 버튼의 위치는 실제 생선 이미지가 만들어졌을 때, 재배치
                     HStack {
@@ -38,6 +36,7 @@ struct SelectFishView: View {
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.move(edge: .bottom))
         .animation(.linear(duration: 0.3), value: UUID())
+        .navigationBarHidden(true)
     }
 }
 
