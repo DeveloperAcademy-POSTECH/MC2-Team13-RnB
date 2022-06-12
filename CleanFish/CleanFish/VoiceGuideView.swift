@@ -43,9 +43,10 @@ struct VoiceGuideView: View {
                 }
             }
             
-            Text("gif")
+            GIFView(fileName: "voicecontrol")
+//            Text("gif")
                 .frame(width: 493, height: 213, alignment: .center)
-                .border(.blue, width: 3)
+//                .border(.blue, width: 3)
 
     // 다음 버튼
               NavigationLink {

@@ -16,6 +16,9 @@
 		9ED47F56285588D500203073 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED47F55285588D500203073 /* Images.xcassets */; };
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
 		C710ADC52850395500DA181C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710ADC42850395500DA181C /* Recipe.swift */; };
+		C71CB55C285640DB0061E710 /* voicecontrol.gif in Resources */ = {isa = PBXBuildFile; fileRef = C71CB55A285640DB0061E710 /* voicecontrol.gif */; };
+		C71CB55D285640DB0061E710 /* swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = C71CB55B285640DB0061E710 /* swipe.gif */; };
+		C71CB55F2856410C0061E710 /* GIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CB55E2856410C0061E710 /* GIFView.swift */; };
 		C769D6E328562EB800BC60E8 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769D6E228562EB800BC60E8 /* PermissionManager.swift */; };
 		C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FA9512853A1240056F935 /* NetworkManager.swift */; };
 		C78D00C72854A61B00476032 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = C78D00C62854A61B00476032 /* wave.json */; };
@@ -48,6 +51,9 @@
 		C7083595284DD0DE0061F707 /* CleanFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C708359F284DD0DF0061F707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C710ADC42850395500DA181C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		C71CB55A285640DB0061E710 /* voicecontrol.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = voicecontrol.gif; sourceTree = "<group>"; };
+		C71CB55B285640DB0061E710 /* swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swipe.gif; sourceTree = "<group>"; };
+		C71CB55E2856410C0061E710 /* GIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFView.swift; sourceTree = "<group>"; };
 		C75233A2285189B8005E49D7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C769D6E228562EB800BC60E8 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		C76FA9512853A1240056F935 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				F6F8B27C285347CD005F3925 /* VideoShowView.swift */,
 				F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */,
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
+				C71CB55E2856410C0061E710 /* GIFView.swift */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
 			);
 			path = CleanFish;
@@ -160,6 +167,8 @@
 				C7DF2DC62855D479009CA4DB /* flatfish.json */,
 				C7DF2DC42855D475009CA4DB /* mackerel.json */,
 				C78D00C62854A61B00476032 /* wave.json */,
+				C71CB55B285640DB0061E710 /* swipe.gif */,
+				C71CB55A285640DB0061E710 /* voicecontrol.gif */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -256,9 +265,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E31F892855B42E00CD0188 /* GoogleService-Info.plist in Resources */,
+				C71CB55D285640DB0061E710 /* swipe.gif in Resources */,
 				C7DF2DC52855D475009CA4DB /* mackerel.json in Resources */,
 				9EB362742850F729001E9BEE /* Colors.xcassets in Resources */,
 				9ED47F56285588D500203073 /* Images.xcassets in Resources */,
+				C71CB55C285640DB0061E710 /* voicecontrol.gif in Resources */,
 				C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */,
 				C7E31F872855B3D300CD0188 /* Assets.xcassets in Resources */,
 				C7DF2DC72855D479009CA4DB /* flatfish.json in Resources */,
@@ -294,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E00163E284E143F0068E4D0 /* StageLayout75View.swift in Sources */,
+				C71CB55F2856410C0061E710 /* GIFView.swift in Sources */,
 				9E00163A284DF8970068E4D0 /* StagePagingView.swift in Sources */,
 				C7B1DC462854D69D00B875EF /* Step.swift in Sources */,
 				C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */,
