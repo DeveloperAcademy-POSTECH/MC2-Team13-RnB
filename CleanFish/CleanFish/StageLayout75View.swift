@@ -48,11 +48,11 @@ struct StageLayout75View: View {
                     })
                 }
             }
-        }
-        .navigationBarTitle("")
-        .navigationBarBackButtonHidden(true)
+        }.navigationBarHidden(true)
     }
 }
+
+.navigationBarTitle("") + .navigationBarBackButtonHidden(true) == navigationBarHidden(true)
 
 func changeOrientation(to orientation: UIInterfaceOrientation) {
     UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
