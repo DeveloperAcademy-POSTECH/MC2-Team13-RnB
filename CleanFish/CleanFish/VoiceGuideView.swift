@@ -15,19 +15,21 @@ struct VoiceGuideView: View {
     @AppStorage("IS_GUIDE_FIRST") private var isGuideFirst: Bool = true
 //    @StateObject private var permissionManager: PermissionManager = PermissionManager()
     // 선택한 생선과 손질 방법을 가지고 있는 변수
-    let courseInfo: RecipeVO
+    @State private var courseInfo: RecipeVO = RecipeVO()
     
-    init(courseInfo: RecipeVO) {
-        self.courseInfo = courseInfo
+    let selectedCourse: String
+    
+    init(selectedCourse: String) {
+        self.selectedCourse = selectedCourse
     }
     
     var body: some View {
         VStack {
             ZStack {
                 Text("손질 중 불편하게 터치하지 마세요!")
-                    .font(.system(size: 28))
+                    .foregroundColor(.textGray)
+                    .font(.title)
                     .fontWeight(.bold)
-                    .padding(.bottom, 9)
                 HStack {
                     Spacer()
                    if !isGuideFirst {
@@ -36,14 +38,15 @@ struct VoiceGuideView: View {
                            StagePagingView(permissionManager: PermissionManager())
                        } label: {
                            Text("건너뛰기")
-                               .font(.system(size: 22))
+                               .font(.title2)
                                .fontWeight(.medium)
                                .foregroundColor(Color("StartButton"))
                        }
                    }
                 }
             }
-           
+          .padding(.top, 40)
+          
             GIFView(fileName: "voicecontrol")
                 .frame(width: 374, height: 160, alignment: .center)
 
@@ -60,6 +63,15 @@ struct VoiceGuideView: View {
                         .cornerRadius(10)
                 }
         }
+        .onAppear {
+            NetworkManager.shared
+                .getTotalStep(courseName: selectedCourse) { courseInfo in
+                if let courseInfo = courseInfo {
+                    self.courseInfo = courseInfo
+                    print(self.courseInfo)
+                }
+            }
+        }
         .onDisappear {
             isGuideFirst = false
         }
@@ -69,7 +81,7 @@ struct VoiceGuideView: View {
 
 struct VoiceGuideView_Previews: PreviewProvider {
     static var previews: some View {
-        VoiceGuideView(courseInfo: RecipeVO())
+        VoiceGuideView(selectedCourse: "")
             .previewInterfaceOrientation(.landscapeRight)
     }
 }

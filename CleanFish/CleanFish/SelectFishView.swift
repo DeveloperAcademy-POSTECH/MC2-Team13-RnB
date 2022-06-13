@@ -11,7 +11,7 @@ struct SelectFishView: View {
     @Binding var selectedFish: Fish
     @Binding var showView: ShowView
     
-    let lottieSize: CGFloat = UIScreen.main.bounds.size.width * 0.6
+    let lottieSize: CGFloat = UIScreen.main.bounds.size.width * 0.5
     
     var body: some View {
         ZStack {
@@ -39,7 +39,7 @@ struct SelectFishView: View {
                     }
                 }
             }
-            .padding(.bottom, 100)
+            .padding(.bottom, 130)
             .padding(.horizontal, 30)
         }
         .ignoresSafeArea(.all, edges: .bottom)

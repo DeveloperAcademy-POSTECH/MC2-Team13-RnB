@@ -20,9 +20,10 @@ struct SwipeGuideView: View {
         // 생선손질 튜토리얼 뷰
         VStack {
             Text("음성인식 사용이 어려운 상황이라면?")
-                .font(.system(size: 28))
+                .foregroundColor(.textGray)
+                .font(.title)
                 .fontWeight(.bold)
-                .padding(.bottom, 9)
+                .padding(.top, 40)
           
             GIFView(fileName: "swipe")
                 .frame(width: 374, height: 160, alignment: .center)
@@ -63,9 +64,10 @@ struct SwipeGuideView: View {
 //    }
 //}
 //
-//struct SwipeGuideView_Previews: PreviewProvider {
-//    static var previews: some View {
+struct SwipeGuideView_Previews: PreviewProvider {
+    static var previews: some View {
+        SwipeGuideView()
 //        SwipeGuideViewPreviewContainer()
 //            .previewInterfaceOrientation(.landscapeRight)
-//    }
-//}
+    }
+}
