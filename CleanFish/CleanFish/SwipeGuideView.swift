@@ -23,10 +23,9 @@ struct SwipeGuideView: View {
                 .font(.system(size: 28))
                 .fontWeight(.bold)
                 .padding(.bottom, 9)
-            
-            Text("gif")
+          
+            GIFView(fileName: "swipe")
                 .frame(width: 374, height: 160, alignment: .center)
-                .border(.blue, width: 3)
             
             ZStack {
                 NavigationLink("", isActive: $permissionManager.goToStagePagingView) {

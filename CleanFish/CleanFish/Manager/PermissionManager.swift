@@ -10,8 +10,8 @@ import AVFoundation
 import Speech
 
 class PermissionManager: ObservableObject {
-    @Published var speechRecognitionPermission: Bool = false
     @Published var micPermission: Bool = false
+    @Published var speechRecognitionPermission: Bool = false
     @Published var goToStagePagingView: Bool = false
     
     init() {
@@ -23,11 +23,6 @@ class PermissionManager: ObservableObject {
           AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
               self.micPermission = permissionValue
           }
-//          if AVAudioSession.sharedInstance().recordPermission == .denied {
-//              AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
-//                  self.micPermission = permissionValue
-//              }
-//          }
       }
       
       func speechRecognition() {
@@ -36,16 +31,6 @@ class PermissionManager: ObservableObject {
                   self.speechRecognitionPermission = (authStatus == .authorized)
                   self.goToStagePagingView = true
               }
-//          if SFSpeechRecognizer.authorizationStatus() == .denied {
-//              SFSpeechRecognizer.requestAuthorization { authStatus  in
-//                  DispatchQueue.main.async {
-//                      self.speechRecognitionPermission = (authStatus == .authorized)
-//                      self.goToStagePagingView = true
-//                  }
-//              }
-//          } else {
-//              self.goToStagePagingView = true
-              
           }
       }
       
@@ -57,4 +42,4 @@ class PermissionManager: ObservableObject {
       func permissionState() -> Bool {
           return speechRecognitionPermission && micPermission
       }
-  }
+}
