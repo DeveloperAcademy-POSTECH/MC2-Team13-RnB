@@ -25,7 +25,7 @@ struct SwipeGuideView: View {
                 .padding(.bottom, 9)
             
             Text("gif")
-                .frame(width: 493, height: 213, alignment: .center)
+                .frame(width: 374, height: 160, alignment: .center)
                 .border(.blue, width: 3)
             
             ZStack {

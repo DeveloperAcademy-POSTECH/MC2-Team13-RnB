@@ -14,25 +14,47 @@ class PermissionManager: ObservableObject {
     @Published var micPermission: Bool = false
     @Published var goToStagePagingView: Bool = false
     
-    func requestMicrophonePermission() {
-        AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
-            self.micPermission = permissionValue
-        }
-    }
-    
-    func speechRecognition() {
-        SFSpeechRecognizer.requestAuthorization { authStatus  in
-            self.speechRecognitionPermission = (authStatus == .authorized)
-            self.goToStagePagingView = true
-        }
-    }
-    
-    func requestPermission() {
-        requestMicrophonePermission()
-        speechRecognition()
-    }
-    
-    func permissionState() -> Bool {
-        return speechRecognitionPermission && micPermission
-    }
-}
+    init() {
+          micPermission = (AVAudioSession.sharedInstance().recordPermission == .granted)
+          speechRecognitionPermission = (SFSpeechRecognizer.authorizationStatus() == .authorized)
+      }
+      
+      func requestMicrophonePermission() {
+          AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
+              self.micPermission = permissionValue
+          }
+//          if AVAudioSession.sharedInstance().recordPermission == .denied {
+//              AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
+//                  self.micPermission = permissionValue
+//              }
+//          }
+      }
+      
+      func speechRecognition() {
+          SFSpeechRecognizer.requestAuthorization { authStatus  in
+              DispatchQueue.main.async {
+                  self.speechRecognitionPermission = (authStatus == .authorized)
+                  self.goToStagePagingView = true
+              }
+//          if SFSpeechRecognizer.authorizationStatus() == .denied {
+//              SFSpeechRecognizer.requestAuthorization { authStatus  in
+//                  DispatchQueue.main.async {
+//                      self.speechRecognitionPermission = (authStatus == .authorized)
+//                      self.goToStagePagingView = true
+//                  }
+//              }
+//          } else {
+//              self.goToStagePagingView = true
+              
+          }
+      }
+      
+      func requestPermission() {
+          self.requestMicrophonePermission()
+          self.speechRecognition()
+      }
+      
+      func permissionState() -> Bool {
+          return speechRecognitionPermission && micPermission
+      }
+  }
