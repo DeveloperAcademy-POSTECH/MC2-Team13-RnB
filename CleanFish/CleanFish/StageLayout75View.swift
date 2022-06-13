@@ -12,8 +12,10 @@ let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
     @Binding var goToTutorialPage: Bool
-    @Binding var viewChangeValue: (Bool, Bool)
+    @Binding var showView: ShowView
     
+    @Binding var speechRecognitionPermission: Bool
+    @Binding var micPermission: Bool
     func changeOrientation(to orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
@@ -37,22 +39,34 @@ struct StageLayout75View: View {
                 Spacer()
                 HStack {
                     Spacer()
+                    if speechRecognitionPermission && micPermission == true {
+                        Image(systemName: "mic.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.primaryBlue)
+                    } else {
+                        Image(systemName: "mic.slash.circle")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.primaryBlue)
+                    }
                     Button(action: {
                         if UIDevice.current.orientation.isLandscape {
                             changeOrientation(to: .portrait)
                             self.goToTutorialPage.toggle()
-                            self.viewChangeValue.0.toggle()
-                            self.viewChangeValue.1.toggle()
+                            self.showView.fishView.toggle()
+                            self.showView.recipeView.toggle()
                         }
                     }, label: {
                         Image(systemName: "house.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            .foregroundColor(.homeBlue)
+                            .foregroundColor(.primaryBlue)
                     })
                 }
             }
-        }.navigationBarHidden(true)
+        }
+        .navigationBarHidden(true)
     }
 }
 
@@ -64,16 +78,23 @@ struct VideoView: View {
 
 struct StageLayout75ViewPreviewContainer: View {
     @State var goToTutorialPage: Bool = true
-    @State var viewChangeValue: (Bool, Bool) = (false, true)
+    @State var showView: ShowView = (false, true)
+    
+    @State var speechRecognitionPermission: Bool = true
+    @State var micPermission: Bool = true
     
     var body: some View {
-        StageLayout75View(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
+        StageLayout75View(goToTutorialPage: $goToTutorialPage,
+                          showView: $showView,
+                          speechRecognitionPermission: $speechRecognitionPermission,
+                          micPermission: $micPermission)
     }
 }
 
 struct StageLayout75View_Previews: PreviewProvider {
     static var previews: some View {
         StageLayout75ViewPreviewContainer()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
 

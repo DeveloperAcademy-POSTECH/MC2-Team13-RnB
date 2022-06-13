@@ -9,29 +9,38 @@ import SwiftUI
 
 struct SelectFishView: View {
     @Binding var selectedFish: Fish
-    @Binding var viewChangeValue: (Bool, Bool)
+    @Binding var showView: ShowView
+    
+    let lottieSize: CGFloat = UIScreen.main.bounds.size.width * 0.6
     
     var body: some View {
         ZStack {
-            LottieView(filename: "wave", animationSpeed: 1)
-            VStack(spacing: 20) {
+            VStack(spacing: 10) {
+                Spacer()
                 ForEach(Fish.allCases, id: \.rawValue) {fish in
-                    // 버튼의 위치는 실제 생선 이미지가 만들어졌을 때, 재배치
                     HStack {
+                        if fish.index % 2 == 1 {
+                            Spacer()
+                        }
                         Button {
                             selectedFish = fish
-                            viewChangeValue.0.toggle()
+                            showView.fishView.toggle()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                viewChangeValue.1.toggle()
+                                showView.recipeView.toggle()
                             }
                         } label: {
-                            // Fish Image Code
-                            Text(fish.value)
+                            LottieView(filename: "\(fish.rawValue)", animationSpeed: 1)
+                        }
+                        .frame(width: lottieSize, height: lottieSize)
+                        
+                        if fish.index % 2 == 0 {
+                            Spacer()
                         }
                     }
                 }
             }
-            .padding(.horizontal, 25)
+            .padding(.bottom, 100)
+            .padding(.horizontal, 30)
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.move(edge: .bottom))
@@ -42,10 +51,10 @@ struct SelectFishView: View {
 
 struct SelectFishViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var viewChangeValue: (Bool, Bool) = (true, false)
+    @State var showView: ShowView = (true, false)
 
     var body: some View {
-        SelectFishView(selectedFish: $selectedFish, viewChangeValue: $viewChangeValue)
+        SelectFishView(selectedFish: $selectedFish, showView: $showView)
     }
 }
 

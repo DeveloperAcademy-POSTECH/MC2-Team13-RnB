@@ -12,11 +12,11 @@ struct SelectRecipeView: View {
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
     @State private var goToTutorialPage: Bool = false
-//    @State private var isLinkActivated: Bool = false
+    @State private var courseInfo: RecipeVO?
   
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
-    @Binding var viewChangeValue: (Bool, Bool)
+    @Binding var showView: ShowView
     
     // MARK: - Body
     var body: some View {
@@ -24,15 +24,15 @@ struct SelectRecipeView: View {
             VStack(spacing: 15) {
                 VStack(alignment: .leading) {
                     Button {
-                        viewChangeValue.1.toggle()
+                        showView.recipeView.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             withAnimation {
-                                viewChangeValue.0.toggle()
+                                showView.fishView.toggle()
                             }
                         }
                     } label: {
                         Text("이전")
-                            .font(.title2)
+                            .font(.title3)
                             .foregroundColor("#4986E6".toColor(alpha: 1))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
@@ -52,7 +52,10 @@ struct SelectRecipeView: View {
                         Image("Dish")
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
-                        Text("일러스트 자리")
+                        Image("\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(25)
                     }
                     .padding(.horizontal, 31)
                     
@@ -60,13 +63,6 @@ struct SelectRecipeView: View {
                         ForEach(Recipe.allCases, id: \.rawValue) { recipe in
                             Button {
                                 selectedRecipe = recipe
-                                NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(recipe.rawValue)") { courseInfo in
-                                    if let courseInfo = courseInfo {
-                                        NetworkManager.shared.getStepInfo(course: courseInfo, stepNumber: 2) { stepInfo in
-                                            print(stepInfo)
-                                        }
-                                    }
-                                }
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -81,41 +77,47 @@ struct SelectRecipeView: View {
                             .foregroundColor(.black)
                         }
                     }
-                    Button {
-                        isShowOrientationAlert.toggle()
-                    } label: {
-                        Image(systemName: "arrow.forward.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor("#4986E6".toColor(alpha: 1))
-                    }
-                    .frame(width: 64, height: 64, alignment: .center)
-                    .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
-                        VStack {
-                            Button("취소", role: .cancel) {
-                                
-                            }
-                            Button("확인", role: .none) {
-                                DispatchQueue.main.async {
-                                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                              forKey: "orientation")
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    goToTutorialPage.toggle()
-                                }
-                            }
+                    
+                    ZStack {
+                        NavigationLink("", isActive: $goToTutorialPage) {
+                            VoiceGuideView(courseInfo: self.courseInfo ?? RecipeVO())
                         }
-                    } message: {
-                        Text("이대로 진행하시겠습니까?\n시작 시, 화면이 가로로 돌아갑니다.")
+                        .hidden()
+                        
+                        Button {
+                            isShowOrientationAlert.toggle()
+                        } label: {
+                            Image(systemName: "arrow.forward.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor("#4986E6".toColor(alpha: 1))
+                        }
+                        .frame(width: 64, height: 64, alignment: .center)
+                        .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
+                            VStack {
+                                Button("취소", role: .cancel) {
+                                    
+                                }
+                                Button("확인", role: .none) {
+                                    DispatchQueue.main.async {
+                                        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                                  forKey: "orientation")
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)") { courseInfo in
+                                            if let courseInfo = courseInfo {
+                                                self.courseInfo = courseInfo
+                                                goToTutorialPage.toggle()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } message: {
+                            Text("이대로 진행하시겠습니까?\n시작 시, 화면이 가로로 돌아갑니다.")
+                        }
                     }
-                    
-                    NavigationLink("", isActive: $goToTutorialPage) {
-                        TutorialView(goToTutorialPage: $goToTutorialPage, viewChangeValue: $viewChangeValue)
-                    }
-                    .hidden()
-                    
                     Spacer()
-                    
                 }
                 .padding(.horizontal, 36)
             }
@@ -128,10 +130,10 @@ struct SelectRecipeView: View {
 
 struct SelectRecipeViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var viewChangeValue: (Bool, Bool) = (true, false)
+    @State var showView: ShowView = (true, false)
     
     var body: some View {
-        SelectRecipeView(selectedFish: $selectedFish, viewChangeValue: $viewChangeValue)
+        SelectRecipeView(selectedFish: $selectedFish, showView: $showView)
     }
 }
 
