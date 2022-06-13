@@ -12,7 +12,6 @@ struct SelectRecipeView: View {
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
     @State private var goToTutorialPage: Bool = false
-    @State private var courseInfo: RecipeVO?
   
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
@@ -38,12 +37,13 @@ struct SelectRecipeView: View {
                             .multilineTextAlignment(.leading)
                     }
                     .frame(alignment: .leading)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, 19)
                 }
                 .frame(alignment: .leading)
                 
                 VStack(spacing: 34) {
-                    Text("생선을 어떻게 드실 예정인가요??")
+                    Text("생선을 어떻게 드실 예정인가요?")
+                        .foregroundColor(.textGray)
                         .fontWeight(.bold)
                         .font(.title2)
                         .frame(maxWidth: .infinity)
@@ -52,10 +52,13 @@ struct SelectRecipeView: View {
                         Image("Dish")
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
-                        Image("\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(25)
+                            .overlay {
+                                Image("\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(selectedRecipe == .sashimi ? 45 : 25)
+                            }
                     }
                     .padding(.horizontal, 31)
                     
@@ -65,11 +68,14 @@ struct SelectRecipeView: View {
                                 selectedRecipe = recipe
                             } label: {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .fill((selectedRecipe == recipe) ? "#AACBFD".toColor(alpha: 1) : .clear)
-                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .stroke("#AACBFD".toColor(alpha: 1), lineWidth: 2)
                                     Text(recipe.value)
+                                        .font(.title3)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.textGray)
                                 }
                             }
                             .frame(height: 64)
@@ -80,17 +86,28 @@ struct SelectRecipeView: View {
                     
                     ZStack {
                         NavigationLink("", isActive: $goToTutorialPage) {
-                            VoiceGuideView(courseInfo: self.courseInfo ?? RecipeVO())
+                            VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
                         .hidden()
                         
                         Button {
                             isShowOrientationAlert.toggle()
                         } label: {
-                            Image(systemName: "arrow.forward.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor("#4986E6".toColor(alpha: 1))
+                            ZStack {
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 62, height: 62, alignment: .center)
+                                    .shadow(color: .black.opacity(0.2),
+                                            radius: 16, x: 0, y: 2)
+                                Circle()
+                                    .fill("#4986E6".toColor(alpha: 1))
+                                Image(systemName: "arrow.right")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.white)
+                                    .frame(width: 26, height: 26, alignment: .center)
+                            }
+                            
                         }
                         .frame(width: 64, height: 64, alignment: .center)
                         .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
@@ -104,12 +121,7 @@ struct SelectRecipeView: View {
                                                                   forKey: "orientation")
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        NetworkManager.shared.getTotalStep(courseName: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)") { courseInfo in
-                                            if let courseInfo = courseInfo {
-                                                self.courseInfo = courseInfo
-                                                goToTutorialPage.toggle()
-                                            }
-                                        }
+                                        goToTutorialPage.toggle()
                                     }
                                 }
                             }

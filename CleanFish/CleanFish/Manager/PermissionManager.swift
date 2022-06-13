@@ -20,23 +20,17 @@ class PermissionManager: ObservableObject {
     }
     
     func requestMicrophonePermission() {
-        if AVAudioSession.sharedInstance().recordPermission == .denied {
-            AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
-                self.micPermission = permissionValue
-            }
+        AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
+            self.micPermission = permissionValue
         }
     }
     
     func speechRecognition() {
-        if SFSpeechRecognizer.authorizationStatus() == .denied {
-            SFSpeechRecognizer.requestAuthorization { authStatus  in
-                DispatchQueue.main.async {
-                    self.speechRecognitionPermission = (authStatus == .authorized)
-                    self.goToStagePagingView = true
-                }
+        SFSpeechRecognizer.requestAuthorization { authStatus  in
+            DispatchQueue.main.async {
+                self.speechRecognitionPermission = (authStatus == .authorized)
+                self.goToStagePagingView = true
             }
-        } else {
-            self.goToStagePagingView = true
         }
     }
     
