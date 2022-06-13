@@ -12,6 +12,10 @@ struct SwipeGuideView: View {
     // 권한에 대한 로직을 수행하는 변수
     @StateObject private var permissionManager: PermissionManager = PermissionManager()
     
+    @Binding var goToTutorialPage: Bool
+    
+    let courseInfo: RecipeVO
+    
     // 단계중에 홈화면으로 돌아가는 기능을 위해 있는 변수
 //    @Binding var goToTutorialPage: Bool
 //    @Binding var showView: ShowView
@@ -31,7 +35,8 @@ struct SwipeGuideView: View {
             
             ZStack {
                 NavigationLink("", isActive: $permissionManager.goToStagePagingView) {
-                    StagePagingView(permissionManager: self.permissionManager)
+                    StagePagingView(goToTutorialPage: $goToTutorialPage, courseInfo: self.courseInfo)
+                        .environmentObject(permissionManager)
                 }
                 .hidden()
                 Button {

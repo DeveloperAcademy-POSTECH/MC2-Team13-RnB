@@ -19,8 +19,3 @@ struct Step: Codable {
     var title: String // 현재 단계의 제목
     var content: String // 현재 단계의 내용
 }
-
-
-
-
-

@@ -14,12 +14,10 @@ struct VoiceGuideView: View {
     // VoiceGuideView를 보는게 처음인지 확인하는 변수
     @AppStorage("IS_GUIDE_FIRST") private var isGuideFirst: Bool = true
 
+    @Binding var goToTutorialPage: Bool
+    
     // 선택한 생선과 손질 방법을 가지고 있는 변수
     let courseInfo: RecipeVO
-    
-    init(courseInfo: RecipeVO) {
-        self.courseInfo = courseInfo
-    }
     
     var body: some View {
         VStack {
@@ -50,7 +48,7 @@ struct VoiceGuideView: View {
 
     // 다음 버튼
               NavigationLink {
-                  SwipeGuideView()
+                  SwipeGuideView(goToTutorialPage: $goToTutorialPage, courseInfo: self.courseInfo)
 //                  Text("SwipeGuideView")
 //                      .navigationBarHidden(true)
 //                  SwipeGuideView(isboolyes: <#T##Bool#>,
@@ -77,7 +75,7 @@ struct VoiceGuideView: View {
 
 struct VoiceGuideView_Previews: PreviewProvider {
     static var previews: some View {
-        VoiceGuideView(courseInfo: RecipeVO())
+        VoiceGuideView(goToTutorialPage: .constant(true), courseInfo: RecipeVO())
             .previewInterfaceOrientation(.landscapeRight)
     }
 }
