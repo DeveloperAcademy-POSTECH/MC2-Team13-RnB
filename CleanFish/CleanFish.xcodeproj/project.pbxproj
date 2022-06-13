@@ -121,7 +121,6 @@
 				66BBD3632850348900FD3026 /* SwipeGuideView.swift */,
 				9E001639284DF8970068E4D0 /* StagePagingView.swift */,
 				9E00163D284E143F0068E4D0 /* StageLayout75View.swift */,
-				9EB362752850F830001E9BEE /* Color+Extension.swift */,
 				F6F8B27C285347CD005F3925 /* VideoShowView.swift */,
 				F6F8B27F28535D36005F3925 /* VideoShowViewUikit.swift */,
 				C79478A428507F6B00AB4124 /* LottieView.swift */,
@@ -176,6 +175,7 @@
 		C78D00CD2854BE8800476032 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9EB362752850F830001E9BEE /* Color+Extension.swift */,
 				C79478AC28509DF800AB4124 /* String+Extension.swift */,
 			);
 			path = Extension;
@@ -452,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanFish/Preview Content\"";
-				DEVELOPMENT_TEAM = 5MR2HPL46H;
+				DEVELOPMENT_TEAM = Z629PZ4XVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/App/Info.plist;
@@ -487,7 +487,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanFish/Preview Content\"";
-				DEVELOPMENT_TEAM = 5MR2HPL46H;
+				DEVELOPMENT_TEAM = Z629PZ4XVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/App/Info.plist;

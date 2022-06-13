@@ -28,7 +28,10 @@ struct GIFView: UIViewRepresentable {
             return wkWebView
         }
                 
-        wkWebView.load(data, mimeType: "image/gif", characterEncodingName: "UTF-8", baseURL: url.deletingLastPathComponent())
+        wkWebView.load(data,
+                       mimeType: "image/gif",
+                       characterEncodingName: "UTF-8",
+                       baseURL: url.deletingLastPathComponent())
         wkWebView.scrollView.isScrollEnabled = false
         wkWebView.scrollView.isUserInteractionEnabled = false
         
