@@ -10,11 +10,8 @@ import SwiftUI
 
 struct SwipeGuideView: View {
     // 권한에 대한 로직을 수행하는 변수
+    @EnvironmentObject private var appController: AppController
     @StateObject private var permissionManager: PermissionManager = PermissionManager()
-    
-    // 단계중에 홈화면으로 돌아가는 기능을 위해 있는 변수
-//    @Binding var goToTutorialPage: Bool
-//    @Binding var showView: ShowView
 
     var body: some View {
         // 생선손질 튜토리얼 뷰
@@ -30,11 +27,12 @@ struct SwipeGuideView: View {
             
             ZStack {
                 NavigationLink("", isActive: $permissionManager.goToStagePagingView) {
-                    StagePagingView(permissionManager: self.permissionManager)
+                    StagePagingView()
                 }
                 .hidden()
                 Button {
                     permissionManager.requestPermission()
+//                    appController.initBuffer()
                 } label: {
                     Text("시작하기")
                         .fontWeight(.medium)
@@ -45,7 +43,6 @@ struct SwipeGuideView: View {
                         .cornerRadius(10)
                 }
             }
-            
         }
         .onAppear {
             UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,

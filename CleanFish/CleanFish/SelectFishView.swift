@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SelectFishView: View {
+    @EnvironmentObject var appController: AppController
     @Binding var selectedFish: Fish
-    @Binding var showView: ShowView
     
     let lottieSize: CGFloat = UIScreen.main.bounds.size.width * 0.5
     
@@ -24,10 +24,7 @@ struct SelectFishView: View {
                         }
                         Button {
                             selectedFish = fish
-                            showView.fishView.toggle()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                showView.recipeView.toggle()
-                            }
+                            appController.showRecipeView()
                         } label: {
                             LottieView(filename: "\(fish.rawValue)", animationSpeed: 1)
                         }
@@ -51,10 +48,9 @@ struct SelectFishView: View {
 
 struct SelectFishViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var showView: ShowView = (true, false)
 
     var body: some View {
-        SelectFishView(selectedFish: $selectedFish, showView: $showView)
+        SelectFishView(selectedFish: $selectedFish)
     }
 }
 

@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct SelectRecipeView: View {
+    // MARK: - EnvironmentObject
+    @EnvironmentObject var appController: AppController
+    
     // MARK: - State Property
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
-    @State private var goToTutorialPage: Bool = false
   
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
-    @Binding var showView: ShowView
     
     // MARK: - Body
     var body: some View {
@@ -23,12 +24,7 @@ struct SelectRecipeView: View {
             VStack(spacing: 15) {
                 VStack(alignment: .leading) {
                     Button {
-                        showView.recipeView.toggle()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            withAnimation {
-                                showView.fishView.toggle()
-                            }
-                        }
+                        appController.showFishView()
                     } label: {
                         Text("이전")
                             .font(.title3)
@@ -85,12 +81,13 @@ struct SelectRecipeView: View {
                     }
                     
                     ZStack {
-                        NavigationLink("", isActive: $goToTutorialPage) {
+                        NavigationLink("", isActive: $appController.isSelectRecipe) {
                             VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
                         .hidden()
                         
                         Button {
+                            appController.initBuffer()
                             isShowOrientationAlert.toggle()
                         } label: {
                             ZStack {
@@ -113,7 +110,7 @@ struct SelectRecipeView: View {
                         .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
                             VStack {
                                 Button("취소", role: .cancel) {
-                                    
+                                    appController.initBuffer()
                                 }
                                 Button("확인", role: .none) {
                                     DispatchQueue.main.async {
@@ -121,7 +118,7 @@ struct SelectRecipeView: View {
                                                                   forKey: "orientation")
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        goToTutorialPage.toggle()
+                                        self.appController.isSelectRecipe.toggle()
                                     }
                                 }
                             }
@@ -142,10 +139,9 @@ struct SelectRecipeView: View {
 
 struct SelectRecipeViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var showView: ShowView = (true, false)
     
     var body: some View {
-        SelectRecipeView(selectedFish: $selectedFish, showView: $showView)
+        SelectRecipeView(selectedFish: $selectedFish)
     }
 }
 

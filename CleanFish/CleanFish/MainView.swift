@@ -10,32 +10,68 @@ import SwiftUI
 typealias ShowView = (fishView: Bool, recipeView: Bool)
 
 struct MainView: View {
-    @State var showView: ShowView = (true, false)// 0: Fish, 1: Recipe
+    @EnvironmentObject var appController: AppController
     @State var selectedFish: Fish = .flatfish
     @State var backgroudPosition = 0.0
+    @State var isShowContinueAlert = false
+    @State var goToStagePagingView = false
     
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
+                    if !appController.isMemoryEmpty {
+                        NavigationLink("", isActive: $goToStagePagingView) {
+                            StagePagingView()
+                        }
+                        .hidden()
+                    }
+                    
                     LottieView(filename: "wave", animationSpeed: 1)
                         .animation(.linear(duration: 0.3), value: UUID())
-                        .offset(x: 0, y: showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
+                        .offset(x: 0, y: appController.showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
                     ZStack {
-                        if self.showView.fishView {
-                            SelectFishView(selectedFish: $selectedFish, showView: $showView)
+                        if self.appController.showView.fishView {
+                            SelectFishView(selectedFish: $selectedFish)
                         }
                     }
                     ZStack {
-                        if self.showView.recipeView {
-                            SelectRecipeView(selectedFish: $selectedFish, showView: $showView)
+                        if self.appController.showView.recipeView {
+                            SelectRecipeView(selectedFish: $selectedFish)
                         }
                     }
+//                    Text("마지막으로 본 단계 \(appController.getMemory.courseStep)\n\(appController.getMemory.courseID)")
+                }
+                .alert("이어보기", isPresented: $isShowContinueAlert) {
+                    VStack {
+                        Button("취소", role: .cancel) { }
+                        Button("확인", role: .none) {
+                            DispatchQueue.main.async {
+                                UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                          forKey: "orientation")
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                self.goToStagePagingView = true
+                            }
+                        }
+                    }
+                } message: {
+                    Text("손질 중이던 생선이 있습니다.\n계속 보시겠습니까?")
                 }
             }
             .onAppear {
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
                                           forKey: "orientation")
+                print("appController.isMemoryEmpty \(appController.isMemoryEmpty)")
+                if !appController.isMemoryEmpty {
+                    NetworkManager.shared
+                        .getTotalStep(courseName: appController.getMemory.courseID) { courseInfo in
+                        if let courseInfo = courseInfo {
+                            self.appController.courseInfo = courseInfo
+                            self.isShowContinueAlert = true
+                        }
+                    }
+                }
             }
             .ignoresSafeArea(.all, edges: [.top, .bottom])
             .padding(.top)
