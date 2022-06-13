@@ -13,7 +13,7 @@ import SwiftUI
 struct VoiceGuideView: View {
     // VoiceGuideView를 보는게 처음인지 확인하는 변수
     @AppStorage("IS_GUIDE_FIRST") private var isGuideFirst: Bool = true
-
+//    @StateObject private var permissionManager: PermissionManager = PermissionManager()
     // 선택한 생선과 손질 방법을 가지고 있는 변수
     @State private var courseInfo: RecipeVO = RecipeVO()
     
@@ -34,7 +34,8 @@ struct VoiceGuideView: View {
                     Spacer()
                    if !isGuideFirst {
                        NavigationLink {
-                           Text("")
+                          
+                           StagePagingView(permissionManager: PermissionManager())
                        } label: {
                            Text("건너뛰기")
                                .font(.title2)
@@ -44,10 +45,10 @@ struct VoiceGuideView: View {
                    }
                 }
             }
-            .padding(.top, 40)
-            
+          .padding(.top, 40)
+          
             GIFView(fileName: "voicecontrol")
-                .frame(width: 493, height: 213, alignment: .center)
+                .frame(width: 374, height: 160, alignment: .center)
 
     // 다음 버튼
               NavigationLink {
