@@ -23,7 +23,7 @@ struct MainView: View {
                 ZStack {
                     if !appController.isMemoryEmpty {
                         NavigationLink("", isActive: $goToStagePagingView) {
-                            StagePagingView()
+                            StepSlideView()
                         }
                         .hidden()
                     }

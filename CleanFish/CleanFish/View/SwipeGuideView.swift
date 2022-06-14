@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import UserNotifications
+// import UserNotifications
 
 struct SwipeGuideView: View {
     // 권한에 대한 로직을 수행하는 변수
@@ -27,7 +27,7 @@ struct SwipeGuideView: View {
             
             ZStack {
                 NavigationLink("", isActive: $permissionManager.goToStagePagingView) {
-                    StagePagingView()
+                    StepSlideView()
                 }
                 .hidden()
                 Button {
@@ -52,14 +52,14 @@ struct SwipeGuideView: View {
     }
 }
 
-//struct SwipeGuideViewPreviewContainer: View {
+// struct SwipeGuideViewPreviewContainer: View {
 //    @State var goToTutorialPage: Bool = true
 //    @State var showView: ShowView = (false, true)
 //
 //    var body: some View {
 //        SwipeGuideView(goToTutorialPage: $goToTutorialPage, showView: $showView)
 //    }
-//}
+// }
 //
 struct SwipeGuideView_Previews: PreviewProvider {
     static var previews: some View {

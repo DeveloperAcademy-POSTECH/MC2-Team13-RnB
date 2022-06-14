@@ -1,5 +1,5 @@
 //
-//  StageLayout75View.swift
+//  StepLayoutView.swift
 //  CleanFish
 //
 //  Created by KimJS on 2022/06/06.
@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-let unitSize: CGFloat = 72
-let cornerSize: CGFloat = 20
-
-struct StageLayout75View: View {
+struct StepLayoutView: View {
     let stepNumber: Int
     
     // MARK: - EnvironmentObject
@@ -42,8 +39,8 @@ struct StageLayout75View: View {
     var body: some View {
         HStack(spacing: 24) {
             ZStack {
-                //                VideoView()
-                LoopingPlayer(courseName: appController.courseInfo.courseName,
+                // VideoView()
+                VideoPlayerView(courseName: appController.courseInfo.courseName,
                               step: stepNumber,
                               isPlay: isPlayVideo)
                 VStack {
@@ -62,7 +59,7 @@ struct StageLayout75View: View {
                 .padding()
             }
             .aspectRatio(7/5, contentMode: .fit)
-            .cornerRadius(cornerSize)
+            .cornerRadius(20)
             .padding(.top, 15)
             .padding(.leading, 20)
             .layoutPriority(1) // 값 높을 수록 순위 높음
@@ -174,7 +171,7 @@ struct StageLayout75ViewPreviewContainer: View {
     @State private var goToHome: Bool = false
     
     var body: some View {
-        StageLayout75View(stepNumber: 0,
+        StepLayoutView(stepNumber: 0,
                           goToHome: $goToHome,
                           currentStage: $currentStage)
     }

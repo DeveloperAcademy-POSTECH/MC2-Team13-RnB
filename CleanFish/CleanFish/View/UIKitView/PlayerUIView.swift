@@ -7,32 +7,6 @@
 
 import SwiftUI
 import AVFoundation
-//주석 엘렐레
-
-struct LoopingPlayer: UIViewRepresentable {
-    typealias UIViewType = PlayerUIView
-    
-    let step: Int
-    let courseName: String
-    var isPlay: Bool
-    
-    init(courseName: String, step: Int, isPlay: Bool) {
-        self.step = step
-        self.courseName = courseName
-        self.isPlay = isPlay
-    }
-    
-    func makeUIView(context: Context) -> PlayerUIView {
-        return PlayerUIView(frame: .zero,
-                            courseName: courseName,
-                            step: step)
-    }
-    
-    func updateUIView(_ uiView: PlayerUIView, context: Context) {
-//        uiView.playVideo(courseName: courseName, step: step)
-        isPlay ? uiView.playVideo() : uiView.pauseVideo()
-    }
-}
 
 class PlayerUIView: UIView {
     var playerLayer = AVPlayerLayer()
@@ -120,6 +94,6 @@ class PlayerUIView: UIView {
 
 struct LoopingPlayer_Previews: PreviewProvider {
     static var previews: some View {
-        LoopingPlayer(courseName: "flatfish_sashimi", step: 1, isPlay: false)
+        VideoPlayerView(courseName: "flatfish_sashimi", step: 1, isPlay: false)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  StagePagingView.swift
+//  StepSlideView.swift
 //  CleanFish
 //
 //  Created by KimJS on 2022/06/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StagePagingView: View {
+struct StepSlideView: View {
     // MARK: - EnvironmentObject
     @EnvironmentObject var appController: AppController
     @EnvironmentObject var ePopToRoot: PopToRoot
@@ -20,10 +20,22 @@ struct StagePagingView: View {
     @State private var isVoiceFunctionOn = false
     @State private var isShowPermissionAlert = false
     @State private var isShowGoToHomeAlert = false
+    @State private var voiceCommand: Int = 0 // -1: 이전, 0: 노이즈, 1: 다음
     
     // MARK: - StateObject
     @StateObject var permissionManager: PermissionManager = PermissionManager()
     
+    // MARK: - ObservedObject
+    @ObservedObject var observer: AudioStreamObserver
+    
+    private var streamManager: AudioStreamManager
+    
+    //
+    init() {
+        observer = AudioStreamObserver()
+        streamManager = AudioStreamManager()
+        streamManager.resultObservation(with: observer)
+    }
     
     // MARK: - [애플리케이션 설정창 이동 실시 : 권한 거부 시]
     func goAppSetting() {
@@ -45,16 +57,32 @@ struct StagePagingView: View {
             
             TabView(selection: $currentStage) {
                 ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
-                    StageLayout75View(
+                    StepLayoutView(
                         stepNumber: stepNumber,
                         goToHome: $ePopToRoot.popToRootBool,
                         currentStage: $currentStage
                     )
                     .tag(stepNumber)
                 }
+                
             }
             .onChange(of: currentStage) { num in
                 stepMemory = num
+            }
+            .onChange(of: observer.voiceCommand) { result in
+                switch result {
+                case 1:
+                    if currentStage < appController.courseInfo.totalStep {
+                        currentStage += 1
+                    }
+                case -1:
+                    if currentStage > 1  {
+                        currentStage -= 1
+                    }
+                default:
+                    break
+                }
+                observer.voiceCommand = 0
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .onAppear {
@@ -74,7 +102,7 @@ struct StagePagingView: View {
 struct StagePagingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            StagePagingView()
+            StepSlideView()
                 .previewInterfaceOrientation(.landscapeRight)
         }
     }

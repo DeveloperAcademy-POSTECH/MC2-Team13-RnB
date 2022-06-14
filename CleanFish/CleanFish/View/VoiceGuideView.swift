@@ -35,7 +35,7 @@ struct VoiceGuideView: View {
                     Spacer()
                     if !isGuideFirst {
                         NavigationLink {
-                            StagePagingView()
+                            StepSlideView()
                         } label: {
                             Text("건너뛰기")
                                 .font(.title2)

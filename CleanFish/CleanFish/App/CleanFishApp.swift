@@ -13,7 +13,7 @@ struct CleanFishApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            LoopingPlayer(courseName: "flatfish_sashimi",x step: 2)
+//            ContentView()
             MainView()
                 .environmentObject(appController)
         }
