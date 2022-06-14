@@ -27,7 +27,7 @@ struct StagePagingView: View {
             }
         label: {
             if !permissionManager.permissionState()  {
-                Image(systemName: "mic.slash.circle")
+                Image(systemName: "mic.slash.circle.fill")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .foregroundColor(.primaryBlue)

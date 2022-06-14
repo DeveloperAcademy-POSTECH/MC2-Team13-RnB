@@ -45,7 +45,7 @@ struct StageLayout75View: View {
                             .frame(width: 30, height: 30)
                             .foregroundColor(.primaryBlue)
                     } else {
-                        Image(systemName: "mic.slash.circle")
+                        Image(systemName: "mic.slash.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.primaryBlue)
