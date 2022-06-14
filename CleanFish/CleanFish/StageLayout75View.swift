@@ -9,7 +9,7 @@ import SwiftUI
 
 let unitSize: CGFloat = 72
 let cornerSize: CGFloat = 20
-
+//StageLayoutView
 struct StageLayout75View: View {
     @Binding var goToTutorialPage: Bool
     @Binding var showView: ShowView

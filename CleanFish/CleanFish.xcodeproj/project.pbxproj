@@ -14,6 +14,7 @@
 		9EB362742850F729001E9BEE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB362732850F729001E9BEE /* Colors.xcassets */; };
 		9EB362762850F830001E9BEE /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB362752850F830001E9BEE /* Color+Extension.swift */; };
 		9ED47F56285588D500203073 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED47F55285588D500203073 /* Images.xcassets */; };
+		9ED47F5E28573EDF00203073 /* wave2.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ED47F5D28573EDF00203073 /* wave2.json */; };
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
 		C710ADC52850395500DA181C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710ADC42850395500DA181C /* Recipe.swift */; };
 		C71CB55C285640DB0061E710 /* voicecontrol.gif in Resources */ = {isa = PBXBuildFile; fileRef = C71CB55A285640DB0061E710 /* voicecontrol.gif */; };
@@ -48,6 +49,7 @@
 		9EB362732850F729001E9BEE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ../Colors.xcassets; sourceTree = "<group>"; };
 		9EB362752850F830001E9BEE /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		9ED47F55285588D500203073 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9ED47F5D28573EDF00203073 /* wave2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave2.json; sourceTree = "<group>"; };
 		C7083595284DD0DE0061F707 /* CleanFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C708359F284DD0DF0061F707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C710ADC42850395500DA181C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				C7DF2DC62855D479009CA4DB /* flatfish.json */,
 				C7DF2DC42855D475009CA4DB /* mackerel.json */,
 				C78D00C62854A61B00476032 /* wave.json */,
+				9ED47F5D28573EDF00203073 /* wave2.json */,
 				C71CB55B285640DB0061E710 /* swipe.gif */,
 				C71CB55A285640DB0061E710 /* voicecontrol.gif */,
 			);
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E31F892855B42E00CD0188 /* GoogleService-Info.plist in Resources */,
+				9ED47F5E28573EDF00203073 /* wave2.json in Resources */,
 				C71CB55D285640DB0061E710 /* swipe.gif in Resources */,
 				C7DF2DC52855D475009CA4DB /* mackerel.json in Resources */,
 				9EB362742850F729001E9BEE /* Colors.xcassets in Resources */,

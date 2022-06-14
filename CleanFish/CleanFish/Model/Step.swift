@@ -18,4 +18,12 @@ struct Step: Codable {
     var totalStep: Int // 총 단계
     var title: String // 현재 단계의 제목
     var content: String // 현재 단계의 내용
+    
+    init(courseID: UUID = UUID(), currentStep: Int = 0, totalStep: Int = 0, title: String = "", content: String = "") {
+        self.courseID = courseID
+        self.currentStep = currentStep
+        self.totalStep = totalStep
+        self.title = title
+        self.content = content
+    }
 }

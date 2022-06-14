@@ -13,6 +13,7 @@ struct SwipeGuideView: View {
     @StateObject private var permissionManager: PermissionManager = PermissionManager()
     
     @Binding var goToTutorialPage: Bool
+    @Binding var showView: ShowView
     
     let courseInfo: RecipeVO
     
@@ -35,7 +36,7 @@ struct SwipeGuideView: View {
             
             ZStack {
                 NavigationLink("", isActive: $permissionManager.goToStagePagingView) {
-                    StagePagingView(goToTutorialPage: $goToTutorialPage, courseInfo: self.courseInfo)
+                    StagePagingView(goToTutorialPage: $goToTutorialPage, showView: $showView, courseInfo: self.courseInfo)
                         .environmentObject(permissionManager)
                 }
                 .hidden()

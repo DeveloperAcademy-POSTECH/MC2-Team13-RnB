@@ -18,7 +18,7 @@ struct MainView: View {
         NavigationView {
             VStack {
                 ZStack {
-                    LottieView(filename: "wave", animationSpeed: 1)
+                    LottieView(filename: "wave2", animationSpeed: 1)
                         .animation(.linear(duration: 0.3), value: UUID())
                         .offset(x: 0, y: showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
                     ZStack {

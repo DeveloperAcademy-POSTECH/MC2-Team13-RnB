@@ -80,7 +80,7 @@ struct SelectRecipeView: View {
                     
                     ZStack {
                         NavigationLink("", isActive: $goToTutorialPage) {
-                            VoiceGuideView(goToTutorialPage: $goToTutorialPage, courseInfo: self.courseInfo ?? RecipeVO())
+                            VoiceGuideView(goToTutorialPage: $goToTutorialPage, showView: $showView, courseInfo: self.courseInfo ?? RecipeVO())
                         }
                         .hidden()
                         
