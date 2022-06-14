@@ -28,89 +28,38 @@ struct StagePagingView: View {
     }
     
     var body: some View {
-        TabView(selection: $currentStage) {
-            ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
-                VStack {
-                    Button {
-                        if permissionManager.permissionState() {
-                            isVoiceFunctionOn.toggle()
-                        } else {
-                            isShowPermissionAlert = true
-                        }
-                    } label: {
-                        Image(systemName: permissionManager.permissionState()
-                              ? "mic.circle.fill"
-                              : "mic.slash.circle")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.primaryBlue)
-                        .alert(isPresented: $isShowPermissionAlert) {
-                            Alert(title: Text("음성 인식"),
-                                  message: Text("기능을 사용하시려면 마이크 권한을 호용해주세요.\n확인을 누르면 설정으로 이동합니다"),
-                                  primaryButton: .destructive(Text("취소")) { },
-                                  secondaryButton: .cancel(Text("확인")) {
-                                goAppSetting()
-                            })
-                        }
-                    }
-                    
-                    Button {
-                        appController.initBuffer()
-                        appController.goToHome()
-                    } label: {
-                        Text("홈으로 갑니다.")
-                    }
-                    
-                    Text("Current Step: \(stepNumber)")
-                    
-                    if stepNumber == appController.courseInfo.totalStep {
-                        Button("첫단계로") {
-                            currentStage = 1
-                        }
-                    }
-                }
-                .tag(stepNumber)
-                .onAppear {
-                    NetworkManager.shared.getStepInfo(course: appController.courseInfo,
-                                                      stepNumber: stepNumber) { step in
-                        print(step?.currentStep ?? 0)
-                        print(step?.content ?? "")
-                    }
+        ZStack {
+            VStack {
+                Spacer()
+                Image("staticwave")
+                    .resizable()
+                    .scaledToFit()
+                    .offset(x: 0, y: 1)
+            }
+            .ignoresSafeArea()
+            
+            TabView(selection: $currentStage) {
+                ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
+                    StageLayout75View(stepNumber: stepNumber,
+                                      currentStage: $currentStage)
+                        .tag(stepNumber)
                 }
             }
-        }
-        .onChange(of: currentStage) { num in
-            stepMemory = num
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .onAppear {
-            if !appController.getMemory.courseID.isEmpty {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    currentStage = appController.getMemory.courseStep
-                }
+            .onChange(of: currentStage) { num in
+                stepMemory = num
             }
-            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                      forKey: "orientation")
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .onAppear {
+                if !appController.getMemory.courseID.isEmpty {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        currentStage = appController.getMemory.courseStep
+                    }
+                }
+                UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                          forKey: "orientation")
+            }
         }
         .navigationBarHidden(true)
-    }
-}
-
-struct StageView1: View {
-    var body: some View {
-        Color.red
-    }
-}
-
-struct StageView2: View {
-    var body: some View {
-        Color.blue
-    }
-}
-
-struct StageView3: View {
-    var body: some View {
-        Color.green
     }
 }
 
@@ -119,8 +68,6 @@ struct StagePagingView_Previews: PreviewProvider {
         Group {
             StagePagingView()
                 .previewInterfaceOrientation(.landscapeRight)
-            //            StagePagingView()
-            //                .previewInterfaceOrientation(.landscapeLeft)
         }
     }
 }
