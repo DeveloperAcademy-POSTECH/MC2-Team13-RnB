@@ -97,8 +97,6 @@ struct SelectRecipeView: View {
                             VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
                         
-                        .hidden()
-                        
                         Button {
                             appController.initBuffer()
                             isShowOrientationAlert.toggle()

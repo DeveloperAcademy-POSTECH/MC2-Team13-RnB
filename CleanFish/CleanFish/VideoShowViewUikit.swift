@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+//주석 엘렐레
 
 struct LoopingPlayer: UIViewRepresentable {
     typealias UIViewType = PlayerUIView
@@ -47,6 +48,8 @@ class PlayerUIView: UIView {
         let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
         print(URL.absoluteString, #function)
         player = AVPlayer(url: URL)
+        player.preventsDisplaySleepDuringVideoPlayback = true
+        player.automaticallyWaitsToMinimizeStalling = true
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer)
@@ -76,27 +79,28 @@ class PlayerUIView: UIView {
         //        playerLooper = AVPlayerLooper(player: player, templateItem: player)
     }
     
-    func playVideo(courseName: String, step: Int) {
-        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
-        print(URL.absoluteString, #function)
-        player = AVPlayer(url: URL)
-        playerLayer.player = player
-        playerLayer.videoGravity = .resizeAspectFill
-        layer.addSublayer(playerLayer)
-        
-        player.actionAtItemEnd = .none
-        NotificationCenter
-            .default
-            .addObserver(self,
-                         selector: #selector(rewindVideo(notification:)),
-                         name: .AVPlayerItemDidPlayToEndTime,
-                         object: player.currentItem)
-        player.play()
-    }
+//    func playVideo(courseName: String, step: Int) {
+//        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
+//        print(URL.absoluteString, #function)
+//        player = AVPlayer(url: URL)
+//        player.preventsDisplaySleepDuringVideoPlayback = true
+//        playerLayer.player = player
+//        playerLayer.videoGravity = .resizeAspectFill
+//        layer.addSublayer(playerLayer)
+//
+//        player.actionAtItemEnd = .none
+//        NotificationCenter
+//            .default
+//            .addObserver(self,
+//                         selector: #selector(rewindVideo(notification:)),
+//                         name: .AVPlayerItemDidPlayToEndTime,
+//                         object: player.currentItem)
+//        self.playVideo()
+//    }
     
     func playVideo() {
-        player.playImmediately(atRate: 0)
-        player.play()
+        player.seek(to: .zero)
+        player.playImmediately(atRate: 1)
     }
     
     func pauseVideo() {

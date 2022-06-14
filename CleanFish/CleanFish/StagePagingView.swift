@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct StagePagingView: View {
+    // MARK: - EnvironmentObject
     @EnvironmentObject var appController: AppController
+    @EnvironmentObject var ePopToRoot: PopToRoot
     
+    // MARK: - AppStorage
     @AppStorage("STEP_BUFFER") var stepMemory = 1
     
+    // MARK: - State
     @State private var currentStage: Int = 0
     @State private var isVoiceFunctionOn = false
     @State private var isShowPermissionAlert = false
     @State private var isShowGoToHomeAlert = false
     
+    // MARK: - StateObject
     @StateObject var permissionManager: PermissionManager = PermissionManager()
     
     
@@ -40,8 +45,11 @@ struct StagePagingView: View {
             
             TabView(selection: $currentStage) {
                 ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
-                    StageLayout75View(stepNumber: stepNumber,
-                                      currentStage: $currentStage)
+                    StageLayout75View(
+                        stepNumber: stepNumber,
+                        goToHome: $ePopToRoot.popToRootBool,
+                        currentStage: $currentStage
+                    )
                     .tag(stepNumber)
                 }
             }

@@ -16,6 +16,7 @@ struct VoiceGuideView: View {
     @AppStorage("COURSE_NAME_BUFFER") var courseMemory = ""
     
     @EnvironmentObject var appController: AppController
+    @EnvironmentObject var ePopToRoot: PopToRoot
     
     let selectedCourse: String
     
@@ -32,49 +33,53 @@ struct VoiceGuideView: View {
                     .fontWeight(.bold)
                 HStack {
                     Spacer()
-                   if !isGuideFirst {
-                       NavigationLink {
-                           StagePagingView()
-                       } label: {
-                           Text("건너뛰기")
-                               .font(.title2)
-                               .fontWeight(.medium)
-                               .foregroundColor(Color("StartButton"))
-                       }
-                   }
+                    if !isGuideFirst {
+                        NavigationLink {
+                            StagePagingView()
+                        } label: {
+                            Text("건너뛰기")
+                                .font(.title2)
+                                .fontWeight(.medium)
+                                .foregroundColor(Color("StartButton"))
+                        }
+                    }
                 }
             }
-          .padding(.top, 40)
-          
+            .padding(.top, 40)
+            
             GIFView(fileName: "voicecontrol")
                 .frame(width: 374, height: 160, alignment: .center)
-
-    // 다음 버튼
-              NavigationLink {
-                  SwipeGuideView()
-                } label: {
-                    Text("다음")
-                        .fontWeight(.medium)
-                        .font(.system(size: 22))
-                        .frame(width: 377, height: 52, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(Color("StartButton"))
-                        .cornerRadius(10)
-                }
+            
+//            Button("sdafasdg") {
+//                ePopToRoot.popToRootBool = false
+//            }
+            
+            // 다음 버튼
+            NavigationLink {
+                SwipeGuideView()
+            } label: {
+                Text("다음")
+                    .fontWeight(.medium)
+                    .font(.system(size: 22))
+                    .frame(width: 377, height: 52, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color("StartButton"))
+                    .cornerRadius(10)
+            }
         }
         .onAppear {
             NetworkManager.shared
                 .getTotalStep(courseName: selectedCourse) { courseInfo in
-                if let courseInfo = courseInfo {
-                    self.appController.courseInfo = courseInfo
-                    self.courseMemory = courseInfo.courseName
+                    if let courseInfo = courseInfo {
+                        self.appController.courseInfo = courseInfo
+                        self.courseMemory = courseInfo.courseName
+                    }
                 }
-            }
         }
         .onDisappear {
             isGuideFirst = false
         }
-        .navigationBarHidden(true)
+//        .navigationBarHidden(true)
     }
 }
 

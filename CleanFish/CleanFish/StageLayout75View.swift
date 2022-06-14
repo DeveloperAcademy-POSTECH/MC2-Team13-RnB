@@ -11,19 +11,22 @@ let unitSize: CGFloat = 72
 let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
-    @EnvironmentObject var appController: AppController
-    //    @State private var appController: AppController
-    @EnvironmentObject var ePopToRoot: PopToRoot
-    
     let stepNumber: Int
     
-    @State private var isVoiceFunctionOn = false
+    // MARK: - EnvironmentObject
+    @EnvironmentObject var appController: AppController
+    
+    // MARK: - State
+    @State private var isVoiceFunctionOn = true
     @State private var isShowPermissionAlert = false
     @State private var isPlayVideo = true
     @State private var stepInfo: Step?
     
+    // MARK: - Binding
+    @Binding var goToHome: Bool
     @Binding var currentStage: Int
     
+    // MARK: - StateObject
     @StateObject var permissionManager: PermissionManager = PermissionManager()
     
     func changeOrientation(to orientation: UIInterfaceOrientation) {
@@ -41,7 +44,8 @@ struct StageLayout75View: View {
             ZStack {
                 //                VideoView()
                 LoopingPlayer(courseName: appController.courseInfo.courseName,
-                              step: stepNumber, isPlay: isPlayVideo)
+                              step: stepNumber,
+                              isPlay: isPlayVideo)
                 VStack {
                     Spacer()
                     HStack {
@@ -91,7 +95,7 @@ struct StageLayout75View: View {
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
-                            ePopToRoot.popToRootBool.toggle()
+                            goToHome = false
                         } label: {
                             Text("홈으로")
                                 .fontWeight(.medium)
@@ -113,7 +117,7 @@ struct StageLayout75View: View {
                                 isShowPermissionAlert = true
                             }
                         } label: {
-                            Image(systemName: permissionManager.permissionState()
+                            Image(systemName: permissionManager.permissionState() && isVoiceFunctionOn
                                   ? "mic.circle.fill"
                                   : "mic.slash.circle")
                             .resizable()
@@ -133,7 +137,7 @@ struct StageLayout75View: View {
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
-                            ePopToRoot.popToRootBool = false
+                            goToHome = false
                         } label: {
                             Image(systemName: "house.circle.fill")
                                 .resizable()
@@ -167,9 +171,11 @@ struct VideoView: View {
 
 struct StageLayout75ViewPreviewContainer: View {
     @State private var currentStage: Int = 0
+    @State private var goToHome: Bool = false
     
     var body: some View {
         StageLayout75View(stepNumber: 0,
+                          goToHome: $goToHome,
                           currentStage: $currentStage)
     }
 }
