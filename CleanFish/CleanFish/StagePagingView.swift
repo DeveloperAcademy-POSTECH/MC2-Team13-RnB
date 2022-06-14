@@ -18,13 +18,20 @@ struct StagePagingView: View {
     @State private var isShowGoToHomeAlert = false
     
     @StateObject var permissionManager: PermissionManager = PermissionManager()
-    
+    @ObservedObject var observer: AudioStreamObserver
+    private var streamManager: AudioStreamManager
     
     // MARK: - [애플리케이션 설정창 이동 실시 : 권한 거부 시]
     func goAppSetting() {
         if let url = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    init() {
+        observer = AudioStreamObserver()
+        streamManager = AudioStreamManager()
+        streamManager.resultObservation(with: observer)
     }
     
     var body: some View {
@@ -40,10 +47,19 @@ struct StagePagingView: View {
             
             TabView(selection: $currentStage) {
                 ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
-                    StageLayout75View(stepNumber: stepNumber, // appController: appController,
-                                      currentStage: $currentStage)
-                        .tag(stepNumber)
+//                        if observer.currentSound == "다음" {
+//                            currentStage += 1
+//                        } else if observer.currentSound == "이전"{
+//                            currentStage -= 1
+//                        }
+                    
+//                    Group {
+                        StageLayout75View(stepNumber: stepNumber, // appController: appController,
+                                          currentStage: $currentStage)
+                            .tag(stepNumber)
+//                    }
                 }
+                
             }
             .onChange(of: currentStage) { num in
                 stepMemory = num
