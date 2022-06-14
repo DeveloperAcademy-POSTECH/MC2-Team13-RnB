@@ -15,6 +15,7 @@ struct MainView: View {
     @State var backgroudPosition = 0.0
     @State var isShowContinueAlert = false
     @State var goToStagePagingView = false
+    @StateObject var ePopToRoot: PopToRoot = PopToRoot(popToRootBool: false)
     
     var body: some View {
         NavigationView {
@@ -40,11 +41,12 @@ struct MainView: View {
                             SelectRecipeView(selectedFish: $selectedFish)
                         }
                     }
-//                    Text("마지막으로 본 단계 \(appController.getMemory.courseStep)\n\(appController.getMemory.courseID)")
                 }
                 .alert("이어보기", isPresented: $isShowContinueAlert) {
                     VStack {
-                        Button("취소", role: .cancel) { }
+                        Button("취소", role: .cancel) {
+                            appController.initBuffer()
+                        }
                         Button("확인", role: .none) {
                             DispatchQueue.main.async {
                                 UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
@@ -78,6 +80,7 @@ struct MainView: View {
             .navigationTitle("")
             .navigationBarHidden(true)
         }
+        .environmentObject(ePopToRoot)
     }
 }
 

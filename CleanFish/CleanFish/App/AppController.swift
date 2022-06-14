@@ -29,7 +29,9 @@ class AppController: ObservableObject {
     
     func showFishView() {
         showView.recipeView = false
+        print(#function)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            print("DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) in \(#function)")
             withAnimation {
                 self.showView.fishView = true
             }
@@ -44,17 +46,19 @@ class AppController: ObservableObject {
     }
     
     func goToHome() {
-        self.isSelectRecipe = false
-        print(#function)
-//        self.showFishView()
 //        DispatchQueue.main.async {
 //            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
 //                                      forKey: "orientation")
 //        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        
+//        self.isSelectRecipe = true
+//        print(#function)
+//        self.showFishView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
 //            self.isSelectRecipe = false
-//            self.showFishView()
-//        }
+            self.showFishView()
+        }
     }
     
     func initBuffer() {

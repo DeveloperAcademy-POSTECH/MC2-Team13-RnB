@@ -7,9 +7,20 @@
 
 import SwiftUI
 
+class PopToRoot: ObservableObject {
+    @Published var popToRootBool: Bool
+    
+    init(popToRootBool: Bool) {
+        self.popToRootBool = popToRootBool
+    }
+}
+    
+
 struct SelectRecipeView: View {
     // MARK: - EnvironmentObject
     @EnvironmentObject var appController: AppController
+    
+    @EnvironmentObject var ePopToRoot: PopToRoot
     
     // MARK: - State Property
     @State private var isShowOrientationAlert: Bool = false
@@ -81,9 +92,11 @@ struct SelectRecipeView: View {
                     }
                     
                     ZStack {
-                        NavigationLink("", isActive: $appController.isSelectRecipe) {
+                        NavigationLink("", isActive: $ePopToRoot.popToRootBool) {
+//                        NavigationLink("", isActive: $appController.isSelectRecipe) {
                             VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
+                        
                         .hidden()
                         
                         Button {
@@ -118,7 +131,7 @@ struct SelectRecipeView: View {
                                                                   forKey: "orientation")
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        self.appController.isSelectRecipe.toggle()
+                                        self.ePopToRoot.popToRootBool = true
                                     }
                                 }
                             }

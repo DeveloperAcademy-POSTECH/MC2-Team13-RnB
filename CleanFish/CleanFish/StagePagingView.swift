@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StagePagingView: View {
-    @EnvironmentObject private var appController: AppController
+    @EnvironmentObject var appController: AppController
     
     @AppStorage("STEP_BUFFER") var stepMemory = 0
     
@@ -40,7 +40,7 @@ struct StagePagingView: View {
             
             TabView(selection: $currentStage) {
                 ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
-                    StageLayout75View(stepNumber: stepNumber,
+                    StageLayout75View(stepNumber: stepNumber, // appController: appController,
                                       currentStage: $currentStage)
                         .tag(stepNumber)
                 }

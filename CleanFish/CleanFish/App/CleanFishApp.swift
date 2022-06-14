@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CleanFishApp: App {
-    @StateObject private var appController: AppController = AppController()
+    @ObservedObject private var appController: AppController = AppController()
     
     var body: some Scene {
         WindowGroup {

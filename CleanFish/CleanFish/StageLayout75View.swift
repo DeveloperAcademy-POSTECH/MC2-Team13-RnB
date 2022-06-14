@@ -11,7 +11,9 @@ let unitSize: CGFloat = 72
 let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
-    @EnvironmentObject private var appController: AppController
+    @EnvironmentObject var appController: AppController
+//    @State private var appController: AppController
+    @EnvironmentObject var ePopToRoot: PopToRoot
     
     let stepNumber: Int
     
@@ -70,8 +72,6 @@ struct StageLayout75View: View {
                     .padding(.top, 14)
                 Spacer()
                 
-                
-                
                 if stepNumber == appController.courseInfo.totalStep {
                     VStack {
                         Button {
@@ -90,6 +90,7 @@ struct StageLayout75View: View {
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
+                            ePopToRoot.popToRootBool.toggle()
                         } label: {
                             Text("홈으로")
                                 .fontWeight(.medium)
@@ -133,6 +134,7 @@ struct StageLayout75View: View {
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
+                            ePopToRoot.popToRootBool = false
                         } label: {
                             Image(systemName: "house.circle.fill")
                                 .resizable()
@@ -149,7 +151,6 @@ struct StageLayout75View: View {
                                               stepNumber: stepNumber) { step in
                 stepInfo = step
             }
-            
         }
         .navigationBarHidden(true)
     }

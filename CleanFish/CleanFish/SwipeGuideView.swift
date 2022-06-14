@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SwipeGuideView: View {
     // 권한에 대한 로직을 수행하는 변수
-    @EnvironmentObject private var appController: AppController
+    @EnvironmentObject var appController: AppController
     @StateObject private var permissionManager: PermissionManager = PermissionManager()
 
     var body: some View {
