@@ -9,64 +9,113 @@ import SwiftUI
 import AVFoundation
 
 struct LoopingPlayer: UIViewRepresentable {
+    typealias UIViewType = PlayerUIView
+    
     let step: Int
-    init(step: Int) {
+    let courseName: String
+    var isPlay: Bool
+    
+    init(courseName: String, step: Int, isPlay: Bool) {
         self.step = step
+        self.courseName = courseName
+        self.isPlay = isPlay
     }
-    func makeUIView(context: Context) -> UIView {
-        return PlayerUIView(frame: .zero, step: step)
+    
+    func makeUIView(context: Context) -> PlayerUIView {
+        return PlayerUIView(frame: .zero,
+                            courseName: courseName,
+                            step: step)
     }
-    func updateUIView(_ uiView: UIView, context: Context) {
-        
+    
+    func updateUIView(_ uiView: PlayerUIView, context: Context) {
+//        uiView.playVideo(courseName: courseName, step: step)
+        isPlay ? uiView.playVideo() : uiView.pauseVideo()
     }
 }
 
 class PlayerUIView: UIView {
-    private var playerLayer = AVPlayerLayer()
-    private var playerLooper: AVPlayerLooper?
+    var playerLayer = AVPlayerLayer()
+//    private var playerLooper: AVPlayerLooper?
+    var player = AVPlayer()
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    init(frame: CGRect, step: Int) {
+    init(frame: CGRect, courseName: String, step: Int) {
         super.init(frame: frame)
-        
-        let URL = NetworkManager.shared.getVideoURL(courseName: "flatfish_sashimi", step: step)
-        
-        // 동영상 불러오기
-        let playerItem = AVPlayerItem(url: URL)
-        
-        // 동영상 플레이어 셋팅하기
-        let player = AVQueuePlayer(playerItem: playerItem)
+        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
+        print(URL.absoluteString, #function)
+        player = AVPlayer(url: URL)
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer)
         
-        // 동영상 반복하기
-//        player.actionAtItemEnd = .none
-//        NotificationCenter.default.addObserver(self, selector:  #selector(rewindVideo(notification:)), name:
-//                .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
-        playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
+        player.actionAtItemEnd = .none
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(rewindVideo(notification:)),
+                         name: .AVPlayerItemDidPlayToEndTime,
+                         object: player.currentItem)
+//        player.play()
+//        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
+//        print(URL.absoluteString, #function)
         
-        // 동영상 재생하기
+        // 동영상 불러오기
+        // let playerItem = AVPlayerItem(url: URL)
+        
+        // 동영상 플레이어 셋팅하기
+        
+        // let player = AVQueuePlayer(playerItem: playerItem)
+//        playerLayer.player = player
+//        playerLayer.videoGravity = .resizeAspectFill
+//        layer.addSublayer(playerLayer)
+        
+        // 동영상 반복하기
+        //        playerLooper = AVPlayerLooper(player: player, templateItem: player)
+    }
+    
+    func playVideo(courseName: String, step: Int) {
+        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
+        print(URL.absoluteString, #function)
+        player = AVPlayer(url: URL)
+        playerLayer.player = player
+        playerLayer.videoGravity = .resizeAspectFill
+        layer.addSublayer(playerLayer)
+        
+        player.actionAtItemEnd = .none
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(rewindVideo(notification:)),
+                         name: .AVPlayerItemDidPlayToEndTime,
+                         object: player.currentItem)
         player.play()
     }
     
-//    @objc
-//    func rewindVideo(notification: Notification) {
-//        playerLayer.player?.seek(to: .zero)
-//    }
+    func playVideo() {
+        player.playImmediately(atRate: 0)
+        player.play()
+    }
+    
+    func pauseVideo() {
+        player.pause()
+    }
+    
+    @objc
+    func rewindVideo(notification: Notification) {
+        playerLayer.player?.seek(to: .zero)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        playerLayer.frame = CGRect(x: 0, y: 15, width: 504, height: 360)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        playerLayer.frame = bounds
     }
 }
 
 struct LoopingPlayer_Previews: PreviewProvider {
     static var previews: some View {
-        LoopingPlayer(step: 1)
+        LoopingPlayer(courseName: "flatfish_sashimi", step: 1, isPlay: false)
     }
 }

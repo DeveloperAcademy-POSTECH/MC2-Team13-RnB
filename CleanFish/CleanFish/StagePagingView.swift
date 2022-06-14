@@ -10,7 +10,7 @@ import SwiftUI
 struct StagePagingView: View {
     @EnvironmentObject var appController: AppController
     
-    @AppStorage("STEP_BUFFER") var stepMemory = 0
+    @AppStorage("STEP_BUFFER") var stepMemory = 1
     
     @State private var currentStage: Int = 0
     @State private var isVoiceFunctionOn = false
@@ -40,9 +40,9 @@ struct StagePagingView: View {
             
             TabView(selection: $currentStage) {
                 ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
-                    StageLayout75View(stepNumber: stepNumber, // appController: appController,
+                    StageLayout75View(stepNumber: stepNumber,
                                       currentStage: $currentStage)
-                        .tag(stepNumber)
+                    .tag(stepNumber)
                 }
             }
             .onChange(of: currentStage) { num in

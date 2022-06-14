@@ -12,13 +12,14 @@ let cornerSize: CGFloat = 20
 
 struct StageLayout75View: View {
     @EnvironmentObject var appController: AppController
-//    @State private var appController: AppController
+    //    @State private var appController: AppController
     @EnvironmentObject var ePopToRoot: PopToRoot
     
     let stepNumber: Int
     
     @State private var isVoiceFunctionOn = false
     @State private var isShowPermissionAlert = false
+    @State private var isPlayVideo = true
     @State private var stepInfo: Step?
     
     @Binding var currentStage: Int
@@ -38,7 +39,9 @@ struct StageLayout75View: View {
     var body: some View {
         HStack(spacing: 24) {
             ZStack {
-                VideoView()
+                //                VideoView()
+                LoopingPlayer(courseName: appController.courseInfo.courseName,
+                              step: stepNumber, isPlay: isPlayVideo)
                 VStack {
                     Spacer()
                     HStack {
@@ -54,7 +57,6 @@ struct StageLayout75View: View {
                 }
                 .padding()
             }
-//            .frame(width: 7 * unitSize, height: 5 * unitSize)
             .aspectRatio(7/5, contentMode: .fit)
             .cornerRadius(cornerSize)
             .padding(.top, 15)
@@ -65,7 +67,6 @@ struct StageLayout75View: View {
                 Text("\(stepInfo?.title ?? "")")
                     .font(.title)
                     .bold()
-                    .border(.pink)
                     .padding(.top, 32)
                 Text("\(stepInfo?.content ?? "")")
                     .font(.title2)
@@ -102,11 +103,9 @@ struct StageLayout75View: View {
                                 .cornerRadius(10)
                         }
                     }
-                    
                 } else {
                     HStack {
                         Spacer()
-                        
                         Button {
                             if permissionManager.permissionState() {
                                 isVoiceFunctionOn.toggle()
@@ -120,14 +119,14 @@ struct StageLayout75View: View {
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.primaryBlue)
-                            .alert(isPresented: $isShowPermissionAlert) {
-                                Alert(title: Text("음성 인식"),
-                                      message: Text("기능을 사용하시려면 마이크 권한을 호용해주세요.\n확인을 누르면 설정으로 이동합니다."),
-                                      primaryButton: .destructive(Text("취소")) { },
-                                      secondaryButton: .cancel(Text("확인")) {
-                                    goAppSetting()
-                                })
-                            }
+                        }
+                        .alert(isPresented: $isShowPermissionAlert) {
+                            Alert(title: Text("음성 인식"),
+                                  message: Text("기능을 사용하시려면 마이크 권한을 호용해주세요.\n확인을 누르면 설정으로 이동합니다."),
+                                  primaryButton: .destructive(Text("취소")) { },
+                                  secondaryButton: .cancel(Text("확인")) {
+                                goAppSetting()
+                            })
                         }
                         
                         //
@@ -146,10 +145,14 @@ struct StageLayout75View: View {
             }
             .layoutPriority(0)
         }
+        .onChange(of: currentStage) { currentStep in
+            isPlayVideo = (currentStep == stepNumber)
+        }
         .onAppear {
             NetworkManager.shared.getStepInfo(course: appController.courseInfo,
                                               stepNumber: stepNumber) { step in
                 stepInfo = step
+                print(stepInfo)
             }
         }
         .navigationBarHidden(true)
