@@ -86,7 +86,7 @@ class AudioStreamManager {
         catch {
             fatalError("Unable to start audio engine: \(error.localizedDescription)")
         }
-        engine.inputNode.installTap(onBus: inputBus, bufferSize: 4000,
+        engine.inputNode.installTap(onBus: inputBus, bufferSize: 6000,
                                     format: micInputFormat, block: analyzeAudio(buffer:at:))
         
     }

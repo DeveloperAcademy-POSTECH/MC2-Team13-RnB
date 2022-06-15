@@ -29,7 +29,7 @@ struct MainView: View {
                     }
                     
                     LottieView(filename: "wave", animationSpeed: 1)
-                        .animation(.linear(duration: 0.3), value: UUID())
+                        .animation(.linear(duration: 0.4), value: UUID())
                         .offset(x: 0, y: appController.showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
                     ZStack {
                         if self.appController.showView.fishView {

@@ -122,12 +122,12 @@
 		C7083597284DD0DE0061F707 /* CleanFish */ = {
 			isa = PBXGroup;
 			children = (
+				C75233A2285189B8005E49D7 /* .swiftlint.yml */,
 				C78D00CB2854BE4D00476032 /* App */,
 				C78D00CC2854BE5D00476032 /* Assets */,
 				C769D6E4285634DA00BC60E8 /* Manager */,
 				C78D00CE2854BE9200476032 /* Model */,
 				C78D00CD2854BE8800476032 /* Extension */,
-				C75233A2285189B8005E49D7 /* .swiftlint.yml */,
 				C7C5022B2858CCDB00B9C5BD /* View */,
 				F6F8B27C285347CD005F3925 /* VideoShowView.swift */,
 				F6BBD2A42858819500F812EA /* TestVoiceView.swift */,

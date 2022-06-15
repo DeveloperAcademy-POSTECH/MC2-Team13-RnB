@@ -30,14 +30,16 @@ class AppController: ObservableObject {
     func showFishView() {
         showView.recipeView = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            withAnimation {
+            withAnimation(.linear(duration: 0.4)) {
                 self.showView.fishView = true
             }
         }
     }
     
     func showRecipeView() {
-        showView.fishView = false
+        withAnimation(.linear(duration: 0.5)) {
+            showView.fishView = false
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.showView.recipeView = true
         }

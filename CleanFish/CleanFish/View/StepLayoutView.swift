@@ -36,6 +36,23 @@ struct StepLayoutView: View {
         }
     }
     
+    func attributedText(_ text: String) -> Text {
+        var resultString = Text("")
+        text.components(separatedBy: "(").forEach { firstSep in
+            if firstSep.contains(")") {
+                if let blueString = firstSep.components(separatedBy: ")").first {
+                    resultString = resultString + Text(blueString).fontWeight(.semibold).foregroundColor(.primaryBlue)
+                }
+                if let blackString = firstSep.components(separatedBy: ")").last {
+                    resultString = resultString + Text(blackString).fontWeight(.medium)
+                }
+            } else {
+                resultString = resultString + Text(firstSep).fontWeight(.medium)
+            }
+        }
+        return resultString
+    }
+    
     var body: some View {
         HStack(spacing: 24) {
             ZStack {
@@ -66,23 +83,24 @@ struct StepLayoutView: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(stepInfo?.title ?? "")")
-                    .font(.title)
-                    .bold()
-                    .padding(.top, 32)
-                Text("\(stepInfo?.content ?? "")")
                     .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.top, 32)
+                attributedText("\(stepInfo?.content ?? "")")
+                    .font(.title3)
                     .padding(.top, 14)
+                    .lineSpacing(5)
                 Spacer()
                 
                 if stepNumber == appController.courseInfo.totalStep {
-                    VStack {
+                    VStack(spacing: 15) {
                         Button {
                             currentStage = 1
                         } label: {
                             Text("1단계로")
                                 .fontWeight(.medium)
-                                .font(.title2)
-                                .frame(height: 52, alignment: .center)
+                                .font(.title3)
+                                .frame(height: 45, alignment: .center)
                                 .frame(maxWidth: .infinity)
                                 .foregroundColor(.white)
                                 .background(Color("StartButton"))
@@ -96,8 +114,8 @@ struct StepLayoutView: View {
                         } label: {
                             Text("홈으로")
                                 .fontWeight(.medium)
-                                .font(.title2)
-                                .frame(height: 52, alignment: .center)
+                                .font(.title3)
+                                .frame(height: 45, alignment: .center)
                                 .frame(maxWidth: .infinity)
                                 .foregroundColor(.white)
                                 .background(Color("StartButton"))
@@ -116,7 +134,7 @@ struct StepLayoutView: View {
                         } label: {
                             Image(systemName: permissionManager.permissionState() && isVoiceFunctionOn
                                   ? "mic.circle.fill"
-                                  : "mic.slash.circle")
+                                  : "mic.slash.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.primaryBlue)
@@ -153,7 +171,6 @@ struct StepLayoutView: View {
             NetworkManager.shared.getStepInfo(course: appController.courseInfo,
                                               stepNumber: stepNumber) { step in
                 stepInfo = step
-                print(stepInfo)
             }
         }
         .navigationBarHidden(true)

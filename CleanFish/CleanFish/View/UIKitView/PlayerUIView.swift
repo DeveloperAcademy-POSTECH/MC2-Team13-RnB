@@ -35,7 +35,7 @@ class PlayerUIView: UIView {
                          selector: #selector(rewindVideo(notification:)),
                          name: .AVPlayerItemDidPlayToEndTime,
                          object: player.currentItem)
-//        player.play()
+        player.play()
 //        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
 //        print(URL.absoluteString, #function)
         

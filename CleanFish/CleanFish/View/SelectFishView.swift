@@ -15,7 +15,7 @@ struct SelectFishView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
+            VStack(spacing: 50) {
                 Spacer()
                 ForEach(Fish.allCases, id: \.rawValue) {fish in
                     HStack {
@@ -36,12 +36,12 @@ struct SelectFishView: View {
                     }
                 }
             }
-            .padding(.bottom, 130)
+            .padding(.bottom, 180)
             .padding(.horizontal, 30)
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.move(edge: .bottom))
-        .animation(.linear(duration: 0.3), value: UUID())
+        .animation(.linear(duration: 0.7), value: appController.showView.fishView)
         .navigationBarHidden(true)
     }
 }
