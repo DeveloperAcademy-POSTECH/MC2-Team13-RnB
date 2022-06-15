@@ -3,7 +3,7 @@
 //  CleanFish
 //
 //  Created by Moon Jongseek on 2022/06/08.
-//
+//  버그 발생 전 파일입니다.
 
 import SwiftUI
 
