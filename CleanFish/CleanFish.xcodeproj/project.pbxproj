@@ -19,9 +19,10 @@
 		C71CB55C285640DB0061E710 /* voicecontrol.gif in Resources */ = {isa = PBXBuildFile; fileRef = C71CB55A285640DB0061E710 /* voicecontrol.gif */; };
 		C71CB55D285640DB0061E710 /* swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = C71CB55B285640DB0061E710 /* swipe.gif */; };
 		C71CB55F2856410C0061E710 /* GIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CB55E2856410C0061E710 /* GIFView.swift */; };
+		C71CB561285811C80061E710 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CB560285811C80061E710 /* AppController.swift */; };
+		C71CB563285825830061E710 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = C71CB562285825830061E710 /* wave.json */; };
 		C769D6E328562EB800BC60E8 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769D6E228562EB800BC60E8 /* PermissionManager.swift */; };
 		C76FA9522853A1240056F935 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FA9512853A1240056F935 /* NetworkManager.swift */; };
-		C78D00C72854A61B00476032 /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = C78D00C62854A61B00476032 /* wave.json */; };
 		C78D00D02854BEB900476032 /* RecipeVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78D00CF2854BEB900476032 /* RecipeVO.swift */; };
 		C79478A528507F6B00AB4124 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A428507F6B00AB4124 /* LottieView.swift */; };
 		C79478A72850828900AB4124 /* SelectFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79478A62850828900AB4124 /* SelectFishView.swift */; };
@@ -54,10 +55,11 @@
 		C71CB55A285640DB0061E710 /* voicecontrol.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = voicecontrol.gif; sourceTree = "<group>"; };
 		C71CB55B285640DB0061E710 /* swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swipe.gif; sourceTree = "<group>"; };
 		C71CB55E2856410C0061E710 /* GIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFView.swift; sourceTree = "<group>"; };
+		C71CB560285811C80061E710 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		C71CB562285825830061E710 /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
 		C75233A2285189B8005E49D7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C769D6E228562EB800BC60E8 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		C76FA9512853A1240056F935 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		C78D00C62854A61B00476032 /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
 		C78D00CF2854BEB900476032 /* RecipeVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVO.swift; sourceTree = "<group>"; };
 		C79478A428507F6B00AB4124 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C79478A62850828900AB4124 /* SelectFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFishView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				C7E31F7E2855B35C00CD0188 /* CleanFishApp.swift */,
 				C7E31F7F2855B35C00CD0188 /* GoogleService-Info.plist */,
 				C7E31F802855B35C00CD0188 /* Info.plist */,
+				C71CB560285811C80061E710 /* AppController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -165,7 +168,7 @@
 				C7E31F862855B3D300CD0188 /* Assets.xcassets */,
 				C7DF2DC62855D479009CA4DB /* flatfish.json */,
 				C7DF2DC42855D475009CA4DB /* mackerel.json */,
-				C78D00C62854A61B00476032 /* wave.json */,
+				C71CB562285825830061E710 /* wave.json */,
 				C71CB55B285640DB0061E710 /* swipe.gif */,
 				C71CB55A285640DB0061E710 /* voicecontrol.gif */,
 			);
@@ -267,13 +270,13 @@
 				C7E31F892855B42E00CD0188 /* GoogleService-Info.plist in Resources */,
 				C71CB55D285640DB0061E710 /* swipe.gif in Resources */,
 				C7DF2DC52855D475009CA4DB /* mackerel.json in Resources */,
+				C71CB563285825830061E710 /* wave.json in Resources */,
 				9EB362742850F729001E9BEE /* Colors.xcassets in Resources */,
 				9ED47F56285588D500203073 /* Images.xcassets in Resources */,
 				C71CB55C285640DB0061E710 /* voicecontrol.gif in Resources */,
 				C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */,
 				C7E31F872855B3D300CD0188 /* Assets.xcassets in Resources */,
 				C7DF2DC72855D479009CA4DB /* flatfish.json in Resources */,
-				C78D00C72854A61B00476032 /* wave.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +327,7 @@
 				F6F8B27D285347CD005F3925 /* VideoShowView.swift in Sources */,
 				C769D6E328562EB800BC60E8 /* PermissionManager.swift in Sources */,
 				C7E31F812855B35C00CD0188 /* CleanFishApp.swift in Sources */,
+				C71CB561285811C80061E710 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +465,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -496,7 +501,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;

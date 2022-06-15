@@ -6,34 +6,33 @@
 //
 
 import SwiftUI
-//import UserNotifications
+// import UserNotifications
 
 struct SwipeGuideView: View {
     // 권한에 대한 로직을 수행하는 변수
+    @EnvironmentObject var appController: AppController
     @StateObject private var permissionManager: PermissionManager = PermissionManager()
-    
-    // 단계중에 홈화면으로 돌아가는 기능을 위해 있는 변수
-//    @Binding var goToTutorialPage: Bool
-//    @Binding var showView: ShowView
 
     var body: some View {
         // 생선손질 튜토리얼 뷰
         VStack {
             Text("음성인식 사용이 어려운 상황이라면?")
-                .font(.system(size: 28))
+                .foregroundColor(.textGray)
+                .font(.title)
                 .fontWeight(.bold)
-                .padding(.bottom, 9)
+                .padding(.top, 40)
           
             GIFView(fileName: "swipe")
                 .frame(width: 374, height: 160, alignment: .center)
             
             ZStack {
                 NavigationLink("", isActive: $permissionManager.goToStagePagingView) {
-                    StagePagingView(permissionManager: self.permissionManager)
+                    StagePagingView()
                 }
                 .hidden()
                 Button {
                     permissionManager.requestPermission()
+//                    appController.initBuffer()
                 } label: {
                     Text("시작하기")
                         .fontWeight(.medium)
@@ -44,7 +43,6 @@ struct SwipeGuideView: View {
                         .cornerRadius(10)
                 }
             }
-            
         }
         .onAppear {
             UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
@@ -63,9 +61,10 @@ struct SwipeGuideView: View {
 //    }
 //}
 //
-//struct SwipeGuideView_Previews: PreviewProvider {
-//    static var previews: some View {
+struct SwipeGuideView_Previews: PreviewProvider {
+    static var previews: some View {
+        SwipeGuideView()
 //        SwipeGuideViewPreviewContainer()
 //            .previewInterfaceOrientation(.landscapeRight)
-//    }
-//}
+    }
+}
