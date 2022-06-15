@@ -41,7 +41,7 @@ struct SelectFishView: View {
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.move(edge: .bottom))
-        .animation(.linear(duration: 0.7), value: appController.showView.fishView)
+//        .animation(.linear(duration: 0.7), value: appController.showView.fishView)
         .navigationBarHidden(true)
     }
 }

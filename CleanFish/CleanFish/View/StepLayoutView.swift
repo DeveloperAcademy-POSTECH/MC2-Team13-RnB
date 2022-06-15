@@ -146,6 +146,7 @@ struct StepLayoutView: View {
                                   secondaryButton: .cancel(Text("확인")) {
                                 goAppSetting()
                             })
+                            
                         }
                         
                         //
@@ -168,6 +169,8 @@ struct StepLayoutView: View {
             isPlayVideo = (currentStep == stepNumber)
         }
         .onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                      forKey: "orientation")
             NetworkManager.shared.getStepInfo(course: appController.courseInfo,
                                               stepNumber: stepNumber) { step in
                 stepInfo = step

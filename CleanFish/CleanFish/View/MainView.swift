@@ -14,7 +14,7 @@ struct MainView: View {
     @State var selectedFish: Fish = .flatfish
     @State var backgroudPosition = 0.0
     @State var isShowContinueAlert = false
-    @State var goToStagePagingView = false
+    
     @StateObject var ePopToRoot: PopToRoot = PopToRoot(popToRootBool: false)
     
     var body: some View {
@@ -22,7 +22,7 @@ struct MainView: View {
             VStack {
                 ZStack {
                     if !appController.isMemoryEmpty {
-                        NavigationLink("", isActive: $goToStagePagingView) {
+                        NavigationLink("", isActive: $appController.goToStagePagingView) {
                             StepSlideView()
                         }
                         .hidden()
@@ -48,12 +48,13 @@ struct MainView: View {
                             appController.initBuffer()
                         }
                         Button("확인", role: .none) {
+                            appController.mainWhiteForeground.toggle()
                             DispatchQueue.main.async {
                                 UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
                                                           forKey: "orientation")
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                self.goToStagePagingView = true
+                                self.appController.goToStagePagingView = true
                             }
                         }
                     }
@@ -64,7 +65,6 @@ struct MainView: View {
             .onAppear {
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
                                           forKey: "orientation")
-                print("appController.isMemoryEmpty \(appController.isMemoryEmpty)")
                 if !appController.isMemoryEmpty {
                     NetworkManager.shared
                         .getTotalStep(courseName: appController.getMemory.courseID) { courseInfo in
@@ -74,6 +74,7 @@ struct MainView: View {
                         }
                     }
                 }
+                
             }
             .ignoresSafeArea(.all, edges: [.top, .bottom])
             .padding(.top)

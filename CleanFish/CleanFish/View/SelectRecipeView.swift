@@ -25,7 +25,8 @@ struct SelectRecipeView: View {
     // MARK: - State Property
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
-  
+    
+    
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
     
@@ -125,6 +126,7 @@ struct SelectRecipeView: View {
                                     appController.initBuffer()
                                 }
                                 Button("확인", role: .none) {
+                                    appController.mainWhiteForeground.toggle()
                                     DispatchQueue.main.async {
                                         UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
                                                                   forKey: "orientation")
@@ -141,6 +143,10 @@ struct SelectRecipeView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 36)
+            }
+            if appController.mainWhiteForeground {
+                Rectangle()
+                    .fill(.white)
             }
         }
         .transition(.opacity.animation(.linear))
