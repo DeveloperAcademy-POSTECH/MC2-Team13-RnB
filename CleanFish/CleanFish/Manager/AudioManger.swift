@@ -73,13 +73,13 @@ class AudioStreamManager {
         let defaultConfig = MLModelConfiguration()
         let soundClassifier = try? RnBSoundClassifier(configuration: defaultConfig)
         
-        guard let soundClassifier = soundClassifier else{
+        guard let soundClassifier = soundClassifier else {
             fatalError("Could not instantiate sound classifier")
         }
-        classifyRequest = try? SNClassifySoundRequest(mlModel: soundClassifier.model)
-        
         classifyRequest?.windowDuration = CMTime(value: 975, timescale: 1000)
         classifyRequest?.overlapFactor = 0.5
+        
+        classifyRequest = try? SNClassifySoundRequest(mlModel: soundClassifier.model)
     }
     
     func stopEngine() {
@@ -123,7 +123,7 @@ class AudioStreamManager {
         } catch {
             fatalError("Unable to start audio engine: \(error.localizedDescription)")
         }
-        engine.inputNode.installTap(onBus: inputBus, bufferSize: 1024,
+        engine.inputNode.installTap(onBus: inputBus, bufferSize: 150,
                                     format: micInputFormat, block: analyzeAudio(buffer:at:))
         
     }

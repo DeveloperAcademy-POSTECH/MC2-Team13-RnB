@@ -15,6 +15,8 @@ class AudioStreamObserver: NSObject, SNResultsObserving, ObservableObject {
     @Published var voiceCommand: Int = 0
     var currentSound: String = ""
     var preSound: String = ""
+    var prepreSound: String = ""
+    
     
     
     func request(_ request: SNRequest, didProduce result: SNResult) {
@@ -24,12 +26,17 @@ class AudioStreamObserver: NSObject, SNResultsObserving, ObservableObject {
         print("Classified Sound: \(classification.identifier)")
         DispatchQueue.main.async {
             self.currentSound = classification.identifier
-            if self.currentSound != "노이즈" {
-                if classification.confidence >= 0.6 {
-                    print(classification.confidence, classification.identifier)
-                    self.voiceCommand = (self.currentSound == "다음") ? 1 : -1
+            if classification.confidence >= 0.75 { // 올바르게 판단 한다는 기준 입니다.
+            if (self.preSound == "이전"||self.preSound == "노이즈") && self.currentSound != "노이즈" {
+                // classification 의 결과가 (다음, 이전) 혹은 (다음, 다음) 처럼 노이즈가 아닌 결과가 연속으로 나오는 경우
+                // 단계가 분류 결과에 따라 계속 바뀌기 떄문에 바로 직전의 분류 결과가 "노이즈"인 경우에만 단계의 변화가 생기도록 했습니다.
+                    if self.currentSound != self.preSound {
+                        print(classification.confidence, classification.identifier)
+                        self.voiceCommand = (self.currentSound == "다음") ? 1 : -1
+                    }
                 }
             }
+            self.preSound = self.currentSound // 소리가 흐른다는 결과를 기록하기 위해 curr의 결과를 계속 prev 로 전달해줍니다.
             self.topResults = Array(result.classifications[0...2])
             print(self.topResults)
         }

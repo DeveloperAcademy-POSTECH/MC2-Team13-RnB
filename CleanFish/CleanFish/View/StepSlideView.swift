@@ -68,9 +68,7 @@ struct StepSlideView: View {
             .onChange(of: currentStage) { num in
                 stepMemory = num
             }
-                        .onChange(of: observer.voiceCommand) {
-                            result in
-            
+                        .onChange(of: observer.voiceCommand) { result in
                             print(currentStage, result)
                             switch result {
                             case 1:
