@@ -90,7 +90,7 @@ class AudioStreamManager {
                                     format: micInputFormat, block: analyzeAudio(buffer:at:))
         
     }
-
+    
     public func getStreamPublisher() -> Optional<SNAudioStreamAnalyzer>.Publisher {
         return self.streamAnalyzer.publisher
     }

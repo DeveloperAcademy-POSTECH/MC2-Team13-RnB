@@ -10,10 +10,10 @@ import SwiftUI
 @main
 struct CleanFishApp: App {
     @ObservedObject private var appController: AppController = AppController()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
             MainView()
                 .environmentObject(appController)
         }

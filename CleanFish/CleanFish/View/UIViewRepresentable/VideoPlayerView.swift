@@ -27,7 +27,6 @@ struct VideoPlayerView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: PlayerUIView, context: Context) {
-//        uiView.playVideo(courseName: courseName, step: step)
         isPlay ? uiView.playVideo() : uiView.pauseVideo()
     }
 }

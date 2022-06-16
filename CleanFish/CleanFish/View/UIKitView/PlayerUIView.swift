@@ -10,7 +10,7 @@ import AVFoundation
 
 class PlayerUIView: UIView {
     var playerLayer = AVPlayerLayer()
-//    private var playerLooper: AVPlayerLooper?
+    //    private var playerLooper: AVPlayerLooper?
     var player = AVPlayer()
     
     required init?(coder: NSCoder) {
@@ -36,8 +36,8 @@ class PlayerUIView: UIView {
                          name: .AVPlayerItemDidPlayToEndTime,
                          object: player.currentItem)
         player.play()
-//        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
-//        print(URL.absoluteString, #function)
+        //        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
+        //        print(URL.absoluteString, #function)
         
         // 동영상 불러오기
         // let playerItem = AVPlayerItem(url: URL)
@@ -45,32 +45,32 @@ class PlayerUIView: UIView {
         // 동영상 플레이어 셋팅하기
         
         // let player = AVQueuePlayer(playerItem: playerItem)
-//        playerLayer.player = player
-//        playerLayer.videoGravity = .resizeAspectFill
-//        layer.addSublayer(playerLayer)
+        //        playerLayer.player = player
+        //        playerLayer.videoGravity = .resizeAspectFill
+        //        layer.addSublayer(playerLayer)
         
         // 동영상 반복하기
         //        playerLooper = AVPlayerLooper(player: player, templateItem: player)
     }
     
-//    func playVideo(courseName: String, step: Int) {
-//        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
-//        print(URL.absoluteString, #function)
-//        player = AVPlayer(url: URL)
-//        player.preventsDisplaySleepDuringVideoPlayback = true
-//        playerLayer.player = player
-//        playerLayer.videoGravity = .resizeAspectFill
-//        layer.addSublayer(playerLayer)
-//
-//        player.actionAtItemEnd = .none
-//        NotificationCenter
-//            .default
-//            .addObserver(self,
-//                         selector: #selector(rewindVideo(notification:)),
-//                         name: .AVPlayerItemDidPlayToEndTime,
-//                         object: player.currentItem)
-//        self.playVideo()
-//    }
+    //    func playVideo(courseName: String, step: Int) {
+    //        let URL = NetworkManager.shared.getVideoURL(courseName: courseName, step: step)
+    //        print(URL.absoluteString, #function)
+    //        player = AVPlayer(url: URL)
+    //        player.preventsDisplaySleepDuringVideoPlayback = true
+    //        playerLayer.player = player
+    //        playerLayer.videoGravity = .resizeAspectFill
+    //        layer.addSublayer(playerLayer)
+    //
+    //        player.actionAtItemEnd = .none
+    //        NotificationCenter
+    //            .default
+    //            .addObserver(self,
+    //                         selector: #selector(rewindVideo(notification:)),
+    //                         name: .AVPlayerItemDidPlayToEndTime,
+    //                         object: player.currentItem)
+    //        self.playVideo()
+    //    }
     
     func playVideo() {
         player.seek(to: .zero)

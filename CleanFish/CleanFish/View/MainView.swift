@@ -28,7 +28,7 @@ struct MainView: View {
                         .hidden()
                     }
                     
-                    LottieView(filename: "wave", animationSpeed: 1)
+                    LottieView(fileName: "wave", animationSpeed: 1)
                         .animation(.linear(duration: 0.4), value: UUID())
                         .offset(x: 0, y: appController.showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
                     ZStack {
@@ -65,14 +65,16 @@ struct MainView: View {
             .onAppear {
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
                                           forKey: "orientation")
+                AppDelegate.orientationLock = .portrait
+                
                 if !appController.isMemoryEmpty {
                     NetworkManager.shared
                         .getTotalStep(courseName: appController.getMemory.courseID) { courseInfo in
-                        if let courseInfo = courseInfo {
-                            self.appController.courseInfo = courseInfo
-                            self.isShowContinueAlert = true
+                            if let courseInfo = courseInfo {
+                                self.appController.courseInfo = courseInfo
+                                self.isShowContinueAlert = true
+                            }
                         }
-                    }
                 }
                 
             }

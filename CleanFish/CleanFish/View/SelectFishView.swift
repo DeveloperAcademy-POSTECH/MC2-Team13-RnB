@@ -17,7 +17,7 @@ struct SelectFishView: View {
         ZStack {
             VStack(spacing: 50) {
                 Spacer()
-                ForEach(Fish.allCases, id: \.rawValue) {fish in
+                ForEach(Fish.allCases, id: \.rawValue) { fish in
                     HStack {
                         if fish.index % 2 == 1 {
                             Spacer()
@@ -26,7 +26,7 @@ struct SelectFishView: View {
                             selectedFish = fish
                             appController.showRecipeView()
                         } label: {
-                            LottieView(filename: "\(fish.rawValue)", animationSpeed: 1)
+                            LottieView(fileName: "\(fish.rawValue)", animationSpeed: 1)
                         }
                         .frame(width: lottieSize, height: lottieSize)
                         
@@ -41,14 +41,13 @@ struct SelectFishView: View {
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.move(edge: .bottom))
-//        .animation(.linear(duration: 0.7), value: appController.showView.fishView)
         .navigationBarHidden(true)
     }
 }
 
 struct SelectFishViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-
+    
     var body: some View {
         SelectFishView(selectedFish: $selectedFish)
     }

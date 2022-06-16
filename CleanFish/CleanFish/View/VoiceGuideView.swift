@@ -64,6 +64,7 @@ struct VoiceGuideView: View {
             }
         }
         .onAppear {
+            AppDelegate.orientationLock = .landscape
             NetworkManager.shared
                 .getTotalStep(courseName: selectedCourse) { courseInfo in
                     if let courseInfo = courseInfo {

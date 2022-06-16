@@ -14,7 +14,7 @@ class PopToRoot: ObservableObject {
         self.popToRootBool = popToRootBool
     }
 }
-    
+
 
 struct SelectRecipeView: View {
     // MARK: - EnvironmentObject
@@ -95,7 +95,7 @@ struct SelectRecipeView: View {
                     
                     ZStack {
                         NavigationLink("", isActive: $ePopToRoot.popToRootBool) {
-//                        NavigationLink("", isActive: $appController.isSelectRecipe) {
+                            //                        NavigationLink("", isActive: $appController.isSelectRecipe) {
                             VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
                         
@@ -127,10 +127,9 @@ struct SelectRecipeView: View {
                                 }
                                 Button("확인", role: .none) {
                                     appController.mainWhiteForeground.toggle()
-                                    DispatchQueue.main.async {
-                                        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                                  forKey: "orientation")
-                                    }
+                                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                              forKey: "orientation")
+                                    AppDelegate.orientationLock = .landscape
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                         self.ePopToRoot.popToRootBool = true
                                     }

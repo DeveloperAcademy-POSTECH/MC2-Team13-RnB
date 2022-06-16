@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class AppController: ObservableObject {
-    @Published var showView: ShowView = ( true, false)
+    @Published var showView: ShowView = (true, false)
     @Published var isSelectRecipe: Bool = false
     @Published var goToStagePagingView = false
     @Published var mainWhiteForeground: Bool = false
@@ -49,24 +49,15 @@ class AppController: ObservableObject {
     
     func goToHome() {
         goToStagePagingView = false
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
-                                  forKey: "orientation")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
+                                      forKey: "orientation")
+            AppDelegate.orientationLock = .portrait
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.mainWhiteForeground = false
         }
-        //        self.showFishView()
-        //        DispatchQueue.main.async {
-        //            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
-        //                                      forKey: "orientation")
-        //        }
-        
-        //        self.isSelectRecipe = true
-        //        print(#function)
-        //        self.showFishView()
-        
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-        //            self.isSelectRecipe = false
-        //        }
     }
     
     func initBuffer() {
