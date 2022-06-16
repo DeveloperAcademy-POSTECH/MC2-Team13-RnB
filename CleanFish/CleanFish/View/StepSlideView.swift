@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct StepSlideView: View {
     // MARK: - EnvironmentObject
@@ -16,7 +17,7 @@ struct StepSlideView: View {
     
     // MARK: - State
     @State private var currentStage: Int = 1
-    @State private var isVoiceFunctionOn = false
+    @State private var isVoiceFunctionOn = true
     @State private var isShowPermissionAlert = false
     @State private var isShowGoToHomeAlert = false
     @State private var voiceCommand: Int = 0 // -1: 이전, 0: 노이즈, 1: 다음
@@ -28,8 +29,7 @@ struct StepSlideView: View {
         @ObservedObject var observer: AudioStreamObserver
     
         private var streamManager: AudioStreamManager
-    
-    
+
         init() {
             observer = AudioStreamObserver()
             streamManager = AudioStreamManager()
@@ -58,7 +58,8 @@ struct StepSlideView: View {
                 ForEach(1...appController.courseInfo.totalStep, id: \.self) { stepNumber in
                     StepLayoutView(
                         stepNumber: stepNumber,
-                        currentStage: $currentStage
+                        currentStage: $currentStage,
+                        isVoiceFunctionOn: $isVoiceFunctionOn
                     )
                     .tag(stepNumber)
                 }
@@ -97,8 +98,15 @@ struct StepSlideView: View {
                                           forKey: "orientation")
                 AppDelegate.orientationLock = .landscape
             }
-            .onDisappear {
+        }
+        .onChange(of: isVoiceFunctionOn) { bool in
+            if bool {
+                streamManager.startEngine()
+            } else {
+                print("Voice Function OFF ")
                 streamManager.stopEngine()
+//                AUAudioUnit().isInputEnabled = false
+//                streamManager.resultObservation(with: observer)
             }
         }
         .navigationBarHidden(true)

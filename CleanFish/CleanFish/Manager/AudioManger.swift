@@ -17,7 +17,11 @@ class AudioStreamManager {
     private var streamAnalyzer: SNAudioStreamAnalyzer?
     private var classifyRequest: SNClassifySoundRequest?
     private var resultObserver = AudioStreamObserver()
+    
     init() {
+        print("=======================================")
+        print("AudioStreamManager")
+        print("=======================================")
         engine = AVAudioEngine()
         
         // microphone audio bus 값을 셋팅하고 이 포맷값을 기억합니다.
@@ -39,6 +43,13 @@ class AudioStreamManager {
         // custom sound classifier을 setup합니다.
         classifierSetup()
     }
+    
+    deinit {
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+        print("AudioStreamManager")
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    }
+    
     public func resultObservation(with observer: SNResultsObserving) {
         // observer를 추가합니다.
         guard let classifyRequest = classifyRequest else {
@@ -69,14 +80,29 @@ class AudioStreamManager {
     }
     
     func stopEngine() {
+        guard let classifyRequest = classifyRequest else {
+            fatalError("Could not setup the classification request")
+        }
+        guard let streamAnalyzer = streamAnalyzer else {
+            fatalError("Could not initializer stream analyzer")
+        }
         guard let engine = engine else {
             fatalError("Could not instantiate audio engine")
         }
-        engine.stop()
+        guard let inputBus = inputBus else {
+            fatalError("Failed to retrieve input bus")
+        }
+        
+        
+        streamAnalyzer.remove(classifyRequest)
+        engine.pause()
+        engine.attachedNodes.first?.auAudioUnit.stopHardware()
+    
+        print(engine.attachedNodes.first?.auAudioUnit)
+        print(engine.attachedNodes.first?.auAudioUnit.isRunning)
     }
     
-    private func startEngine() {
-        
+    func startEngine() {
         guard let engine = engine else {
             fatalError("Could not instantiate audio engine")
         }
@@ -87,10 +113,11 @@ class AudioStreamManager {
             fatalError("Failed to retrieve input format")
         }
         do {
+            try engine.attachedNodes.first?.auAudioUnit.startHardware()
+            print("engine.attachedNodes.first?.auAudioUnit.isRunning")
+            print(engine.attachedNodes.first?.auAudioUnit.isRunning)
             try engine.start()
-        }
-        
-        catch {
+        } catch {
             fatalError("Unable to start audio engine: \(error.localizedDescription)")
         }
         engine.inputNode.installTap(onBus: inputBus, bufferSize: 6000,

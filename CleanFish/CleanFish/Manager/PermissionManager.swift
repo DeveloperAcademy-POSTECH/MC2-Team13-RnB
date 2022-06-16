@@ -38,6 +38,10 @@ class PermissionManager: ObservableObject {
         }
     }
     
+    func pauseMic() {
+        
+    }
+    
     func requestPermission() {
         self.requestMicrophonePermission()
         self.speechRecognition()

@@ -15,13 +15,13 @@ struct StepLayoutView: View {
     @EnvironmentObject var ePopToRoot: PopToRoot
     
     // MARK: - State
-    @State private var isVoiceFunctionOn = true
     @State private var isShowPermissionAlert = false
     @State private var isPlayVideo = true
     @State private var stepInfo: Step?
     
     // MARK: - Binding
     @Binding var currentStage: Int
+    @Binding var isVoiceFunctionOn: Bool
     
     // MARK: - StateObject
     @StateObject var permissionManager: PermissionManager = PermissionManager()
@@ -185,10 +185,12 @@ struct VideoView: View {
 
 struct StageLayout75ViewPreviewContainer: View {
     @State private var currentStage: Int = 0
-    
+    @State private var isVoiceFunctionOn: Bool = true
     var body: some View {
         StepLayoutView(stepNumber: 0,
-                       currentStage: $currentStage)
+                       currentStage: $currentStage,
+                       isVoiceFunctionOn: $isVoiceFunctionOn
+        )
     }
 }
 
