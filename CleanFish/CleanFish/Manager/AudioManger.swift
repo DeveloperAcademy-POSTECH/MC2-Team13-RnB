@@ -77,6 +77,9 @@ class AudioStreamManager {
             fatalError("Could not instantiate sound classifier")
         }
         classifyRequest = try? SNClassifySoundRequest(mlModel: soundClassifier.model)
+        
+        classifyRequest?.windowDuration = CMTime(value: 975, timescale: 1000)
+        classifyRequest?.overlapFactor = 0.5
     }
     
     func stopEngine() {
@@ -120,7 +123,7 @@ class AudioStreamManager {
         } catch {
             fatalError("Unable to start audio engine: \(error.localizedDescription)")
         }
-        engine.inputNode.installTap(onBus: inputBus, bufferSize: 6000,
+        engine.inputNode.installTap(onBus: inputBus, bufferSize: 1024,
                                     format: micInputFormat, block: analyzeAudio(buffer:at:))
         
     }
@@ -128,7 +131,7 @@ class AudioStreamManager {
     public func getStreamPublisher() -> Optional<SNAudioStreamAnalyzer>.Publisher {
         return self.streamAnalyzer.publisher
     }
-    public func analyzeAudio(buffer: AVAudioBuffer, at time: AVAudioTime) {
+    public func analyzeAudio(buffer: AVAudioPCMBuffer, at time: AVAudioTime) {
         DispatchQueue.global(qos: .userInitiated).async {
             self.streamAnalyzer!.analyze(buffer, atAudioFramePosition: time.sampleTime)
         }
