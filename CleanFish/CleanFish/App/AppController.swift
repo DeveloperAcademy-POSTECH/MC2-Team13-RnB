@@ -48,13 +48,20 @@ class AppController: ObservableObject {
     }
     
     func goToHome() {
+        // 네비게이션 Pop 변수
         goToStagePagingView = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        // 메인화면 생선선택View로 전환
+        self.showFishView()
+        
+        // 화면 세로로 돌리기
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
                                       forKey: "orientation")
             AppDelegate.orientationLock = .portrait
         }
+        
+        // 메인화면 View를 가려놨던 흰색 View 치우기
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.mainWhiteForeground = false
         }

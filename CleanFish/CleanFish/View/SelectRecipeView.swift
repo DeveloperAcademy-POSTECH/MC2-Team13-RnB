@@ -143,10 +143,6 @@ struct SelectRecipeView: View {
                 }
                 .padding(.horizontal, 36)
             }
-            if appController.mainWhiteForeground {
-                Rectangle()
-                    .fill(.white)
-            }
         }
         .transition(.opacity.animation(.linear))
         .animation(.linear(duration: 1), value: 0)

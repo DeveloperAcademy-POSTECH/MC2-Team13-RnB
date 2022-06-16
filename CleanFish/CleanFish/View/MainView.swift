@@ -41,6 +41,11 @@ struct MainView: View {
                             SelectRecipeView(selectedFish: $selectedFish)
                         }
                     }
+                    
+                    if appController.mainWhiteForeground {
+                        Rectangle()
+                            .fill(.white)
+                    }
                 }
                 .alert("이어보기", isPresented: $isShowContinueAlert) {
                     VStack {
@@ -48,11 +53,11 @@ struct MainView: View {
                             appController.initBuffer()
                         }
                         Button("확인", role: .none) {
-                            appController.mainWhiteForeground.toggle()
-                            DispatchQueue.main.async {
-                                UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                          forKey: "orientation")
-                            }
+                            self.appController.mainWhiteForeground = true
+                            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                      forKey: "orientation")
+                            AppDelegate.orientationLock = .landscape
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                 self.appController.goToStagePagingView = true
                             }

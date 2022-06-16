@@ -147,6 +147,8 @@ struct StepLayoutView: View {
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
+                            
+                            // 네비게이션 pop 변수
                             ePopToRoot.popToRootBool = false
                         } label: {
                             Image(systemName: "house.circle.fill")

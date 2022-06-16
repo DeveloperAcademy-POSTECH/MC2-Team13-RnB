@@ -76,7 +76,7 @@ struct VoiceGuideView: View {
         .onDisappear {
             isGuideFirst = false
         }
-//        .navigationBarHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
