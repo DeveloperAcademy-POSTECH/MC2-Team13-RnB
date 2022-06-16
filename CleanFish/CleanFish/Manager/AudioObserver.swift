@@ -24,15 +24,23 @@ class AudioStreamObserver: NSObject, SNResultsObserving, ObservableObject {
         print("Classified Sound: \(classification.identifier)")
         DispatchQueue.main.async {
             self.currentSound = classification.identifier
-            
-            if self.preSound != "노이즈" {
-                self.isCorrectCommand = (self.preSound == self.currentSound)
-                if self.isCorrectCommand {
+            if self.currentSound != "노이즈" {
+                if classification.confidence >= 0.6 {
+                    print(classification.confidence, classification.identifier)
                     self.voiceCommand = (self.currentSound == "다음") ? 1 : -1
                 }
             }
-            
-            self.preSound = self.currentSound
+//            print(result.classifications.first?.identifier ?? "")
+//            print(self.preSound, self.currentSound)
+//            self.currentSound = result.classifications.first
+//            if self.preSound != "노이즈" {
+//                self.isCorrectCommand = (self.preSound == self.currentSound)
+//                if self.isCorrectCommand {
+//                    self.voiceCommand = (self.currentSound == "다음") ? 1 : -1
+//                }
+//            }
+//
+//            self.preSound = self.currentSound
             self.topResults = Array(result.classifications[0...2])
             print(self.topResults)
         }

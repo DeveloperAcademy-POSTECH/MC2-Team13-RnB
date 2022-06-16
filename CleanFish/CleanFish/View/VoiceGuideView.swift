@@ -25,7 +25,7 @@ struct VoiceGuideView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
             ZStack {
                 Text("손질 중 불편하게 터치하지 마세요!")
                     .foregroundColor(.textGray)
@@ -45,14 +45,10 @@ struct VoiceGuideView: View {
                     }
                 }
             }
-            .padding(.top, 40)
+            .padding(.top, 15)
             
             GIFView(fileName: "voicecontrol")
                 .frame(width: 374, height: 160, alignment: .center)
-            
-//            Button("sdafasdg") {
-//                ePopToRoot.popToRootBool = false
-//            }
             
             // 다음 버튼
             NavigationLink {
@@ -79,7 +75,7 @@ struct VoiceGuideView: View {
         .onDisappear {
             isGuideFirst = false
         }
-//        .navigationBarHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

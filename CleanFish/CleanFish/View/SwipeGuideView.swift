@@ -15,12 +15,12 @@ struct SwipeGuideView: View {
 
     var body: some View {
         // 생선손질 튜토리얼 뷰
-        VStack {
+        VStack(spacing: 30) {
             Text("음성인식 사용이 어려운 상황이라면?")
                 .foregroundColor(.textGray)
                 .font(.title)
                 .fontWeight(.bold)
-                .padding(.top, 40)
+                .padding(.top, 15)
           
             GIFView(fileName: "swipe")
                 .frame(width: 374, height: 160, alignment: .center)

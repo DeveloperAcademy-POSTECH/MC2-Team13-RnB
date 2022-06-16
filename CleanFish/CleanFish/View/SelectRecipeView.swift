@@ -39,6 +39,7 @@ struct SelectRecipeView: View {
                     } label: {
                         Text("이전")
                             .font(.title3)
+                            .fontWeight(.bold)
                             .foregroundColor("#4986E6".toColor(alpha: 1))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
