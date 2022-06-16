@@ -14,7 +14,7 @@ struct MainView: View {
     @State var selectedFish: Fish = .flatfish
     @State var backgroudPosition = 0.0
     @State var isShowContinueAlert = false
-    @State var goToStagePagingView = false
+    
     @StateObject var ePopToRoot: PopToRoot = PopToRoot(popToRootBool: false)
     
     var body: some View {
@@ -22,13 +22,13 @@ struct MainView: View {
             VStack {
                 ZStack {
                     if !appController.isMemoryEmpty {
-                        NavigationLink("", isActive: $goToStagePagingView) {
+                        NavigationLink("", isActive: $appController.goToStagePagingView) {
                             StepSlideView()
                         }
                         .hidden()
                     }
                     
-                    LottieView(filename: "wave", animationSpeed: 1)
+                    LottieView(fileName: "wave", animationSpeed: 1)
                         .animation(.linear(duration: 0.4), value: UUID())
                         .offset(x: 0, y: appController.showView.fishView ? 0 : UIScreen.main.bounds.height * 0.7)
                     ZStack {
@@ -41,6 +41,11 @@ struct MainView: View {
                             SelectRecipeView(selectedFish: $selectedFish)
                         }
                     }
+                    
+                    if appController.mainWhiteForeground {
+                        Rectangle()
+                            .fill(.white)
+                    }
                 }
                 .alert("이어보기", isPresented: $isShowContinueAlert) {
                     VStack {
@@ -48,12 +53,13 @@ struct MainView: View {
                             appController.initBuffer()
                         }
                         Button("확인", role: .none) {
-                            DispatchQueue.main.async {
-                                UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                          forKey: "orientation")
-                            }
+                            self.appController.mainWhiteForeground = true
+                            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                      forKey: "orientation")
+                            AppDelegate.orientationLock = .landscape
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                self.goToStagePagingView = true
+                                self.appController.goToStagePagingView = true
                             }
                         }
                     }
@@ -65,16 +71,17 @@ struct MainView: View {
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
                                           forKey: "orientation")
                 AppDelegate.orientationLock = .portrait
-                print("appController.isMemoryEmpty \(appController.isMemoryEmpty)")
+
                 if !appController.isMemoryEmpty {
                     NetworkManager.shared
                         .getTotalStep(courseName: appController.getMemory.courseID) { courseInfo in
-                        if let courseInfo = courseInfo {
-                            self.appController.courseInfo = courseInfo
-                            self.isShowContinueAlert = true
+                            if let courseInfo = courseInfo {
+                                self.appController.courseInfo = courseInfo
+                                self.isShowContinueAlert = true
+                            }
                         }
-                    }
                 }
+                
             }
             .ignoresSafeArea(.all, edges: [.top, .bottom])
             .padding(.top)

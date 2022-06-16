@@ -10,11 +10,11 @@ import Lottie
 
 struct LottieView: UIViewRepresentable {
     typealias UIViewType = UIView
-    var filename: String
+    var fileName: String
     var animationSpeed: CGFloat
-
-    init(filename: String, animationSpeed: CGFloat = 1) {
-        self.filename = filename
+    
+    init(fileName: String, animationSpeed: CGFloat = 1) {
+        self.fileName = fileName
         self.animationSpeed = animationSpeed
     }
     
@@ -23,12 +23,12 @@ struct LottieView: UIViewRepresentable {
         completeHandler(animationView)
         return animationView
     }
-
+    
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIViewType {
         let view: UIView = UIView(frame: .zero)
         
         let _: AnimationView = createAnimationView {
-            $0.animation = Animation.named(filename)
+            $0.animation = Animation.named(fileName)
             $0.contentMode = .scaleAspectFit
             $0.loopMode = .loop
             $0.backgroundBehavior = .pauseAndRestore
@@ -47,12 +47,7 @@ struct LottieView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<LottieView>) {
-//        guard let animationView = uiView.subviews.first as? AnimationView else {
-//            print("animationView")
-//            return
-//        }
-//        print(animationView)
-//        animationView.play()
+        
     }
-
+    
 }

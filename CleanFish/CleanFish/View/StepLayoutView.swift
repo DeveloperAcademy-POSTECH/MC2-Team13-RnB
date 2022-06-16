@@ -12,6 +12,7 @@ struct StepLayoutView: View {
     
     // MARK: - EnvironmentObject
     @EnvironmentObject var appController: AppController
+    @EnvironmentObject var ePopToRoot: PopToRoot
     
     // MARK: - State
     @State private var isVoiceFunctionOn = true
@@ -20,15 +21,10 @@ struct StepLayoutView: View {
     @State private var stepInfo: Step?
     
     // MARK: - Binding
-    @Binding var goToHome: Bool
     @Binding var currentStage: Int
     
     // MARK: - StateObject
     @StateObject var permissionManager: PermissionManager = PermissionManager()
-    
-    func changeOrientation(to orientation: UIInterfaceOrientation) {
-        UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
-    }
     
     func goAppSetting() {
         if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -58,8 +54,8 @@ struct StepLayoutView: View {
             ZStack {
                 // VideoView()
                 VideoPlayerView(courseName: appController.courseInfo.courseName,
-                              step: stepNumber,
-                              isPlay: isPlayVideo)
+                                step: stepNumber,
+                                isPlay: isPlayVideo)
                 VStack {
                     Spacer()
                     HStack {
@@ -106,11 +102,11 @@ struct StepLayoutView: View {
                                 .background(Color("StartButton"))
                                 .cornerRadius(10)
                         }
-                        
+
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
-                            goToHome = false
+                            ePopToRoot.popToRootBool = false
                         } label: {
                             Text("홈으로")
                                 .fontWeight(.medium)
@@ -148,11 +144,12 @@ struct StepLayoutView: View {
                             })
                         }
                         
-                        //
                         Button {
                             appController.initBuffer()
                             appController.goToHome()
-                            goToHome = false
+                            
+                            // 네비게이션 pop 변수
+                            ePopToRoot.popToRootBool = false
                         } label: {
                             Image(systemName: "house.circle.fill")
                                 .resizable()
@@ -168,6 +165,9 @@ struct StepLayoutView: View {
             isPlayVideo = (currentStep == stepNumber)
         }
         .onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                      forKey: "orientation")
+            AppDelegate.orientationLock = .landscape
             NetworkManager.shared.getStepInfo(course: appController.courseInfo,
                                               stepNumber: stepNumber) { step in
                 stepInfo = step
@@ -185,12 +185,10 @@ struct VideoView: View {
 
 struct StageLayout75ViewPreviewContainer: View {
     @State private var currentStage: Int = 0
-    @State private var goToHome: Bool = false
     
     var body: some View {
         StepLayoutView(stepNumber: 0,
-                          goToHome: $goToHome,
-                          currentStage: $currentStage)
+                       currentStage: $currentStage)
     }
 }
 

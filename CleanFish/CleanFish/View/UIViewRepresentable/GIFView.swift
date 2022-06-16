@@ -27,7 +27,7 @@ struct GIFView: UIViewRepresentable {
         guard let data = try? Data(contentsOf: url) else {
             return wkWebView
         }
-                
+        
         wkWebView.load(data,
                        mimeType: "image/gif",
                        characterEncodingName: "UTF-8",

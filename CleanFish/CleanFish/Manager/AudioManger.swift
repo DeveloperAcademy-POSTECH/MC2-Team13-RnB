@@ -68,6 +68,13 @@ class AudioStreamManager {
         classifyRequest = try? SNClassifySoundRequest(mlModel: soundClassifier.model)
     }
     
+    func stopEngine() {
+        guard let engine = engine else {
+            fatalError("Could not instantiate audio engine")
+        }
+        engine.stop()
+    }
+    
     private func startEngine() {
         
         guard let engine = engine else {
@@ -90,7 +97,7 @@ class AudioStreamManager {
                                     format: micInputFormat, block: analyzeAudio(buffer:at:))
         
     }
-
+    
     public func getStreamPublisher() -> Optional<SNAudioStreamAnalyzer>.Publisher {
         return self.streamAnalyzer.publisher
     }

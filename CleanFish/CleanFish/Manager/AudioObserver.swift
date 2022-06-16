@@ -16,7 +16,7 @@ class AudioStreamObserver: NSObject, SNResultsObserving, ObservableObject {
     var currentSound: String = ""
     var preSound: String = ""
     
-   
+    
     func request(_ request: SNRequest, didProduce result: SNResult) {
         guard let result = result as? SNClassificationResult else { return }
         // 최상의 음성만을 가져옵니다.
@@ -30,17 +30,6 @@ class AudioStreamObserver: NSObject, SNResultsObserving, ObservableObject {
                     self.voiceCommand = (self.currentSound == "다음") ? 1 : -1
                 }
             }
-//            print(result.classifications.first?.identifier ?? "")
-//            print(self.preSound, self.currentSound)
-//            self.currentSound = result.classifications.first
-//            if self.preSound != "노이즈" {
-//                self.isCorrectCommand = (self.preSound == self.currentSound)
-//                if self.isCorrectCommand {
-//                    self.voiceCommand = (self.currentSound == "다음") ? 1 : -1
-//                }
-//            }
-//
-//            self.preSound = self.currentSound
             self.topResults = Array(result.classifications[0...2])
             print(self.topResults)
         }
