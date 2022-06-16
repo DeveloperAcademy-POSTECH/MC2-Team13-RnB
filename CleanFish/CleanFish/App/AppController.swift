@@ -52,10 +52,11 @@ class AppController: ObservableObject {
         goToStagePagingView = false
         
         // 메인화면 생선선택View로 전환
-        self.showFishView()
+        
         
         // 화면 세로로 돌리기
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.showFishView()
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
                                       forKey: "orientation")
             AppDelegate.orientationLock = .portrait
