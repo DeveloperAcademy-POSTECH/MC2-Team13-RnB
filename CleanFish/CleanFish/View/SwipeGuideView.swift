@@ -12,7 +12,7 @@ struct SwipeGuideView: View {
     // 권한에 대한 로직을 수행하는 변수
     @EnvironmentObject var appController: AppController
     @StateObject private var permissionManager: PermissionManager = PermissionManager()
-
+    
     var body: some View {
         // 생선손질 튜토리얼 뷰
         VStack(spacing: 30) {
@@ -21,7 +21,7 @@ struct SwipeGuideView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.top, 15)
-          
+            
             GIFView(fileName: "swipe")
                 .frame(width: 374, height: 160, alignment: .center)
             
@@ -32,7 +32,7 @@ struct SwipeGuideView: View {
                 .hidden()
                 Button {
                     permissionManager.requestPermission()
-//                    appController.initBuffer()
+                    //                    appController.initBuffer()
                 } label: {
                     Text("시작하기")
                         .fontWeight(.medium)
@@ -47,24 +47,14 @@ struct SwipeGuideView: View {
         .onAppear {
             UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
                                       forKey: "orientation")
+            AppDelegate.orientationLock = .landscape
         }
         .navigationBarHidden(true)
     }
 }
 
-// struct SwipeGuideViewPreviewContainer: View {
-//    @State var goToTutorialPage: Bool = true
-//    @State var showView: ShowView = (false, true)
-//
-//    var body: some View {
-//        SwipeGuideView(goToTutorialPage: $goToTutorialPage, showView: $showView)
-//    }
-// }
-//
 struct SwipeGuideView_Previews: PreviewProvider {
     static var previews: some View {
         SwipeGuideView()
-//        SwipeGuideViewPreviewContainer()
-//            .previewInterfaceOrientation(.landscapeRight)
     }
 }

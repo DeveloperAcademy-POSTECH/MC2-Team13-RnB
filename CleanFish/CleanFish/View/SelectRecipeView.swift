@@ -14,7 +14,7 @@ class PopToRoot: ObservableObject {
         self.popToRootBool = popToRootBool
     }
 }
-    
+
 
 struct SelectRecipeView: View {
     // MARK: - EnvironmentObject
@@ -25,7 +25,8 @@ struct SelectRecipeView: View {
     // MARK: - State Property
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
-  
+    
+    
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
     
@@ -94,7 +95,7 @@ struct SelectRecipeView: View {
                     
                     ZStack {
                         NavigationLink("", isActive: $ePopToRoot.popToRootBool) {
-//                        NavigationLink("", isActive: $appController.isSelectRecipe) {
+                            //                        NavigationLink("", isActive: $appController.isSelectRecipe) {
                             VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
                         
@@ -125,10 +126,10 @@ struct SelectRecipeView: View {
                                     appController.initBuffer()
                                 }
                                 Button("확인", role: .none) {
-                                    DispatchQueue.main.async {
-                                        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                                  forKey: "orientation")
-                                    }
+                                    appController.mainWhiteForeground.toggle()
+                                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                              forKey: "orientation")
+                                    AppDelegate.orientationLock = .landscape
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                         self.ePopToRoot.popToRootBool = true
                                     }
