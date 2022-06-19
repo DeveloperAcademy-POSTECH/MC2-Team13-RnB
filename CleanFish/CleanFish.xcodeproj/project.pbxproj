@@ -14,6 +14,7 @@
 		9EB362742850F729001E9BEE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB362732850F729001E9BEE /* Colors.xcassets */; };
 		9EB362762850F830001E9BEE /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB362752850F830001E9BEE /* Color+Extension.swift */; };
 		9ED47F56285588D500203073 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED47F55285588D500203073 /* Images.xcassets */; };
+		C54DE35C285B652E00868BCB /* RnBSoundClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C54DE35B285B652E00868BCB /* RnBSoundClassifier.mlmodel */; };
 		C70835A0284DD0DF0061F707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C708359F284DD0DF0061F707 /* Preview Assets.xcassets */; };
 		C710ADC52850395500DA181C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710ADC42850395500DA181C /* Recipe.swift */; };
 		C715D4412859DAE7005A22A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C715D4402859DAE7005A22A9 /* AppDelegate.swift */; };
@@ -42,7 +43,6 @@
 		F6BBD29B28587C5E00F812EA /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBD29A28587C5E00F812EA /* SoundModel.swift */; };
 		F6BBD2A128587D3000F812EA /* AudioManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBD2A028587D3000F812EA /* AudioManger.swift */; };
 		F6BBD2A328587D5600F812EA /* AudioObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBD2A228587D5600F812EA /* AudioObserver.swift */; };
-		F6BBD2A72858820F00F812EA /* MySoundClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6BBD2A62858820F00F812EA /* MySoundClassifier.mlmodel */; };
 		F6F8B28028535D36005F3925 /* PlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8B27F28535D36005F3925 /* PlayerUIView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +54,7 @@
 		9EB362732850F729001E9BEE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ../Colors.xcassets; sourceTree = "<group>"; };
 		9EB362752850F830001E9BEE /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		9ED47F55285588D500203073 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C54DE35B285B652E00868BCB /* RnBSoundClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RnBSoundClassifier.mlmodel; sourceTree = "<group>"; };
 		C7083595284DD0DE0061F707 /* CleanFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C708359F284DD0DF0061F707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C710ADC42850395500DA181C /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		F6BBD29A28587C5E00F812EA /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
 		F6BBD2A028587D3000F812EA /* AudioManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManger.swift; sourceTree = "<group>"; };
 		F6BBD2A228587D5600F812EA /* AudioObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioObserver.swift; sourceTree = "<group>"; };
-		F6BBD2A62858820F00F812EA /* MySoundClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MySoundClassifier.mlmodel; sourceTree = "<group>"; };
 		F6F8B27F28535D36005F3925 /* PlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +127,7 @@
 				C78D00CE2854BE9200476032 /* Model */,
 				C78D00CD2854BE8800476032 /* Extension */,
 				C7C5022B2858CCDB00B9C5BD /* View */,
-				F6BBD2A62858820F00F812EA /* MySoundClassifier.mlmodel */,
+				C54DE35B285B652E00868BCB /* RnBSoundClassifier.mlmodel */,
 				C708359E284DD0DF0061F707 /* Preview Content */,
 			);
 			path = CleanFish;
@@ -356,7 +356,6 @@
 				C79478A92850909700AB4124 /* MainView.swift in Sources */,
 				6665072F285614DB002D547B /* VoiceGuideView.swift in Sources */,
 				F6F8B28028535D36005F3925 /* PlayerUIView.swift in Sources */,
-				F6BBD2A72858820F00F812EA /* MySoundClassifier.mlmodel in Sources */,
 				C79478A72850828900AB4124 /* SelectFishView.swift in Sources */,
 				F6BBD2A328587D5600F812EA /* AudioObserver.swift in Sources */,
 				C79478AB285091DC00AB4124 /* SelectRecipeView.swift in Sources */,
@@ -365,6 +364,7 @@
 				C7E31F852855B37300CD0188 /* Fish.swift in Sources */,
 				C7C5022D2858CD9900B9C5BD /* VideoPlayerView.swift in Sources */,
 				9EB362762850F830001E9BEE /* Color+Extension.swift in Sources */,
+				C54DE35C285B652E00868BCB /* RnBSoundClassifier.mlmodel in Sources */,
 				F6BBD2A128587D3000F812EA /* AudioManger.swift in Sources */,
 				66BBD3642850348900FD3026 /* SwipeGuideView.swift in Sources */,
 				C710ADC52850395500DA181C /* Recipe.swift in Sources */,
@@ -502,7 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanFish/Preview Content\"";
-				DEVELOPMENT_TEAM = Z629PZ4XVL;
+				DEVELOPMENT_TEAM = 956H2C4NC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/App/Info.plist;
@@ -541,7 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanFish/Preview Content\"";
-				DEVELOPMENT_TEAM = Z629PZ4XVL;
+				DEVELOPMENT_TEAM = 956H2C4NC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanFish/App/Info.plist;

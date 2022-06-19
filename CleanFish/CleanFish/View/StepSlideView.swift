@@ -29,7 +29,7 @@ struct StepSlideView: View {
     @ObservedObject var observer: AudioStreamObserver
     
     private var streamManager: AudioStreamManager
-    
+
     init() {
         observer = AudioStreamObserver()
         streamManager = AudioStreamManager()
@@ -69,7 +69,6 @@ struct StepSlideView: View {
                 stepMemory = num
             }
             .onChange(of: observer.voiceCommand) { result in
-                
                 print(currentStage, result)
                 switch result {
                 case 1:
