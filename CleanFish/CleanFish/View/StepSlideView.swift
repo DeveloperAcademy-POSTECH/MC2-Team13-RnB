@@ -100,6 +100,7 @@ struct StepSlideView: View {
         .onChange(of: isVoiceFunctionOn) { bool in
             if bool {
                 streamManager.startEngine()
+                streamManager.resultObservation(with: observer)
             } else {
                 print("Voice Function OFF ")
                 streamManager.stopEngine()

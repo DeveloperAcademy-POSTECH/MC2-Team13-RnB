@@ -98,8 +98,9 @@ class AudioStreamManager {
         
         
         streamAnalyzer.remove(classifyRequest)
-        engine.pause()
-        engine.attachedNodes.first?.auAudioUnit.stopHardware()
+        self.engine?.pause()
+        self.engine?.attachedNodes.first?.auAudioUnit.stopHardware()
+        self.engine?.inputNode.removeTap(onBus: 0)
     
         print(engine.attachedNodes.first?.auAudioUnit)
         print(engine.attachedNodes.first?.auAudioUnit.isRunning)
@@ -116,6 +117,8 @@ class AudioStreamManager {
             fatalError("Failed to retrieve input format")
         }
         do {
+            engine.inputNode.installTap(onBus: inputBus, bufferSize: 150,
+                                        format: micInputFormat, block: analyzeAudio(buffer:at:))
             try engine.attachedNodes.first?.auAudioUnit.startHardware()
             print("engine.attachedNodes.first?.auAudioUnit.isRunning")
             print(engine.attachedNodes.first?.auAudioUnit.isRunning)
@@ -123,8 +126,6 @@ class AudioStreamManager {
         } catch {
             fatalError("Unable to start audio engine: \(error.localizedDescription)")
         }
-        engine.inputNode.installTap(onBus: inputBus, bufferSize: 150,
-                                    format: micInputFormat, block: analyzeAudio(buffer:at:))
         
     }
     
