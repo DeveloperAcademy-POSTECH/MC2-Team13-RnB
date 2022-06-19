@@ -15,31 +15,39 @@ class PermissionManager: ObservableObject {
     @Published var goToStagePagingView: Bool = false
     
     init() {
-          micPermission = (AVAudioSession.sharedInstance().recordPermission == .granted)
-          speechRecognitionPermission = (SFSpeechRecognizer.authorizationStatus() == .authorized)
-      }
-      
-      func requestMicrophonePermission() {
-          AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
-              self.micPermission = permissionValue
-          }
-      }
-      
-      func speechRecognition() {
-          SFSpeechRecognizer.requestAuthorization { authStatus  in
-              DispatchQueue.main.async {
-                  self.speechRecognitionPermission = (authStatus == .authorized)
-                  self.goToStagePagingView = true
-              }
-          }
-      }
-      
-      func requestPermission() {
-          self.requestMicrophonePermission()
-          self.speechRecognition()
-      }
-      
-      func permissionState() -> Bool {
-          return speechRecognitionPermission && micPermission
-      }
+        micPermission = (AVAudioSession.sharedInstance().recordPermission == .granted)
+        speechRecognitionPermission = (SFSpeechRecognizer.authorizationStatus() == .authorized)
+    }
+    
+    deinit {
+        print("deinit PermissionManager")
+    }
+    
+    func requestMicrophonePermission() {
+        AVAudioSession.sharedInstance().requestRecordPermission { permissionValue in
+            self.micPermission = permissionValue
+        }
+    }
+    
+    func speechRecognition() {
+        SFSpeechRecognizer.requestAuthorization { authStatus  in
+            DispatchQueue.main.async {
+                self.speechRecognitionPermission = (authStatus == .authorized)
+                self.goToStagePagingView = true
+            }
+        }
+    }
+    
+    func pauseMic() {
+        
+    }
+    
+    func requestPermission() {
+        self.requestMicrophonePermission()
+        self.speechRecognition()
+    }
+    
+    func permissionState() -> Bool {
+        return speechRecognitionPermission && micPermission
+    }
 }

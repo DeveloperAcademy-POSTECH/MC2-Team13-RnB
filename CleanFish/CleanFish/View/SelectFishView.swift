@@ -8,28 +8,25 @@
 import SwiftUI
 
 struct SelectFishView: View {
+    @EnvironmentObject var appController: AppController
     @Binding var selectedFish: Fish
-    @Binding var showView: ShowView
     
     let lottieSize: CGFloat = UIScreen.main.bounds.size.width * 0.5
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
+            VStack(spacing: 50) {
                 Spacer()
-                ForEach(Fish.allCases, id: \.rawValue) {fish in
+                ForEach(Fish.allCases, id: \.rawValue) { fish in
                     HStack {
                         if fish.index % 2 == 1 {
                             Spacer()
                         }
                         Button {
                             selectedFish = fish
-                            showView.fishView.toggle()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                showView.recipeView.toggle()
-                            }
+                            appController.showRecipeView()
                         } label: {
-                            LottieView(filename: "\(fish.rawValue)", animationSpeed: 1)
+                            LottieView(fileName: "\(fish.rawValue)", animationSpeed: 1)
                         }
                         .frame(width: lottieSize, height: lottieSize)
                         
@@ -39,22 +36,20 @@ struct SelectFishView: View {
                     }
                 }
             }
-            .padding(.bottom, 130)
+            .padding(.bottom, 180)
             .padding(.horizontal, 30)
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .transition(.move(edge: .bottom))
-        .animation(.linear(duration: 0.3), value: UUID())
         .navigationBarHidden(true)
     }
 }
 
 struct SelectFishViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var showView: ShowView = (true, false)
-
+    
     var body: some View {
-        SelectFishView(selectedFish: $selectedFish, showView: $showView)
+        SelectFishView(selectedFish: $selectedFish)
     }
 }
 

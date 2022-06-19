@@ -7,15 +7,28 @@
 
 import SwiftUI
 
+class PopToRoot: ObservableObject {
+    @Published var popToRootBool: Bool
+    
+    init(popToRootBool: Bool) {
+        self.popToRootBool = popToRootBool
+    }
+}
+
+
 struct SelectRecipeView: View {
+    // MARK: - EnvironmentObject
+    @EnvironmentObject var appController: AppController
+    
+    @EnvironmentObject var ePopToRoot: PopToRoot
+    
     // MARK: - State Property
     @State private var isShowOrientationAlert: Bool = false
     @State private var selectedRecipe: Recipe = .grilled
-    @State private var goToTutorialPage: Bool = false
-  
+    
+    
     // MARK: - Binding Property
     @Binding var selectedFish: Fish
-    @Binding var showView: ShowView
     
     // MARK: - Body
     var body: some View {
@@ -23,15 +36,11 @@ struct SelectRecipeView: View {
             VStack(spacing: 15) {
                 VStack(alignment: .leading) {
                     Button {
-                        showView.recipeView.toggle()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            withAnimation {
-                                showView.fishView.toggle()
-                            }
-                        }
+                        appController.showFishView()
                     } label: {
                         Text("이전")
                             .font(.title3)
+                            .fontWeight(.bold)
                             .foregroundColor("#4986E6".toColor(alpha: 1))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
@@ -85,12 +94,13 @@ struct SelectRecipeView: View {
                     }
                     
                     ZStack {
-                        NavigationLink("", isActive: $goToTutorialPage) {
+                        NavigationLink("", isActive: $ePopToRoot.popToRootBool) {
+                            //                        NavigationLink("", isActive: $appController.isSelectRecipe) {
                             VoiceGuideView(selectedCourse: "\(selectedFish.rawValue)_\(selectedRecipe.rawValue)")
                         }
-                        .hidden()
                         
                         Button {
+                            appController.initBuffer()
                             isShowOrientationAlert.toggle()
                         } label: {
                             ZStack {
@@ -113,15 +123,15 @@ struct SelectRecipeView: View {
                         .alert("\(selectedFish.value) \(selectedRecipe.value)", isPresented: $isShowOrientationAlert) {
                             VStack {
                                 Button("취소", role: .cancel) {
-                                    
+                                    appController.initBuffer()
                                 }
                                 Button("확인", role: .none) {
-                                    DispatchQueue.main.async {
-                                        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                                                  forKey: "orientation")
-                                    }
+                                    appController.mainWhiteForeground.toggle()
+                                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                                              forKey: "orientation")
+                                    AppDelegate.orientationLock = .landscape
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        goToTutorialPage.toggle()
+                                        self.ePopToRoot.popToRootBool = true
                                     }
                                 }
                             }
@@ -142,10 +152,9 @@ struct SelectRecipeView: View {
 
 struct SelectRecipeViewPreviewsContainer: View {
     @State var selectedFish: Fish = .flatfish
-    @State var showView: ShowView = (true, false)
     
     var body: some View {
-        SelectRecipeView(selectedFish: $selectedFish, showView: $showView)
+        SelectRecipeView(selectedFish: $selectedFish)
     }
 }
 
