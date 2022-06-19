@@ -26,15 +26,15 @@ struct StepSlideView: View {
     @StateObject var permissionManager: PermissionManager = PermissionManager()
     
     // MARK: - ObservedObject
-        @ObservedObject var observer: AudioStreamObserver
+    @ObservedObject var observer: AudioStreamObserver
     
-        private var streamManager: AudioStreamManager
-
-        init() {
-            observer = AudioStreamObserver()
-            streamManager = AudioStreamManager()
-            streamManager.resultObservation(with: observer)
-        }
+    private var streamManager: AudioStreamManager
+    
+    init() {
+        observer = AudioStreamObserver()
+        streamManager = AudioStreamManager()
+        streamManager.resultObservation(with: observer)
+    }
     
     // MARK: - [애플리케이션 설정창 이동 실시 : 권한 거부 시]
     func goAppSetting() {
@@ -68,25 +68,25 @@ struct StepSlideView: View {
             .onChange(of: currentStage) { num in
                 stepMemory = num
             }
-                        .onChange(of: observer.voiceCommand) {
-                            result in
-            
-                            print(currentStage, result)
-                            switch result {
-                            case 1:
-                                if currentStage < appController.courseInfo.totalStep {
-                                    currentStage += 1
-                                }
-                            case -1:
-                                if currentStage > 1 {
-                                    currentStage -= 1
-                                }
-                            default:
-                                break
-                            }
-                            print("changeed currentStage", currentStage)
-                            observer.voiceCommand = 0
-                        }
+            .onChange(of: observer.voiceCommand) {
+                result in
+                
+                print(currentStage, result)
+                switch result {
+                case 1:
+                    if currentStage < appController.courseInfo.totalStep {
+                        currentStage += 1
+                    }
+                case -1:
+                    if currentStage > 1 {
+                        currentStage -= 1
+                    }
+                default:
+                    break
+                }
+                print("changeed currentStage", currentStage)
+                observer.voiceCommand = 0
+            }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .onAppear {
                 if !appController.getMemory.courseID.isEmpty {
@@ -105,8 +105,8 @@ struct StepSlideView: View {
             } else {
                 print("Voice Function OFF ")
                 streamManager.stopEngine()
-//                AUAudioUnit().isInputEnabled = false
-//                streamManager.resultObservation(with: observer)
+                //                AUAudioUnit().isInputEnabled = false
+                //                streamManager.resultObservation(with: observer)
             }
         }
         .navigationBarHidden(true)
