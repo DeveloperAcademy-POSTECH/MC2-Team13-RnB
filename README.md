@@ -34,7 +34,7 @@
 |||||||
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |<img src="./gitfile/Ground.png">|<img src="./gitfile/Haru.png">|<img src="./gitfile/Monica.png">|<img src="./gitfile/Rey.png">|<img src="./gitfile/Simon.png">|<img src="./gitfile/Siro.png">|
-|Ground|Haru|Monica|Rey|Simon|Siro|
+| [Ground](https://github.com/GroundDev) | [Haru](https://github.com/lee02029) | [Monica](https://github.com/monic98) | [Rey](https://github.com/moonjs0113) | [Simon](https://github.com/dgfghsjd) | [Siro](https://github.com/siro96-01) |
     
 </div>
 
